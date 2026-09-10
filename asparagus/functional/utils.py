@@ -1,0 +1,85 @@
+import glob
+import numpy as np
+import os
+import pathlib
+import shutil
+from asparagus.paths import get_models_path
+
+
+def add_run_to_pretrained_derivative_list(version, ckpt_path, finetune_path):
+    if "/version_" in ckpt_path:
+        ckpt_path = ckpt_path.split("/version_")[0]
+        ckpt_path = os.path.join(ckpt_path, "derived_models.log")
+        with open(ckpt_path, "a+") as f:
+            f.write(f"{version}, {finetune_path} \n")
+
+
+def fit_patch_size_to_image_size(patch_size, image_size):
+    if len(patch_size) == 2 and len(image_size) == 3:
+        patch_size = np.min([patch_size, image_size[1:]], axis=0)
+    else:
+        patch_size = np.min([patch_size, image_size], axis=0)
+
+    # Round each axis down to a multiple of 32, but never below 32: an axis smaller than 32 (e.g. a
+    # thin 30-slice volume) would otherwise floor to 0 and make the sliding window step zero. A 32-wide
+    # patch on a smaller image is padded by the sliding-window predictor.
+    return [int(32 * max(1, i // 32)) for i in patch_size]
+
+
+def fit_image_to_patch_size(patch_size, image_size):
+    if len(patch_size) == 2 and len(image_size) == 3:
+        return np.max([patch_size, image_size[1:]], axis=0)
+    else:
+        return np.max([patch_size, image_size], axis=0)
+
+
+def prune_model_dirs(root_model_dir, dry_run=True):
+    print(f"Dry run: {dry_run}")
+    for path in glob.glob(root_model_dir + "/**/*", recursive=True):
+        if not os.path.isdir(path):
+            continue
+        if "run_id=" not in os.path.split(path)[-1]:
+            continue
+        if "checkpoints" in os.listdir(path):
+            print(f"Found model in: {path}")
+            continue
+        if "predictions" in os.listdir(path):
+            print(f"Found predictions in: {path}")
+            continue
+        if not all(subpath.endswith((".log", ".txt", ".yaml", "hydra", "mlruns", "wandb")) for subpath in os.listdir(path)):
+            print("skipping", path)
+
+        print(f"Removing: {path}")
+        if not dry_run:
+            shutil.rmtree(path)
+
+    if not dry_run:
+        for _ in range(10):
+            for path in glob.glob(root_model_dir + "/**/*", recursive=True):
+                if os.path.isdir(path):
+                    if len(os.listdir(path)) == 0:
+                        print("Removing empty dir: ", path)
+                        pathlib.Path.rmdir(path)
+
+
+def find_run_dirs(models_path):
+    """Run directories under ``models_path`` that contain a ``predictions/`` folder (each is
+    the parent of such a folder). Used by asp_eval_box_collect_results to discover finished
+    runs."""
+    run_dirs = []
+    for dirpath, dirnames, _ in os.walk(models_path):
+        if "predictions" in dirnames:
+            run_dirs.append(dirpath)
+    return run_dirs
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--prune-model-dir", action="store_true")
+    parser.add_argument("--model-dir", default=get_models_path())
+    parser.add_argument("--fix", action="store_true")
+    args = parser.parse_args()
+    if args.prune_model_dir:
+        prune_model_dirs(root_model_dir=args.model_dir, dry_run=not args.fix)

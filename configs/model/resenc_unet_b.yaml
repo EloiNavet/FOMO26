@@ -1,0 +1,21 @@
+defaults:
+  - core/resenc_unet@
+
+dimensions: 3D
+encoder_pool: max
+
+pretrain_net: resenc_unet_b_ssl
+
+seg_net: resenc_unet_b
+cls_net: resenc_unet_b_clsreg
+
+plugin_seg_net:
+plugin_seg_train_n_last_params: 10
+
+# Dropout rates (0.0 = no dropout)
+encoder_dropout_rate: 0.0
+decoder_dropout_rate: 0.0
+
+# SSL head settings
+head_out_dim: 256
+head_hidden_dim: 512

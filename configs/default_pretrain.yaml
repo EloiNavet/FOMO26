@@ -1,0 +1,295 @@
+defaults:
+  - core/base@
+  - hardware/2gpus@hardware
+  - _self_
+
+task:
+root: base
+stem:
+validation_only: false
+resume_training: false
+resume_checkpoint_path:
+
+model:
+  net: ${model.pretrain_net}
+  ckpt_every_n_epoch: 5
+  ckpt_filename: "epoch_{epoch:03d}_step_{step}"
+  ckpt_save_top_k: -1
+  ckpt_save_last: true
+  ckpt_enable_version_counter: true
+  ckpt_monitor: null
+  ckpt_mode: min
+  pretrain_optim: ${model.pretrain_optim}
+  pretrain_lr: ${model.pretrain_lr}
+  weight_decay: ${model.pretrain_weight_decay}
+  stage2_decoder_enabled: ${losses.multimodal_stage2.decoder_enabled}
+  stage2_factorized_head:
+    enabled: ${losses.multimodal_stage2.enabled}
+    anat_dim: ${losses.multimodal_stage2.anat_dim}
+    mod_dim: ${losses.multimodal_stage2.mod_dim}
+    hidden_dim: ${losses.multimodal_stage2.hidden_dim}
+    dropout: ${losses.multimodal_stage2.dropout}
+    use_layer_norm: true
+  stage2_decoder:
+    enabled: ${losses.multimodal_stage2.decoder_enabled}
+    base_channels: 32
+    max_channels: 128
+    film_hidden_dim: ${losses.multimodal_stage2.hidden_dim}
+    dropout: 0.0
+    norm: group
+    film_levels: all
+    film_init_std: 0.001
+  scanner_target_class_counts:
+    manufacturer: 1
+    field_strength: 1
+    spacing_bin: 1
+  scanner_head:
+    enabled: false
+    hidden_dim:
+    out_dim: 128
+    depth: 2
+    dropout: 0.0
+    use_layer_norm: true
+    detach_input: false
+  inv_head:
+    enabled: false
+    hidden_dim:
+    out_dim: 128
+    depth: 2
+    dropout: 0.0
+    use_layer_norm: true
+    discriminator_input: raw
+    discriminator_hidden_dim:
+    discriminator_depth: 1
+    discriminator_dropout: 0.0
+    discriminator_use_layer_norm: true
+
+lightning:
+  data_module: PretrainDataModule
+  lightning_module: SelfSupervisedModule
+  # Pretraining-only field (moved out of core/base so non-SSL finetune modules don't receive it).
+  _lightning_module:
+    momentum_transforms:
+      _target_: asparagus.modules.transforms.presets.${transforms.momentum_tr_transforms}
+
+data:
+  data_path: ${oc.env:ASPARAGUS_DATA}/${task}
+  train_split: split_99_01_00
+  fold: 0
+  # No fallback path: these used to default to one machine's absolute paths, which is both a
+  # private path in a public tree and a silent wrong answer on any other machine. Set the
+  # environment variable, or override the key.
+  metadata_paths:
+    - ${oc.env:ASPARAGUS_METADATA_PARTICIPANTS,???}
+    - ${oc.env:ASPARAGUS_METADATA_MRI_INFO,???}
+  registered_mapping_path: ${oc.env:ASPARAGUS_REGISTERED_MAPPING,???}
+  registered_only: false
+  same_session_multimodal_batches: true
+  multimodal_batch_probability: 0.5
+  stage1_multimodal_batch_mode: single_session
+  stage1_multimodal_allowed_pairs:
+  demographic_batch_probability: 0.0
+  demographic_age_bin_years: 10
+  max_modalities_per_subject: 4
+  validate_split_disjointness: true
+  complete_validation: false
+  scanner_targets:
+    enabled: false
+    keys: [manufacturer, field_strength, spacing_bin]
+    ignore_index: -100
+    spacing_bins: [1.0, 1.5, 2.0, 3.0]
+    spacing_summary: max
+    spacing_columns: [original_spacing, pixdim, source_spacing, native_spacing, voxel_spacing]
+    save_vocab: true
+
+  modality_targets:
+    enabled: false
+    ignore_index: -100
+    # Modalities mapped to ignore_index for the Stage-1 modality target only (FiLM
+    # conditioning is unaffected). `dwi` conflates multiple b-value contrasts, so it is
+    # excluded by default; `dwi_trace`/`adc` stay as clean classes.
+    ignore_modalities: [dwi]
+    save_vocab: true
+
+training:
+  batch_size: 16
+  accumulate_grad_batches: 1
+  patch_size: [160, 160, 160]
+  seed: ${random:0,1000000}
+  mask_patch_size: ${model.patch_embed_size}
+  mask_ratio: 0.6
+  max_samples: 6_000_000
+  warmup_ratio: 0.02
+  # We follow DINOv2/DINOv3 and keep number of *steps* per epoch constant.
+  # We define our epoch length using FOMO60k as our reference dataset
+  # (they use Imagenet1k), which helps ensure stable scaling across gpus
+  # and simplifies logging intervals.
+  # Calculation is 60_529 / (16*2) ≈ 1890, i.e. num steps for 1 epoch
+  # on FOMO60k with our base setup of two devices and a per device
+  # batch size of 16. The key here is that this number is constant
+  # when we increase the number of devices _or_ use a bigger dataset.
+  steps_per_epoch: 1890 # <--- should be constant ... but note that if gradient accumulation is used, then steps_per_epoch > number of backwards passes.
+  val_steps_per_epoch: ${eval:"${training.steps_per_epoch} // 100"}
+  global_batch_size: ${eval:"${training.batch_size} * ${hardware.num_devices} * ${hardware.num_nodes} * ${training.accumulate_grad_batches}"}
+  steps: ${eval:"${training.max_samples} // (${training.global_batch_size})"}
+  # Optional experimental stop after the first validation at or beyond this optimizer
+  # step. Unlike max_samples, this leaves LR and auxiliary-loss schedules unchanged.
+  stop_after_steps: null
+  # WARNING: steps is in optimizer steps but steps_per_epoch is in microbatches, so this
+  # expression scales with accumulate_grad_batches and does NOT yield warmup_ratio of the
+  # optimizer horizon. Kept as-is so every existing config keeps its exact schedule; set
+  # training.warmup_steps to opt into the corrected, accumulation-independent contract.
+  warmup_epochs: ${eval:"max(1, int((${training.steps} // ${training.steps_per_epoch}) * ${training.warmup_ratio}))"}
+  # Warmup in optimizer steps. Takes precedence over warmup_epochs when set. null = legacy.
+  warmup_steps: null
+  decoder_warmup_epochs: 0
+  rec_loss_masked_only: True
+  # Global gradient clipping for the SSL trainer (automatic optimization). Guards long
+  # multi-objective / adversarial (GRL) runs against loss spikes. Set gradient_clip_val=null
+  # to disable. Applied only in pretraining (not the shared finetune/train Trainer).
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: norm
+  # Fail loudly if an enabled loss with a strictly positive effective weight sees no eligible batch
+  # for this many consecutive optimizer steps. Guards stacked recipes against a silently starved
+  # component. 0 disables the check.
+  component_starvation_window: 0
+  num_sanity_val_steps: 2
+  # Routine validation and representation probes align with checkpoint cadence.
+  check_val_every_n_epoch: 5
+
+monitoring:
+  metric_semantics_version: current
+  reconstruction_data_range: 6.0  # Torch_ClampTarget interval [-2, 4].
+  log_raw_reconstruction_metrics: false
+  validation_embedding_monitor_enabled: true
+  routine_scan_count: 128
+  monitor_seed: 0
+  probe_every_n_epoch: 5
+  probe_train_max_subjects: 512
+  demographic_probe_train_max_subjects: 512
+  demographic_silhouette_age_bin_years: 10
+  probe_val_canonical_t1w: true
+  stage1_pair_session_count: 64
+  detailed_probe_metrics: false
+  exhaustive_evaluation: false
+
+losses:
+  mse:
+    enabled: true
+    weight: 10.0
+    # AMAES foreground controls. `foreground_mode=none` keeps the original AMAES
+    # behaviour. `foreground_aware=true` is a legacy alias for `weighted_replace`
+    # so old foreground-weighted MSE runs remain reproducible.
+    foreground_mode: none  # none | weighted_replace | bonus_voxel | bonus_patch | falcon_hard | falcon_latent | falcon_full
+    foreground_aware: false
+    background_weight: 0.1
+    foreground_bonus_weight: 0.0
+    foreground_bonus_patch_size: ${transforms.mask_token_size}
+    foreground_min_fraction: 0.1
+    foreground_threshold: 0.0
+    foreground_dynamic_quantiles: [0.02, 0.98]
+    foreground_dynamic_scale: 0.1
+    # Match Neuro-JEPA's foreground weighting contract: normalise the weighted
+    # reconstruction loss per sample before averaging the batch.
+    foreground_sample_normalize: true
+    foreground_bonus_start_ratio: 0.0
+    foreground_bonus_warmup_ratio: 0.1
+    foreground_bonus_start_step: ${eval:"int(${training.steps} * ${losses.mse.foreground_bonus_start_ratio})"}
+    foreground_bonus_warmup_steps: ${eval:"int(${training.steps} * ${losses.mse.foreground_bonus_warmup_ratio})"}
+    falcon_hard_weight: 0.0
+    falcon_latent_weight: 0.0
+    falcon_spectral_weight: 0.0
+    falcon_patch_size: ${transforms.mask_token_size}
+    falcon_topk_fraction: 0.25
+    falcon_foreground_alpha: 1.0
+    falcon_error_gamma: 1.0
+    falcon_gradient_eta: 0.5
+    falcon_hard_loss: mse  # mse | charbonnier
+    falcon_charbonnier_eps: 0.001
+    falcon_latent_level: -2
+    falcon_latent_loss: mse  # mse | smooth_l1
+    falcon_spectral_high_weight: 1.0
+    falcon_spectral_power: 2.0
+    falcon_spectral_focal_alpha: 1.0
+    falcon_spectral_focal_weight_max: 10.0
+    falcon_start_ratio: 0.0
+    falcon_warmup_ratio: 0.1
+    falcon_end_ratio: 0.0
+    falcon_decay_ratio: 0.0
+    falcon_start_step: ${eval:"int(${training.steps} * ${losses.mse.falcon_start_ratio})"}
+    falcon_warmup_steps: ${eval:"int(${training.steps} * ${losses.mse.falcon_warmup_ratio})"}
+    falcon_end_step: ${eval:"int(${training.steps} * ${losses.mse.falcon_end_ratio})"}
+    falcon_decay_steps: ${eval:"int(${training.steps} * ${losses.mse.falcon_decay_ratio})"}
+
+# ---------------------------------------------------------------------------
+# JEPA-family SSL objective (latent masked prediction). `objective: amaes` (default)
+# leaves the AMAES/contrastive paths untouched; `objective: jepa` activates the
+# JEPAObjective with the `variant` below. All ingredients are individually toggleable.
+# ---------------------------------------------------------------------------
+transforms:
+  cpu_tr_transforms: pretrain_CPU_train_transforms
+  cpu_val_transforms: pretrain_CPU_val_transforms
+  cpu_demo_tr_transforms: pretrain_CPU_val_transforms
+  gpu_tr_transforms: pretrain_GPU_train_transforms
+  gpu_unmasked_tr_transforms: pretrain_GPU_train_transforms_unmasked
+  gpu_val_transforms: pretrain_GPU_val_transforms
+  momentum_tr_transforms: pretrain_GPU_train_transforms_unmasked
+  masking: True
+  # AMAES/ResEnc masking policy: random keeps the legacy Torch_Mask behavior.
+  # target_foreground hides image-derived foreground tokens preferentially; preserve_context
+  # keeps more foreground visible and is mainly a diagnostic counterpart.
+  mask_policy: random
+  mask_token_size: [4]
+  mask_foreground_bias: 0.5
+  mask_foreground_threshold: 0.0
+  mask_foreground_dynamic_quantiles: [0.02, 0.98]
+  mask_foreground_dynamic_scale: 0.1
+  frepa_lite:
+    enabled: false
+    p: 1.0
+    low_cutoff: 0.333333
+    high_cutoff: 0.666667
+    low_scale_min: 0.7
+    low_scale_max: 1.3
+    low_noise_std: 0.03
+    high_mask_ratio: 0.25
+    eps: 1e-6
+  normalize: True
+  # Pretraining-only instantiation node (moved out of core/base; instantiated by pretrain.py).
+  _cpu_demo_tr_transforms:
+    _target_: asparagus.modules.transforms.presets.${transforms.cpu_demo_tr_transforms}
+
+logger:
+  progress_bar: True
+  profile: False
+  wandb_log_model: False
+  wandb_logging: True
+  wandb_entity: ${oc.env:WANDB_ENTITY, "volBrain_team"}
+  wandb_project: Pretrain
+  # Multi-segment lanes: every segment of one lane must land in ONE W&B run with a monotonically
+  # increasing global step. With this true, a resumed segment that cannot resolve its previous run
+  # id fails instead of silently opening a second run (wandb resume="must", not "allow"). Only
+  # consulted when resume_training=true, so a genuinely fresh run is never blocked.
+  wandb_require_run_continuity: False
+  mlflow_logging: False
+  # Reliable offline metric capture (writes {run_dir}/metrics.csv). Off by default.
+  csv_logging: False
+  log_every_n_steps: 250
+  log_images_every_n_epoch: 5
+  log_to_stdout: False
+  loss_gradient_norm_every_n_steps: 0
+  # Realized general / demographic / packed-pair batch fractions. 0 disables the logging.
+  batch_routing_log_every_n_steps: 0
+  validation_embeddings:
+    enabled: ${monitoring.validation_embedding_monitor_enabled}
+    # Inactive objective heads are automatically omitted even if listed here.
+    sources: ["h", "z_demo", "z_patho"]
+    reducers: ["umap", "tsne", "pca"]
+    max_points: 1024
+    random_state: 0
+
+profiler:
+  enabled: False
+  profile_every_n_steps: 500
+  warmup_steps: 10
+  profile_memory: true

@@ -1,0 +1,138 @@
+{
+  "derived_from": {
+    "upstream_commit": "d442af2e9bdade58be20c2ee0cbabf8d0439e32b",
+    "upstream_path": "container_validator/tasks.py",
+    "upstream_url": "https://github.com/fomo26/container-validator.git"
+  },
+  "purpose": "The official challenge task interface -- task ids, CLI flags, output filenames and formats -- recorded as data. This is a description of an interface we must conform to, not a copy of upstream source: no upstream code is reproduced here. Derived mechanically from container_validator/tasks.py at the pinned commit and re-derivable from an acquired checkout, so drift is detectable rather than assumed absent.",
+  "schema_version": "fomo26-official-task-contract-v1",
+  "tasks": {
+    "task1": {
+      "inputs": [
+        {
+          "flags": [
+            "--flair"
+          ],
+          "key": "flair",
+          "kind": "required"
+        },
+        {
+          "flags": [
+            "--dwi"
+          ],
+          "key": "dwi",
+          "kind": "required"
+        },
+        {
+          "flags": [
+            "--adc"
+          ],
+          "key": "adc",
+          "kind": "required"
+        },
+        {
+          "flags": [
+            "--t2s",
+            "--swi"
+          ],
+          "key": "t2s_or_swi",
+          "kind": "one_of"
+        }
+      ],
+      "output_filename": "output.txt",
+      "output_flag": "--output",
+      "output_format": "txt",
+      "suite": "classification_scalar_probability"
+    },
+    "task2": {
+      "inputs": [
+        {
+          "flags": [
+            "--flair"
+          ],
+          "key": "flair",
+          "kind": "required"
+        },
+        {
+          "flags": [
+            "--dwi"
+          ],
+          "key": "dwi",
+          "kind": "required"
+        },
+        {
+          "flags": [
+            "--t2s",
+            "--swi"
+          ],
+          "key": "t2s_or_swi",
+          "kind": "one_of"
+        }
+      ],
+      "output_filename": "output.nii.gz",
+      "output_flag": "--output",
+      "output_format": "nifti",
+      "suite": "binary_segmentation_nifti"
+    },
+    "task3": {
+      "inputs": [
+        {
+          "flags": [
+            "--t1"
+          ],
+          "key": "t1",
+          "kind": "required"
+        }
+      ],
+      "output_filename": "output.txt",
+      "output_flag": "--output",
+      "output_format": "txt",
+      "suite": "regression_scalar"
+    },
+    "task4": {
+      "inputs": [
+        {
+          "flags": [
+            "--t2"
+          ],
+          "key": "t2",
+          "kind": "required"
+        }
+      ],
+      "output_filename": "output.nii.gz",
+      "output_flag": "--output",
+      "output_format": "nifti",
+      "suite": "multiclass_segmentation_nifti"
+    },
+    "task5": {
+      "inputs": [
+        {
+          "flags": [
+            "--t1"
+          ],
+          "key": "t1",
+          "kind": "required"
+        }
+      ],
+      "output_filename": "output.txt",
+      "output_flag": "--output",
+      "output_format": "txt",
+      "suite": "classification_scalar_probability"
+    },
+    "task6_and_7": {
+      "inputs": [
+        {
+          "flags": [
+            "--input"
+          ],
+          "key": "input",
+          "kind": "required"
+        }
+      ],
+      "output_filename": "output.npy",
+      "output_flag": "--output",
+      "output_format": "numpy",
+      "suite": "linear_probing_embeddings"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    env:
+      CUDA_VISIBLE_DEVICES: ""
+      # The suite refuses to run without its data-root contract: asparagus/paths.py raises
+      # "Missing required environment variable" at import, which surfaces as a collection error
+      # rather than a skip. Point them at throwaway workspace directories so a fresh checkout is
+      # runnable; nothing here reads real data.
+      ASPARAGUS_DATA: "${{ github.workspace }}/.ci/data"
+      ASPARAGUS_MODELS: "${{ github.workspace }}/.ci/models"
+      ASPARAGUS_RESULTS: "${{ github.workspace }}/.ci/results"
+      ASPARAGUS_RAW_LABELS: "${{ github.workspace }}/.ci/raw_labels"
+      ASPARAGUS_CONFIGS: "${{ github.workspace }}/configs"
+      FOMO26_TIER: "fast"
+      TQDM_DISABLE: "1"
+      WANDB_MODE: "offline"
+      WANDB_ENTITY: "test"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create throwaway data roots
+        run: mkdir -p .ci/data .ci/models .ci/results .ci/raw_labels
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "uv==0.12.7"
+
+      - name: Install dependencies
+        run: uv sync --locked --all-extras --all-groups
+
+      - name: Ruff lint
+        run: uv run ruff check .
+
+      - name: Ruff format (check only)
+        if: ${{ always() }}
+        run: uv run ruff format --check .
+
+      - name: Run tests
+        if: ${{ always() }}
+        env:
+          ASPARAGUS_CONFIGS: ${{ github.workspace }}/configs
+          ASPARAGUS_DATA: ${{ runner.temp }}/asparagus_data
+          ASPARAGUS_RESULTS: ${{ runner.temp }}/asparagus_results
+        run: uv run pytest

@@ -1,0 +1,12 @@
+# @package _global_
+# Task1 lesion (seg) — AMAES encoder-only transfer (fair baseline; decoder stays random).
+# Point FOMO26_AMAES_CHECKPOINT at an AMAES SSL checkpoint.
+defaults:
+  - /projects/fomo26/finetune/task1_lesion
+  - _self_
+
+checkpoint_path: ${oc.env:FOMO26_AMAES_CHECKPOINT,null}
+pretrained:
+  enabled: true
+  source: online            # AMAES has no EMA/target encoder
+  load_scope: encoder_only

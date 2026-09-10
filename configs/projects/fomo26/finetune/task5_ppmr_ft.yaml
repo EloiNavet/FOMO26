@@ -1,0 +1,33 @@
+# @package _global_
+# Task5 polymicrogyria (cls) — encoder-only transfer from our UNet-M backbone.
+# Point FOMO26_BACKBONE_CHECKPOINT at amaes/dufumier/dufumier_amaes (.ckpt).
+defaults:
+  - /default_finetune_cls
+  - /model/unet_m@model
+  - _self_
+
+task: CLS905_FOMO26_Task5_ppmr
+checkpoint_path: ${oc.env:FOMO26_BACKBONE_CHECKPOINT,null}
+pretrained:
+  enabled: true
+  source: online
+  load_scope: encoder_only
+
+data:
+  train_split: split_70_15_15
+  test_split: TEST_70_15_15
+
+training:
+  batch_size: 1
+  target_size: [128, 128, 128]
+  repeat_stem_weights: True
+  # Comparison-campaign budget (in-config so the orchestrator passes only fold/split).
+  epochs: 40
+  warmup_epochs: 8
+  limit_train_batches: 80
+  limit_val_batches: 20
+  check_val_every_n_epoch: 2
+
+logger:
+  wandb_logging: True
+  wandb_project: Finetune

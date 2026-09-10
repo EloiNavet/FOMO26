@@ -1,0 +1,28 @@
+# @package _global_
+# Task1 infarct lesion (seg) — encoder-only transfer from our UNet-M backbone.
+# Point FOMO26_BACKBONE_CHECKPOINT at amaes/dufumier/dufumier_amaes (.ckpt).
+defaults:
+  - /default_finetune_seg
+  - /model/unet_m@model
+  - _self_
+
+task: SEG901_FOMO26_Task1_lesion
+checkpoint_path: ${oc.env:FOMO26_BACKBONE_CHECKPOINT,null}
+pretrained:
+  enabled: true
+  source: online
+  load_scope: encoder_only
+
+data:
+  train_split: split_70_15_15
+  test_split: TEST_70_15_15
+
+training:
+  batch_size: 1
+  patch_size: [160, 160, 32]
+  load_decoder: False
+  repeat_stem_weights: True
+
+logger:
+  wandb_logging: True
+  wandb_project: Finetune

@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "FOMO26 challenge submission — Team volBrain"
+abstract: >-
+  Official source-code release of Team volBrain's submission to the FOMO26 challenge: a 3D
+  ResEnc-B backbone pretrained on heterogeneous brain MRI with an AMAES masked-reconstruction
+  objective, fine-tuned for challenge Tasks 1-5 and used as a frozen representation extractor
+  for Tasks 6-7. Includes the released pretraining and fine-tuning recipes, the preprocessing
+  geometry contract, the task-specific inference entrypoints, and the container and release
+  contracts. No data, checkpoints or container images are distributed. Built on the Asparagus
+  framework; see the README for upstream attribution.
+type: software
+license: Apache-2.0
+version: "1.0.0"
+date-released: "2026-09-09"
+repository-code: "https://github.com/EloiNavet/FOMO26"
+url: "https://github.com/EloiNavet/FOMO26"
+keywords:
+  - medical imaging
+  - magnetic resonance imaging
+  - self-supervised learning
+  - masked image modelling
+  - foundation model
+  - brain MRI
+  - FOMO26
+authors:
+  - family-names: Navet
+    given-names: Éloi
+    affiliation: "Univ. Bordeaux, CNRS, Bordeaux INP, LaBRI, UMR 5800, F-33400 Talence, France"
+  - family-names: Giraud
+    given-names: Rémi
+    affiliation: "Univ. Bordeaux, CNRS, Bordeaux INP, IMS, UMR 5218, F-33400 Talence, France"
+  - family-names: Mansencal
+    given-names: Boris
+    affiliation: "Univ. Bordeaux, CNRS, Bordeaux INP, LaBRI, UMR 5800, F-33400 Talence, France"
+  - family-names: Coupé
+    given-names: Pierrick
+    affiliation: "Univ. Bordeaux, CNRS, Bordeaux INP, LaBRI, UMR 5800, F-33400 Talence, France"

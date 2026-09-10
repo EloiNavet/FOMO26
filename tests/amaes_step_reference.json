@@ -1,0 +1,4178 @@
+{
+ "finite": {
+  "gradients": true,
+  "parameters": true
+ },
+ "gradients_step0": {
+  "decoder.decoder_conv1.conv1.conv.bias": {
+   "abs_sum": 2.2638113605921717e-11,
+   "max_abs": 2.9309887850104133e-13,
+   "sq_norm": 2.4547202217549226e-24
+  },
+  "decoder.decoder_conv1.conv1.conv.weight": {
+   "abs_sum": 3.2849593126757073,
+   "max_abs": 8.782275472185574e-06,
+   "sq_norm": 4.212017404839214e-06
+  },
+  "decoder.decoder_conv1.conv1.norm_op.bias": {
+   "abs_sum": 0.00012243902157393904,
+   "max_abs": 1.3657894442076213e-06,
+   "sq_norm": 7.259180909881763e-11
+  },
+  "decoder.decoder_conv1.conv1.norm_op.weight": {
+   "abs_sum": 0.00013069358617023852,
+   "max_abs": 1.3163319181330735e-06,
+   "sq_norm": 8.494440037195748e-11
+  },
+  "decoder.decoder_conv2.conv1.conv.bias": {
+   "abs_sum": 3.9755287950526963e-10,
+   "max_abs": 6.394884621840902e-12,
+   "sq_norm": 9.93831939641474e-22
+  },
+  "decoder.decoder_conv2.conv1.conv.weight": {
+   "abs_sum": 21.616835108250296,
+   "max_abs": 7.852716225897893e-05,
+   "sq_norm": 0.00035597425829087025
+  },
+  "decoder.decoder_conv2.conv1.norm_op.bias": {
+   "abs_sum": 0.0011336227556171252,
+   "max_abs": 1.9039334802073427e-05,
+   "sq_norm": 7.692431369774075e-09
+  },
+  "decoder.decoder_conv2.conv1.norm_op.weight": {
+   "abs_sum": 0.0012541997350297152,
+   "max_abs": 1.7944294086191803e-05,
+   "sq_norm": 9.333532624294315e-09
+  },
+  "decoder.decoder_conv3.conv1.conv.bias": {
+   "abs_sum": 5.986939832780536e-09,
+   "max_abs": 2.6943780540023e-10,
+   "sq_norm": 4.59684965343042e-19
+  },
+  "decoder.decoder_conv3.conv1.conv.weight": {
+   "abs_sum": 54.94653368347358,
+   "max_abs": 0.0007198540843091905,
+   "sq_norm": 0.008373095337253387
+  },
+  "decoder.decoder_conv3.conv1.norm_op.bias": {
+   "abs_sum": 0.005091309965337132,
+   "max_abs": 0.00013624009443446994,
+   "sq_norm": 3.156887829476284e-07
+  },
+  "decoder.decoder_conv3.conv1.norm_op.weight": {
+   "abs_sum": 0.005062851575985405,
+   "max_abs": 0.0001246921019628644,
+   "sq_norm": 3.2057205354711224e-07
+  },
+  "decoder.decoder_conv4.conv1.conv.bias": {
+   "abs_sum": 7.796568013418437e-08,
+   "max_abs": 4.513140083872713e-09,
+   "sq_norm": 1.647964675639838e-16
+  },
+  "decoder.decoder_conv4.conv1.conv.weight": {
+   "abs_sum": 131.67726697591286,
+   "max_abs": 0.006115898489952087,
+   "sq_norm": 0.19421893648943983
+  },
+  "decoder.decoder_conv4.conv1.norm_op.bias": {
+   "abs_sum": 0.05635269721096847,
+   "max_abs": 0.002980575431138277,
+   "sq_norm": 7.058042478749684e-05
+  },
+  "decoder.decoder_conv4.conv1.norm_op.weight": {
+   "abs_sum": 0.042594568116328446,
+   "max_abs": 0.0019463506760075688,
+   "sq_norm": 4.4295873548295e-05
+  },
+  "decoder.decoder_conv5.conv1.conv.bias": {
+   "abs_sum": 2.64433333541092e-06,
+   "max_abs": 3.1267700251191854e-07,
+   "sq_norm": 4.439959624690904e-13
+  },
+  "decoder.decoder_conv5.conv1.conv.weight": {
+   "abs_sum": 602.499289942073,
+   "max_abs": 0.1561889946460724,
+   "sq_norm": 21.93824733262192
+  },
+  "decoder.decoder_conv5.conv1.norm_op.bias": {
+   "abs_sum": 2.0501595456153154,
+   "max_abs": 0.237099751830101,
+   "sq_norm": 0.2277650112600233
+  },
+  "decoder.decoder_conv5.conv1.norm_op.weight": {
+   "abs_sum": 1.8827066210797057,
+   "max_abs": 0.2962294816970825,
+   "sq_norm": 0.27765926216006376
+  },
+  "decoder.out_conv.bias": {
+   "abs_sum": 1.7139883041381836,
+   "max_abs": 1.7139883041381836,
+   "sq_norm": 2.9377559067224865
+  },
+  "decoder.out_conv.weight": {
+   "abs_sum": 23.61802863702178,
+   "max_abs": 1.758972406387329,
+   "sq_norm": 26.232650073000713
+  },
+  "decoder.upsample1.bias": {
+   "abs_sum": 3.851416722666645e-05,
+   "max_abs": 4.5165475626163243e-07,
+   "sq_norm": 7.013813924391479e-12
+  },
+  "decoder.upsample1.weight": {
+   "abs_sum": 0.16104052126951984,
+   "max_abs": 1.7170384580822429e-06,
+   "sq_norm": 5.1008195854984504e-08
+  },
+  "decoder.upsample2.bias": {
+   "abs_sum": 0.0002614386293267046,
+   "max_abs": 4.1768962546484545e-06,
+   "sq_norm": 4.1388387922476523e-10
+  },
+  "decoder.upsample2.weight": {
+   "abs_sum": 0.4277578061950148,
+   "max_abs": 4.92896833748091e-06,
+   "sq_norm": 4.4251899367258563e-07
+  },
+  "decoder.upsample3.bias": {
+   "abs_sum": 0.001346276287321757,
+   "max_abs": 4.242037539370358e-05,
+   "sq_norm": 2.3644750106137596e-08
+  },
+  "decoder.upsample3.weight": {
+   "abs_sum": 2.092365690126686,
+   "max_abs": 5.1611852541100234e-05,
+   "sq_norm": 2.6374211258439374e-05
+  },
+  "decoder.upsample4.bias": {
+   "abs_sum": 0.01228196924466829,
+   "max_abs": 0.0005911756888963282,
+   "sq_norm": 3.828049370321382e-06
+  },
+  "decoder.upsample4.weight": {
+   "abs_sum": 4.9595083013193175,
+   "max_abs": 0.00041377852903679013,
+   "sq_norm": 0.000587360838473416
+  },
+  "decoder.upsample5.bias": {
+   "abs_sum": 0.15862750484666321,
+   "max_abs": 0.013905877247452736,
+   "sq_norm": 0.0012374687058534788
+  },
+  "decoder.upsample5.weight": {
+   "abs_sum": 20.219778350774863,
+   "max_abs": 0.005645208526402712,
+   "sq_norm": 0.03804693896707509
+  },
+  "encoder.stages.0.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.0954449862765614e-06,
+   "max_abs": 1.2154032447142527e-07,
+   "sq_norm": 7.061903927061424e-14
+  },
+  "encoder.stages.0.blocks.0.conv1.conv.weight": {
+   "abs_sum": 236.42721289729252,
+   "max_abs": 0.048083290457725525,
+   "sq_norm": 3.2076449557843296
+  },
+  "encoder.stages.0.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.13814452337101102,
+   "max_abs": 0.013118701055645943,
+   "sq_norm": 0.0009057088428483639
+  },
+  "encoder.stages.0.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 0.18319380813045427,
+   "max_abs": 0.017101280391216278,
+   "sq_norm": 0.0015707980819508129
+  },
+  "encoder.stages.0.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.0083718393616437e-06,
+   "max_abs": 9.92149580270052e-08,
+   "sq_norm": 5.0756355454465705e-14
+  },
+  "encoder.stages.0.blocks.0.conv2.conv.weight": {
+   "abs_sum": 251.43095118177916,
+   "max_abs": 0.05860241875052452,
+   "sq_norm": 3.665773619910043
+  },
+  "encoder.stages.0.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.1591606709989719,
+   "max_abs": 0.01079091988503933,
+   "sq_norm": 0.0010763239021724163
+  },
+  "encoder.stages.0.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 0.22490684100193903,
+   "max_abs": 0.02565922960639,
+   "sq_norm": 0.0026579924569512994
+  },
+  "encoder.stages.1.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.1623478712863289e-07,
+   "max_abs": 5.523020263353828e-09,
+   "sq_norm": 3.083114985087044e-16
+  },
+  "encoder.stages.1.blocks.0.conv1.conv.weight": {
+   "abs_sum": 52.6243416600891,
+   "max_abs": 0.005251155234873295,
+   "sq_norm": 0.07891069715510439
+  },
+  "encoder.stages.1.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.02133255424996605,
+   "max_abs": 0.0014512916095554829,
+   "sq_norm": 1.2032799512473918e-05
+  },
+  "encoder.stages.1.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 0.02979041007347405,
+   "max_abs": 0.0014466034481301904,
+   "sq_norm": 2.1420504490913557e-05
+  },
+  "encoder.stages.1.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.4600017905763707e-07,
+   "max_abs": 6.120899342931807e-09,
+   "sq_norm": 5.004994020659978e-16
+  },
+  "encoder.stages.1.blocks.0.conv2.conv.weight": {
+   "abs_sum": 88.25130344610153,
+   "max_abs": 0.00447433814406395,
+   "sq_norm": 0.11095189838719792
+  },
+  "encoder.stages.1.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.021131718640390318,
+   "max_abs": 0.0011066740844398737,
+   "sq_norm": 1.1019487207177401e-05
+  },
+  "encoder.stages.1.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 0.02503775229524763,
+   "max_abs": 0.0011311942944303155,
+   "sq_norm": 1.5636764181450365e-05
+  },
+  "encoder.stages.1.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 1.6355324107810247,
+   "max_abs": 0.004347887821495533,
+   "sq_norm": 0.002093874194828617
+  },
+  "encoder.stages.1.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.021131718640390318,
+   "max_abs": 0.0011066740844398737,
+   "sq_norm": 1.1019487207177401e-05
+  },
+  "encoder.stages.1.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 0.030828983362880535,
+   "max_abs": 0.0018706636037677526,
+   "sq_norm": 2.344263193045061e-05
+  },
+  "encoder.stages.1.blocks.1.conv1.conv.bias": {
+   "abs_sum": 8.358115977102898e-08,
+   "max_abs": 4.111598173039965e-09,
+   "sq_norm": 1.6656826636292384e-16
+  },
+  "encoder.stages.1.blocks.1.conv1.conv.weight": {
+   "abs_sum": 81.46544243086493,
+   "max_abs": 0.004929343704134226,
+   "sq_norm": 0.0946878486060452
+  },
+  "encoder.stages.1.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.017323542506346712,
+   "max_abs": 0.001073220744729042,
+   "sq_norm": 7.795014245909464e-06
+  },
+  "encoder.stages.1.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 0.020659183646785095,
+   "max_abs": 0.0012484900653362274,
+   "sq_norm": 1.1544182093163488e-05
+  },
+  "encoder.stages.1.blocks.1.conv2.conv.bias": {
+   "abs_sum": 1.0436377806399832e-07,
+   "max_abs": 5.011315806768835e-09,
+   "sq_norm": 2.680765224425351e-16
+  },
+  "encoder.stages.1.blocks.1.conv2.conv.weight": {
+   "abs_sum": 69.02560187217112,
+   "max_abs": 0.003607630729675293,
+   "sq_norm": 0.06753220018714065
+  },
+  "encoder.stages.1.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.01825645838471246,
+   "max_abs": 0.001163397915661335,
+   "sq_norm": 8.982155432149424e-06
+  },
+  "encoder.stages.1.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 0.02357168007438304,
+   "max_abs": 0.0009746634168550372,
+   "sq_norm": 1.2250918793595872e-05
+  },
+  "encoder.stages.1.blocks.2.conv1.conv.bias": {
+   "abs_sum": 5.4928598558490194e-08,
+   "max_abs": 2.4498945094819646e-09,
+   "sq_norm": 7.267578231716945e-17
+  },
+  "encoder.stages.1.blocks.2.conv1.conv.weight": {
+   "abs_sum": 63.43325347493777,
+   "max_abs": 0.0037762129213660955,
+   "sq_norm": 0.057290831109460094
+  },
+  "encoder.stages.1.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.0163827653232147,
+   "max_abs": 0.0010368262883275747,
+   "sq_norm": 6.67781298487904e-06
+  },
+  "encoder.stages.1.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 0.015817117975529982,
+   "max_abs": 0.0007985005504451692,
+   "sq_norm": 6.53205206180539e-06
+  },
+  "encoder.stages.1.blocks.2.conv2.conv.bias": {
+   "abs_sum": 8.047379651543451e-08,
+   "max_abs": 4.9494701670482755e-09,
+   "sq_norm": 1.6752448172507313e-16
+  },
+  "encoder.stages.1.blocks.2.conv2.conv.weight": {
+   "abs_sum": 54.489684203580794,
+   "max_abs": 0.0028681778348982334,
+   "sq_norm": 0.042256236306779126
+  },
+  "encoder.stages.1.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.013337118260096759,
+   "max_abs": 0.0006453256355598569,
+   "sq_norm": 4.180464006776133e-06
+  },
+  "encoder.stages.1.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 0.015978020579495933,
+   "max_abs": 0.0008505369769409299,
+   "sq_norm": 6.49843722099846e-06
+  },
+  "encoder.stages.2.blocks.0.conv1.conv.bias": {
+   "abs_sum": 6.741082358985295e-09,
+   "max_abs": 2.04295247385744e-10,
+   "sq_norm": 5.749916451716033e-19
+  },
+  "encoder.stages.2.blocks.0.conv1.conv.weight": {
+   "abs_sum": 27.287130855204374,
+   "max_abs": 0.0007547705317847431,
+   "sq_norm": 0.005311404782218825
+  },
+  "encoder.stages.2.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.006868725974527479,
+   "max_abs": 0.00020388771372381598,
+   "sq_norm": 5.503640884622012e-07
+  },
+  "encoder.stages.2.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 0.00735486830217269,
+   "max_abs": 0.00020148670591879636,
+   "sq_norm": 6.945181628924575e-07
+  },
+  "encoder.stages.2.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.2942962257511681e-08,
+   "max_abs": 3.23325366480276e-10,
+   "sq_norm": 2.0200359181520274e-18
+  },
+  "encoder.stages.2.blocks.0.conv2.conv.weight": {
+   "abs_sum": 45.61679461606829,
+   "max_abs": 0.0006206236430443823,
+   "sq_norm": 0.007411178669596479
+  },
+  "encoder.stages.2.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.005407045227002527,
+   "max_abs": 0.00014797582116443664,
+   "sq_norm": 3.5947263633390765e-07
+  },
+  "encoder.stages.2.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 0.007317121939649951,
+   "max_abs": 0.00018106798233930022,
+   "sq_norm": 6.528287948785544e-07
+  },
+  "encoder.stages.2.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 0.7978332458084765,
+   "max_abs": 0.000462622701888904,
+   "sq_norm": 0.0001229792091240488
+  },
+  "encoder.stages.2.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.005407045227002527,
+   "max_abs": 0.00014797582116443664,
+   "sq_norm": 3.5947263633390765e-07
+  },
+  "encoder.stages.2.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 0.006642932360136911,
+   "max_abs": 0.0002153981477022171,
+   "sq_norm": 5.601545281879316e-07
+  },
+  "encoder.stages.2.blocks.1.conv1.conv.bias": {
+   "abs_sum": 8.76162964402738e-09,
+   "max_abs": 2.434035195619799e-10,
+   "sq_norm": 9.529806876267812e-19
+  },
+  "encoder.stages.2.blocks.1.conv1.conv.weight": {
+   "abs_sum": 42.14607983049552,
+   "max_abs": 0.0006087413057684898,
+   "sq_norm": 0.006344879828865013
+  },
+  "encoder.stages.2.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.004814381069991214,
+   "max_abs": 0.00011951563647016883,
+   "sq_norm": 2.7293108381917526e-07
+  },
+  "encoder.stages.2.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 0.006509287561129895,
+   "max_abs": 0.0001342007308267057,
+   "sq_norm": 4.632142823325677e-07
+  },
+  "encoder.stages.2.blocks.1.conv2.conv.bias": {
+   "abs_sum": 8.999116118957318e-09,
+   "max_abs": 3.5015546018257737e-10,
+   "sq_norm": 1.0726498359557356e-18
+  },
+  "encoder.stages.2.blocks.1.conv2.conv.weight": {
+   "abs_sum": 35.397238878588226,
+   "max_abs": 0.0004969043075107038,
+   "sq_norm": 0.004464344028944736
+  },
+  "encoder.stages.2.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.0039995939423533855,
+   "max_abs": 9.95681548374705e-05,
+   "sq_norm": 1.9424461315090014e-07
+  },
+  "encoder.stages.2.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 0.005795925797428936,
+   "max_abs": 0.00014130689669400454,
+   "sq_norm": 3.9202282084981026e-07
+  },
+  "encoder.stages.2.blocks.2.conv1.conv.bias": {
+   "abs_sum": 5.225761157134912e-09,
+   "max_abs": 1.56035184772918e-10,
+   "sq_norm": 3.2723766178891466e-19
+  },
+  "encoder.stages.2.blocks.2.conv1.conv.weight": {
+   "abs_sum": 32.44794941292172,
+   "max_abs": 0.00045541388681158423,
+   "sq_norm": 0.003756561750176848
+  },
+  "encoder.stages.2.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.003662957024971547,
+   "max_abs": 0.0001232631620950997,
+   "sq_norm": 1.7410214642659748e-07
+  },
+  "encoder.stages.2.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 0.00446711637800945,
+   "max_abs": 0.00016904569929465652,
+   "sq_norm": 2.772217879555993e-07
+  },
+  "encoder.stages.2.blocks.2.conv2.conv.bias": {
+   "abs_sum": 8.10668154826999e-09,
+   "max_abs": 2.6125235308427364e-10,
+   "sq_norm": 8.541352777153746e-19
+  },
+  "encoder.stages.2.blocks.2.conv2.conv.weight": {
+   "abs_sum": 27.4817903356863,
+   "max_abs": 0.0003953338891733438,
+   "sq_norm": 0.002694780176866164
+  },
+  "encoder.stages.2.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.0029277958819875494,
+   "max_abs": 6.938676233403385e-05,
+   "sq_norm": 9.601249108161742e-08
+  },
+  "encoder.stages.2.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 0.004038718066340152,
+   "max_abs": 0.00010284219752065837,
+   "sq_norm": 1.9390976069879598e-07
+  },
+  "encoder.stages.2.blocks.3.conv1.conv.bias": {
+   "abs_sum": 3.3432359103358067e-09,
+   "max_abs": 8.674305718159303e-11,
+   "sq_norm": 1.3613992260322274e-19
+  },
+  "encoder.stages.2.blocks.3.conv1.conv.weight": {
+   "abs_sum": 26.436338826952372,
+   "max_abs": 0.00035775243304669857,
+   "sq_norm": 0.002493187588652105
+  },
+  "encoder.stages.2.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 0.003442109438310581,
+   "max_abs": 7.579789962619543e-05,
+   "sq_norm": 1.4007167543215192e-07
+  },
+  "encoder.stages.2.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 0.003841894438210147,
+   "max_abs": 0.0001266337640117854,
+   "sq_norm": 1.9308028208007415e-07
+  },
+  "encoder.stages.2.blocks.3.conv2.conv.bias": {
+   "abs_sum": 7.87734677487606e-09,
+   "max_abs": 2.2453150450019166e-10,
+   "sq_norm": 7.616305146687688e-19
+  },
+  "encoder.stages.2.blocks.3.conv2.conv.weight": {
+   "abs_sum": 22.459100820762906,
+   "max_abs": 0.0002972554648295045,
+   "sq_norm": 0.0018009310871497626
+  },
+  "encoder.stages.2.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 0.002086436668832903,
+   "max_abs": 5.151650111656636e-05,
+   "sq_norm": 5.035961383182594e-08
+  },
+  "encoder.stages.2.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 0.0034750346992495906,
+   "max_abs": 0.00011242154869250953,
+   "sq_norm": 1.5855064683478052e-07
+  },
+  "encoder.stages.3.blocks.0.conv1.conv.bias": {
+   "abs_sum": 5.183933282637554e-10,
+   "max_abs": 7.844391802791506e-12,
+   "sq_norm": 1.683616211451128e-21
+  },
+  "encoder.stages.3.blocks.0.conv1.conv.weight": {
+   "abs_sum": 12.125316410638298,
+   "max_abs": 8.9132139692083e-05,
+   "sq_norm": 0.00026376038645572217
+  },
+  "encoder.stages.3.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.0014047614214973692,
+   "max_abs": 2.127158222720027e-05,
+   "sq_norm": 1.2233020220087496e-08
+  },
+  "encoder.stages.3.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 0.0017232157005366844,
+   "max_abs": 2.5900555556290783e-05,
+   "sq_norm": 1.8496654533052275e-08
+  },
+  "encoder.stages.3.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.1014971157408127e-09,
+   "max_abs": 1.6413537196058314e-11,
+   "sq_norm": 6.993273932623019e-21
+  },
+  "encoder.stages.3.blocks.0.conv2.conv.weight": {
+   "abs_sum": 20.58945461282589,
+   "max_abs": 8.371469448320568e-05,
+   "sq_norm": 0.0003840893814408511
+  },
+  "encoder.stages.3.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.0012479561648888193,
+   "max_abs": 1.7319300241069868e-05,
+   "sq_norm": 9.565452572324719e-09
+  },
+  "encoder.stages.3.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 0.0015254809732425656,
+   "max_abs": 2.3856126063037664e-05,
+   "sq_norm": 1.4743258039898783e-08
+  },
+  "encoder.stages.3.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 0.35167348431748024,
+   "max_abs": 6.253188621485606e-05,
+   "sq_norm": 6.095121058575022e-06
+  },
+  "encoder.stages.3.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.0012479561648888193,
+   "max_abs": 1.7319300241069868e-05,
+   "sq_norm": 9.565452572324719e-09
+  },
+  "encoder.stages.3.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 0.0015325748895094193,
+   "max_abs": 2.5328039555461146e-05,
+   "sq_norm": 1.4693705183450124e-08
+  },
+  "encoder.stages.3.blocks.1.conv1.conv.bias": {
+   "abs_sum": 8.000919926587358e-10,
+   "max_abs": 9.762857189343777e-12,
+   "sq_norm": 3.769467829218632e-21
+  },
+  "encoder.stages.3.blocks.1.conv1.conv.weight": {
+   "abs_sum": 18.808083179050634,
+   "max_abs": 8.509847975801677e-05,
+   "sq_norm": 0.000321875244181391
+  },
+  "encoder.stages.3.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.0011365852292897216,
+   "max_abs": 1.566514401929453e-05,
+   "sq_norm": 7.715921811833306e-09
+  },
+  "encoder.stages.3.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 0.0014024761584181533,
+   "max_abs": 2.7361962565919384e-05,
+   "sq_norm": 1.252656700033673e-08
+  },
+  "encoder.stages.3.blocks.1.conv2.conv.bias": {
+   "abs_sum": 8.597291767387105e-10,
+   "max_abs": 1.4438228390645236e-11,
+   "sq_norm": 4.8496991362550186e-21
+  },
+  "encoder.stages.3.blocks.1.conv2.conv.weight": {
+   "abs_sum": 16.082502496510877,
+   "max_abs": 6.685907283099368e-05,
+   "sq_norm": 0.0002334877135878321
+  },
+  "encoder.stages.3.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.0008638984244839776,
+   "max_abs": 1.1809180250565987e-05,
+   "sq_norm": 4.497877402410977e-09
+  },
+  "encoder.stages.3.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 0.0012519201663394597,
+   "max_abs": 1.9795461412286386e-05,
+   "sq_norm": 9.7596048686088e-09
+  },
+  "encoder.stages.3.blocks.2.conv1.conv.bias": {
+   "abs_sum": 4.6377701679034544e-10,
+   "max_abs": 6.750155989720952e-12,
+   "sq_norm": 1.34125401742711e-21
+  },
+  "encoder.stages.3.blocks.2.conv1.conv.weight": {
+   "abs_sum": 14.846760417758434,
+   "max_abs": 5.866259380127303e-05,
+   "sq_norm": 0.00019952602576004595
+  },
+  "encoder.stages.3.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.0008927874239645917,
+   "max_abs": 1.3118760762154125e-05,
+   "sq_norm": 4.8828002243285736e-09
+  },
+  "encoder.stages.3.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 0.001077682104920541,
+   "max_abs": 2.026819493039511e-05,
+   "sq_norm": 7.513250869375719e-09
+  },
+  "encoder.stages.3.blocks.2.conv2.conv.bias": {
+   "abs_sum": 7.412207514434499e-10,
+   "max_abs": 1.4779288903810084e-11,
+   "sq_norm": 3.387195178914101e-21
+  },
+  "encoder.stages.3.blocks.2.conv2.conv.weight": {
+   "abs_sum": 12.621776415316365,
+   "max_abs": 5.2054630941711366e-05,
+   "sq_norm": 0.00014388488528193743
+  },
+  "encoder.stages.3.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.000635604405772483,
+   "max_abs": 8.341824468516279e-06,
+   "sq_norm": 2.4068572246064838e-09
+  },
+  "encoder.stages.3.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 0.000931426699196436,
+   "max_abs": 1.4620448382629547e-05,
+   "sq_norm": 5.500328185182464e-09
+  },
+  "encoder.stages.3.blocks.3.conv1.conv.bias": {
+   "abs_sum": 3.405726811678278e-10,
+   "max_abs": 4.760636329592671e-12,
+   "sq_norm": 7.0812795647387725e-22
+  },
+  "encoder.stages.3.blocks.3.conv1.conv.weight": {
+   "abs_sum": 12.108878416357047,
+   "max_abs": 5.4252439440460876e-05,
+   "sq_norm": 0.00013283458811748895
+  },
+  "encoder.stages.3.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 0.0007056468174369002,
+   "max_abs": 1.1172895028721541e-05,
+   "sq_norm": 3.0269013399276198e-09
+  },
+  "encoder.stages.3.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 0.0008761054101000809,
+   "max_abs": 1.3958755516796373e-05,
+   "sq_norm": 4.7039067248094035e-09
+  },
+  "encoder.stages.3.blocks.3.conv2.conv.bias": {
+   "abs_sum": 5.764313470990601e-10,
+   "max_abs": 8.22808488010196e-12,
+   "sq_norm": 2.072554074069765e-21
+  },
+  "encoder.stages.3.blocks.3.conv2.conv.weight": {
+   "abs_sum": 10.268290253321613,
+   "max_abs": 4.619637911673635e-05,
+   "sq_norm": 9.541644252068822e-05
+  },
+  "encoder.stages.3.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 0.0005429356478714453,
+   "max_abs": 7.4826057243626565e-06,
+   "sq_norm": 1.8459335737369483e-09
+  },
+  "encoder.stages.3.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 0.0007232576098630261,
+   "max_abs": 1.3943237718194723e-05,
+   "sq_norm": 3.2004642088769715e-09
+  },
+  "encoder.stages.3.blocks.4.conv1.conv.bias": {
+   "abs_sum": 2.535665011293986e-10,
+   "max_abs": 4.199307568342192e-12,
+   "sq_norm": 3.877068185519842e-22
+  },
+  "encoder.stages.3.blocks.4.conv1.conv.weight": {
+   "abs_sum": 10.259841878000273,
+   "max_abs": 4.5214783312985674e-05,
+   "sq_norm": 9.507777499953282e-05
+  },
+  "encoder.stages.3.blocks.4.conv1.norm_op.bias": {
+   "abs_sum": 0.0005958879629162084,
+   "max_abs": 9.175834748020861e-06,
+   "sq_norm": 2.228702071468113e-09
+  },
+  "encoder.stages.3.blocks.4.conv1.norm_op.weight": {
+   "abs_sum": 0.0007257013847024041,
+   "max_abs": 1.1070761502196547e-05,
+   "sq_norm": 3.2288276948873157e-09
+  },
+  "encoder.stages.3.blocks.4.conv2.conv.bias": {
+   "abs_sum": 4.993925273311106e-10,
+   "max_abs": 7.105427357601002e-12,
+   "sq_norm": 1.4713843106011916e-21
+  },
+  "encoder.stages.3.blocks.4.conv2.conv.weight": {
+   "abs_sum": 8.757663902651167,
+   "max_abs": 3.6179000744596124e-05,
+   "sq_norm": 6.92968707628103e-05
+  },
+  "encoder.stages.3.blocks.4.conv2.norm_op.bias": {
+   "abs_sum": 0.00043560990971514,
+   "max_abs": 7.302003723452799e-06,
+   "sq_norm": 1.1865307010994002e-09
+  },
+  "encoder.stages.3.blocks.4.conv2.norm_op.weight": {
+   "abs_sum": 0.0006680998789931891,
+   "max_abs": 8.229523700720165e-06,
+   "sq_norm": 2.7638430790819237e-09
+  },
+  "encoder.stages.3.blocks.5.conv1.conv.bias": {
+   "abs_sum": 1.8540569080016667e-10,
+   "max_abs": 4.320099833421409e-12,
+   "sq_norm": 2.321447325544734e-22
+  },
+  "encoder.stages.3.blocks.5.conv1.conv.weight": {
+   "abs_sum": 8.848593201850875,
+   "max_abs": 4.3313539208611473e-05,
+   "sq_norm": 7.091337285607666e-05
+  },
+  "encoder.stages.3.blocks.5.conv1.norm_op.bias": {
+   "abs_sum": 0.0005167139906063767,
+   "max_abs": 9.834796401264612e-06,
+   "sq_norm": 1.6653621445131536e-09
+  },
+  "encoder.stages.3.blocks.5.conv1.norm_op.weight": {
+   "abs_sum": 0.0006495879419503581,
+   "max_abs": 1.0586230018816423e-05,
+   "sq_norm": 2.4497103795201768e-09
+  },
+  "encoder.stages.3.blocks.5.conv2.conv.bias": {
+   "abs_sum": 4.3895442836117127e-10,
+   "max_abs": 9.15179043659009e-12,
+   "sq_norm": 1.1891554023570058e-21
+  },
+  "encoder.stages.3.blocks.5.conv2.conv.weight": {
+   "abs_sum": 7.584295881531846,
+   "max_abs": 2.8595262847375125e-05,
+   "sq_norm": 5.199408299785565e-05
+  },
+  "encoder.stages.3.blocks.5.conv2.norm_op.bias": {
+   "abs_sum": 0.0003541417615622322,
+   "max_abs": 5.231941486272262e-06,
+   "sq_norm": 7.942278900480621e-10
+  },
+  "encoder.stages.3.blocks.5.conv2.norm_op.weight": {
+   "abs_sum": 0.0005509876467044705,
+   "max_abs": 8.282439921458717e-06,
+   "sq_norm": 1.9301929769331464e-09
+  },
+  "encoder.stages.4.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.993949449996535e-11,
+   "max_abs": 2.0605739337042905e-13,
+   "sq_norm": 1.9021235151002015e-24
+  },
+  "encoder.stages.4.blocks.0.conv1.conv.weight": {
+   "abs_sum": 1.9888820542683971,
+   "max_abs": 7.6400647230912e-06,
+   "sq_norm": 2.9464887352426038e-06
+  },
+  "encoder.stages.4.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.00012007403611136169,
+   "max_abs": 1.5956561583152507e-06,
+   "sq_norm": 7.411925444642228e-11
+  },
+  "encoder.stages.4.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 0.00013941936533790056,
+   "max_abs": 1.8321308061786112e-06,
+   "sq_norm": 1.0270149858938616e-10
+  },
+  "encoder.stages.4.blocks.0.conv2.conv.bias": {
+   "abs_sum": 4.559819188898473e-11,
+   "max_abs": 7.958078640513122e-13,
+   "sq_norm": 1.0547105801545663e-23
+  },
+  "encoder.stages.4.blocks.0.conv2.conv.weight": {
+   "abs_sum": 2.117000061375162,
+   "max_abs": 7.242803803819697e-06,
+   "sq_norm": 2.7946537741184863e-06
+  },
+  "encoder.stages.4.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.00012206458134400577,
+   "max_abs": 1.2171271919214632e-06,
+   "sq_norm": 7.059451476560244e-11
+  },
+  "encoder.stages.4.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 0.00013566773784745578,
+   "max_abs": 1.6268464833046892e-06,
+   "sq_norm": 8.839967512247058e-11
+  },
+  "encoder.stages.4.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 0.06288249474868035,
+   "max_abs": 6.6106358644901775e-06,
+   "sq_norm": 8.097187241057776e-08
+  },
+  "encoder.stages.4.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.00012206458134400577,
+   "max_abs": 1.2171271919214632e-06,
+   "sq_norm": 7.059451476560244e-11
+  },
+  "encoder.stages.4.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 0.00015124659823939623,
+   "max_abs": 1.8163143522542669e-06,
+   "sq_norm": 1.1379469795441184e-10
+  },
+  "encoder.stages.4.blocks.1.conv1.conv.bias": {
+   "abs_sum": 3.1524560739626395e-11,
+   "max_abs": 3.310685059432217e-13,
+   "sq_norm": 4.766228070978081e-24
+  },
+  "encoder.stages.4.blocks.1.conv1.conv.weight": {
+   "abs_sum": 1.9672779606047206,
+   "max_abs": 7.667968930036295e-06,
+   "sq_norm": 2.423424237945095e-06
+  },
+  "encoder.stages.4.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.00010665855880986896,
+   "max_abs": 1.1850681858049938e-06,
+   "sq_norm": 5.4661214065739234e-11
+  },
+  "encoder.stages.4.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 0.00011362954829152727,
+   "max_abs": 1.1955556828979752e-06,
+   "sq_norm": 6.467219058231745e-11
+  },
+  "encoder.stages.4.blocks.1.conv2.conv.bias": {
+   "abs_sum": 3.9703351717435e-11,
+   "max_abs": 5.115907697472721e-13,
+   "sq_norm": 8.043196996210396e-24
+  },
+  "encoder.stages.4.blocks.1.conv2.conv.weight": {
+   "abs_sum": 1.6995086107414359,
+   "max_abs": 5.780340416094987e-06,
+   "sq_norm": 1.7537698561111548e-06
+  },
+  "encoder.stages.4.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 8.830815796656566e-05,
+   "max_abs": 1.1796194030466722e-06,
+   "sq_norm": 3.884851844971004e-11
+  },
+  "encoder.stages.4.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 0.00010730241926193429,
+   "max_abs": 1.4752849892829545e-06,
+   "sq_norm": 5.956253212235649e-11
+  },
+  "encoder.stages.4.blocks.2.conv1.conv.bias": {
+   "abs_sum": 2.3053725595190144e-11,
+   "max_abs": 2.433608869978343e-13,
+   "sq_norm": 2.620577749447014e-24
+  },
+  "encoder.stages.4.blocks.2.conv1.conv.weight": {
+   "abs_sum": 1.5944799546329518,
+   "max_abs": 5.706500360247446e-06,
+   "sq_norm": 1.5601436874445533e-06
+  },
+  "encoder.stages.4.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 7.946297780314637e-05,
+   "max_abs": 1.0174817361985333e-06,
+   "sq_norm": 3.175919044202595e-11
+  },
+  "encoder.stages.4.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 9.493017682604687e-05,
+   "max_abs": 1.2247454606040264e-06,
+   "sq_norm": 4.356136418107617e-11
+  },
+  "encoder.stages.4.blocks.2.conv2.conv.bias": {
+   "abs_sum": 3.2013058870461464e-11,
+   "max_abs": 4.902744876744691e-13,
+   "sq_norm": 5.356001289927684e-24
+  },
+  "encoder.stages.4.blocks.2.conv2.conv.weight": {
+   "abs_sum": 1.3811292503191053,
+   "max_abs": 4.36277059634449e-06,
+   "sq_norm": 1.1567285747042185e-06
+  },
+  "encoder.stages.4.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 6.871563750010523e-05,
+   "max_abs": 8.044441983656725e-07,
+   "sq_norm": 2.3054210967869444e-11
+  },
+  "encoder.stages.4.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 8.391654353800959e-05,
+   "max_abs": 1.0169125062020612e-06,
+   "sq_norm": 3.3638848108978655e-11
+  },
+  "encoder.stages.4.blocks.3.conv1.conv.bias": {
+   "abs_sum": 1.4815176863081092e-11,
+   "max_abs": 2.0605739337042905e-13,
+   "sq_norm": 1.1307885669805097e-24
+  },
+  "encoder.stages.4.blocks.3.conv1.conv.weight": {
+   "abs_sum": 1.3275280721470328,
+   "max_abs": 4.4596959014597815e-06,
+   "sq_norm": 1.07264195300032e-06
+  },
+  "encoder.stages.4.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 7.048218204452894e-05,
+   "max_abs": 9.370423299515096e-07,
+   "sq_norm": 2.4514096696180042e-11
+  },
+  "encoder.stages.4.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 8.22702311582546e-05,
+   "max_abs": 9.858595149125904e-07,
+   "sq_norm": 3.436126308074386e-11
+  },
+  "encoder.stages.4.blocks.3.conv2.conv.bias": {
+   "abs_sum": 2.9649394051034506e-11,
+   "max_abs": 3.979039320256561e-13,
+   "sq_norm": 4.4687478840621385e-24
+  },
+  "encoder.stages.4.blocks.3.conv2.conv.weight": {
+   "abs_sum": 1.1571127862695159,
+   "max_abs": 4.172589342488209e-06,
+   "sq_norm": 8.115708137098048e-07
+  },
+  "encoder.stages.4.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 5.609327216404836e-05,
+   "max_abs": 6.20063474343624e-07,
+   "sq_norm": 1.5792051207538242e-11
+  },
+  "encoder.stages.4.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 7.720926131060679e-05,
+   "max_abs": 8.274732863355894e-07,
+   "sq_norm": 2.766089759880877e-11
+  },
+  "encoder.stages.4.blocks.4.conv1.conv.bias": {
+   "abs_sum": 1.1677880884519709e-11,
+   "max_abs": 1.5631940186722204e-13,
+   "sq_norm": 7.0228459183841195e-25
+  },
+  "encoder.stages.4.blocks.4.conv1.conv.weight": {
+   "abs_sum": 1.1919590986607091,
+   "max_abs": 5.178147148399148e-06,
+   "sq_norm": 8.681864614908655e-07
+  },
+  "encoder.stages.4.blocks.4.conv1.norm_op.bias": {
+   "abs_sum": 6.092919591438317e-05,
+   "max_abs": 6.688771918561542e-07,
+   "sq_norm": 1.7938125150524122e-11
+  },
+  "encoder.stages.4.blocks.4.conv1.norm_op.weight": {
+   "abs_sum": 7.014043185904484e-05,
+   "max_abs": 8.330083574037417e-07,
+   "sq_norm": 2.4304437054998565e-11
+  },
+  "encoder.stages.4.blocks.4.conv2.conv.bias": {
+   "abs_sum": 2.6059154834001674e-11,
+   "max_abs": 3.552713678800501e-13,
+   "sq_norm": 3.2596564851987216e-24
+  },
+  "encoder.stages.4.blocks.4.conv2.conv.weight": {
+   "abs_sum": 1.0164068052622728,
+   "max_abs": 3.2009550068323733e-06,
+   "sq_norm": 6.265080954039463e-07
+  },
+  "encoder.stages.4.blocks.4.conv2.norm_op.bias": {
+   "abs_sum": 4.92445487996207e-05,
+   "max_abs": 5.519391379493754e-07,
+   "sq_norm": 1.1547323421857066e-11
+  },
+  "encoder.stages.4.blocks.4.conv2.norm_op.weight": {
+   "abs_sum": 6.635887620198844e-05,
+   "max_abs": 6.895932074257871e-07,
+   "sq_norm": 2.0649437246684002e-11
+  },
+  "encoder.stages.4.blocks.5.conv1.conv.bias": {
+   "abs_sum": 9.686779156581338e-12,
+   "max_abs": 1.3500311979441904e-13,
+   "sq_norm": 4.702851918002718e-25
+  },
+  "encoder.stages.4.blocks.5.conv1.conv.weight": {
+   "abs_sum": 1.040089622146209,
+   "max_abs": 4.123384314880241e-06,
+   "sq_norm": 6.612497423633509e-07
+  },
+  "encoder.stages.4.blocks.5.conv1.norm_op.bias": {
+   "abs_sum": 5.633548851946557e-05,
+   "max_abs": 7.926158787086024e-07,
+   "sq_norm": 1.584633878387785e-11
+  },
+  "encoder.stages.4.blocks.5.conv1.norm_op.weight": {
+   "abs_sum": 6.200400580702592e-05,
+   "max_abs": 8.423165809290367e-07,
+   "sq_norm": 1.987265431436906e-11
+  },
+  "encoder.stages.4.blocks.5.conv2.conv.bias": {
+   "abs_sum": 2.227906747975794e-11,
+   "max_abs": 3.090860900556436e-13,
+   "sq_norm": 2.4779564648448535e-24
+  },
+  "encoder.stages.4.blocks.5.conv2.conv.weight": {
+   "abs_sum": 0.917977559209358,
+   "max_abs": 3.0011465241841506e-06,
+   "sq_norm": 5.086983401995471e-07
+  },
+  "encoder.stages.4.blocks.5.conv2.norm_op.bias": {
+   "abs_sum": 4.2635169300808684e-05,
+   "max_abs": 5.203251589591673e-07,
+   "sq_norm": 8.658645980535664e-12
+  },
+  "encoder.stages.4.blocks.5.conv2.norm_op.weight": {
+   "abs_sum": 5.603038554369277e-05,
+   "max_abs": 6.678170620944002e-07,
+   "sq_norm": 1.5120768918443523e-11
+  },
+  "encoder.stages.5.blocks.0.conv1.conv.bias": {
+   "abs_sum": 2.6758595339515523e-12,
+   "max_abs": 6.394884621840902e-14,
+   "sq_norm": 4.6395301070666655e-26
+  },
+  "encoder.stages.5.blocks.0.conv1.conv.weight": {
+   "abs_sum": 0.3736735844204817,
+   "max_abs": 2.9056702715024585e-06,
+   "sq_norm": 1.1359140759714748e-07
+  },
+  "encoder.stages.5.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 2.4512301073364995e-05,
+   "max_abs": 3.394930274680519e-07,
+   "sq_norm": 2.9062495781261973e-12
+  },
+  "encoder.stages.5.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 2.4626472510114183e-05,
+   "max_abs": 3.5418938182374404e-07,
+   "sq_norm": 3.023542429688404e-12
+  },
+  "encoder.stages.5.blocks.0.conv2.conv.bias": {
+   "abs_sum": 8.22986123694136e-12,
+   "max_abs": 1.7053025658242404e-13,
+   "sq_norm": 3.8263067119021e-25
+  },
+  "encoder.stages.5.blocks.0.conv2.conv.weight": {
+   "abs_sum": 0.2754450597823265,
+   "max_abs": 2.4907735678425524e-06,
+   "sq_norm": 7.662664615223122e-08
+  },
+  "encoder.stages.5.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 1.9167977494127797e-05,
+   "max_abs": 2.838180535036372e-07,
+   "sq_norm": 1.8136679081654004e-12
+  },
+  "encoder.stages.5.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 2.0804053233458575e-05,
+   "max_abs": 2.746362497418886e-07,
+   "sq_norm": 2.1503748875520048e-12
+  },
+  "encoder.stages.5.blocks.1.conv1.conv.bias": {
+   "abs_sum": 3.0630775693651913e-12,
+   "max_abs": 5.684341886080802e-14,
+   "sq_norm": 5.733428810231867e-26
+  },
+  "encoder.stages.5.blocks.1.conv1.conv.weight": {
+   "abs_sum": 0.2858592672592474,
+   "max_abs": 2.143400024579023e-06,
+   "sq_norm": 7.012197042673118e-08
+  },
+  "encoder.stages.5.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 2.0875039185686006e-05,
+   "max_abs": 2.426331491278688e-07,
+   "sq_norm": 2.155681251570584e-12
+  },
+  "encoder.stages.5.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 2.0295870929221138e-05,
+   "max_abs": 2.592447287952382e-07,
+   "sq_norm": 2.004922425329024e-12
+  },
+  "encoder.stages.5.blocks.1.conv2.conv.bias": {
+   "abs_sum": 6.567857369077501e-12,
+   "max_abs": 1.1723955140041653e-13,
+   "sq_norm": 2.7276566779343366e-25
+  },
+  "encoder.stages.5.blocks.1.conv2.conv.weight": {
+   "abs_sum": 0.2156836140618586,
+   "max_abs": 1.6093231351987924e-06,
+   "sq_norm": 4.9875563097189645e-08
+  },
+  "encoder.stages.5.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 1.643258157546512e-05,
+   "max_abs": 2.3203476473554474e-07,
+   "sq_norm": 1.32755643616211e-12
+  },
+  "encoder.stages.5.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 1.69284408988446e-05,
+   "max_abs": 1.959920439276175e-07,
+   "sq_norm": 1.4467180092762796e-12
+  },
+  "encoder.stages.5.blocks.2.conv1.conv.bias": {
+   "abs_sum": 2.433095391829454e-12,
+   "max_abs": 3.552713678800501e-14,
+   "sq_norm": 3.371464956057959e-26
+  },
+  "encoder.stages.5.blocks.2.conv1.conv.weight": {
+   "abs_sum": 0.22893489639946538,
+   "max_abs": 1.6053921854108921e-06,
+   "sq_norm": 4.812217378890807e-08
+  },
+  "encoder.stages.5.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 1.6046954598891716e-05,
+   "max_abs": 1.9934043393732281e-07,
+   "sq_norm": 1.2310050553297983e-12
+  },
+  "encoder.stages.5.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 1.6163163837346062e-05,
+   "max_abs": 2.4509648710591136e-07,
+   "sq_norm": 1.325554064640314e-12
+  },
+  "encoder.stages.5.blocks.2.conv2.conv.bias": {
+   "abs_sum": 5.95523630408934e-12,
+   "max_abs": 9.947598300641403e-14,
+   "sq_norm": 1.9051740278947395e-25
+  },
+  "encoder.stages.5.blocks.2.conv2.conv.weight": {
+   "abs_sum": 0.18980658353693805,
+   "max_abs": 1.5003985254224972e-06,
+   "sq_norm": 3.800546921266744e-08
+  },
+  "encoder.stages.5.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 1.4569675925835135e-05,
+   "max_abs": 2.3127446979742672e-07,
+   "sq_norm": 1.0582497101192434e-12
+  },
+  "encoder.stages.5.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 1.5388418717954266e-05,
+   "max_abs": 1.8095519749294908e-07,
+   "sq_norm": 1.1683856572519445e-12
+  },
+  "encoder.stages.5.blocks.3.conv1.conv.bias": {
+   "abs_sum": 2.0969337377607644e-12,
+   "max_abs": 2.842170943040401e-14,
+   "sq_norm": 2.5235490876185062e-26
+  },
+  "encoder.stages.5.blocks.3.conv1.conv.weight": {
+   "abs_sum": 0.21644581891789783,
+   "max_abs": 1.6375468021578854e-06,
+   "sq_norm": 4.4704709004743615e-08
+  },
+  "encoder.stages.5.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 1.3533739560589453e-05,
+   "max_abs": 1.8592801609429443e-07,
+   "sq_norm": 9.17731649525459e-13
+  },
+  "encoder.stages.5.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 1.381039146952645e-05,
+   "max_abs": 2.1214316348050488e-07,
+   "sq_norm": 9.598478918595825e-13
+  },
+  "encoder.stages.5.blocks.3.conv2.conv.bias": {
+   "abs_sum": 5.062616992290714e-12,
+   "max_abs": 1.4921397450962104e-13,
+   "sq_norm": 1.6048270711454176e-25
+  },
+  "encoder.stages.5.blocks.3.conv2.conv.weight": {
+   "abs_sum": 0.16623251309387896,
+   "max_abs": 1.2051850717398338e-06,
+   "sq_norm": 2.9717862567665696e-08
+  },
+  "encoder.stages.5.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 1.2886832057024122e-05,
+   "max_abs": 1.9417052499193233e-07,
+   "sq_norm": 8.426848198023968e-13
+  },
+  "encoder.stages.5.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 1.3959096898163992e-05,
+   "max_abs": 1.7280940767250286e-07,
+   "sq_norm": 9.918485341306912e-13
+  },
+  "encoder.stages.5.blocks.4.conv1.conv.bias": {
+   "abs_sum": 1.9178686416765345e-12,
+   "max_abs": 3.730349362740526e-14,
+   "sq_norm": 2.4158438628910805e-26
+  },
+  "encoder.stages.5.blocks.4.conv1.conv.weight": {
+   "abs_sum": 0.20158715019337362,
+   "max_abs": 1.885266215140291e-06,
+   "sq_norm": 4.01792669845326e-08
+  },
+  "encoder.stages.5.blocks.4.conv1.norm_op.bias": {
+   "abs_sum": 1.4291330338034314e-05,
+   "max_abs": 1.946144294606711e-07,
+   "sq_norm": 1.0108220833032464e-12
+  },
+  "encoder.stages.5.blocks.4.conv1.norm_op.weight": {
+   "abs_sum": 1.5552560107767732e-05,
+   "max_abs": 1.7750141978467582e-07,
+   "sq_norm": 1.1540933411975788e-12
+  },
+  "encoder.stages.5.blocks.4.conv2.conv.bias": {
+   "abs_sum": 4.962030786259675e-12,
+   "max_abs": 9.592326932761353e-14,
+   "sq_norm": 1.4110281055978374e-25
+  },
+  "encoder.stages.5.blocks.4.conv2.conv.weight": {
+   "abs_sum": 0.15962741243212392,
+   "max_abs": 1.731589009068557e-06,
+   "sq_norm": 2.791228489931712e-08
+  },
+  "encoder.stages.5.blocks.4.conv2.norm_op.bias": {
+   "abs_sum": 1.2085572805631273e-05,
+   "max_abs": 1.6738889030420978e-07,
+   "sq_norm": 7.278833280196057e-13
+  },
+  "encoder.stages.5.blocks.4.conv2.norm_op.weight": {
+   "abs_sum": 1.187751203857168e-05,
+   "max_abs": 1.7684234876469418e-07,
+   "sq_norm": 7.588868955364644e-13
+  },
+  "encoder.stages.5.blocks.5.conv1.conv.bias": {
+   "abs_sum": 1.4860890296120033e-12,
+   "max_abs": 2.6645352591003757e-14,
+   "sq_norm": 1.279311445585261e-26
+  },
+  "encoder.stages.5.blocks.5.conv1.conv.weight": {
+   "abs_sum": 0.1828007902927763,
+   "max_abs": 1.8192226889368612e-06,
+   "sq_norm": 3.230566827567586e-08
+  },
+  "encoder.stages.5.blocks.5.conv1.norm_op.bias": {
+   "abs_sum": 1.2579293121595114e-05,
+   "max_abs": 1.769187321087884e-07,
+   "sq_norm": 7.897514636272757e-13
+  },
+  "encoder.stages.5.blocks.5.conv1.norm_op.weight": {
+   "abs_sum": 1.3204483110484944e-05,
+   "max_abs": 1.5162959243752994e-07,
+   "sq_norm": 8.258063711805879e-13
+  },
+  "encoder.stages.5.blocks.5.conv2.conv.bias": {
+   "abs_sum": 4.742872761198669e-12,
+   "max_abs": 7.105427357601002e-14,
+   "sq_norm": 1.3041882358611639e-25
+  },
+  "encoder.stages.5.blocks.5.conv2.conv.weight": {
+   "abs_sum": 0.144600464598141,
+   "max_abs": 1.0352796380175278e-06,
+   "sq_norm": 2.1800602779009938e-08
+  },
+  "encoder.stages.5.blocks.5.conv2.norm_op.bias": {
+   "abs_sum": 1.2041162620768375e-05,
+   "max_abs": 1.5164576439019584e-07,
+   "sq_norm": 6.919346978664798e-13
+  },
+  "encoder.stages.5.blocks.5.conv2.norm_op.weight": {
+   "abs_sum": 1.1862109062121817e-05,
+   "max_abs": 1.393742081745586e-07,
+   "sq_norm": 6.808437901477219e-13
+  },
+  "encoder.stem.conv1.conv.bias": {
+   "abs_sum": 9.98811856334214e-07,
+   "max_abs": 6.610935088247061e-08,
+   "sq_norm": 4.4232863648415215e-14
+  },
+  "encoder.stem.conv1.conv.weight": {
+   "abs_sum": 10.415315159392776,
+   "max_abs": 0.0476568378508091,
+   "sq_norm": 0.19824103155297768
+  },
+  "encoder.stem.conv1.norm_op.bias": {
+   "abs_sum": 0.21561282395850867,
+   "max_abs": 0.019322022795677185,
+   "sq_norm": 0.0021939371193956574
+  },
+  "encoder.stem.conv1.norm_op.weight": {
+   "abs_sum": 0.27152961277170107,
+   "max_abs": 0.022964544594287872,
+   "sq_norm": 0.0035733030365591124
+  },
+  "encoder_films.0.affine.bias": {
+   "abs_sum": 0.4931185522582382,
+   "max_abs": 0.028938665986061096,
+   "sq_norm": 0.006361431886703475
+  },
+  "encoder_films.0.affine.weight": {
+   "abs_sum": 26.558001448433174,
+   "max_abs": 0.0720963403582573,
+   "sq_norm": 0.42405248457558353
+  },
+  "encoder_films.1.affine.bias": {
+   "abs_sum": 0.03894593712175265,
+   "max_abs": 0.0013661450939252973,
+   "sq_norm": 2.1298986750692876e-05
+  },
+  "encoder_films.1.affine.weight": {
+   "abs_sum": 2.0975204648559895,
+   "max_abs": 0.0034035455901175737,
+   "sq_norm": 0.0014197885739922692
+  },
+  "encoder_films.2.affine.bias": {
+   "abs_sum": 0.00749776046950501,
+   "max_abs": 0.00015265851106960326,
+   "sq_norm": 4.6389460322952955e-07
+  },
+  "encoder_films.2.affine.weight": {
+   "abs_sum": 0.40380864239477,
+   "max_abs": 0.00038032574229873717,
+   "sq_norm": 3.092317299583396e-05
+  },
+  "encoder_films.3.affine.bias": {
+   "abs_sum": 0.0015221179572506571,
+   "max_abs": 1.5586525478283875e-05,
+   "sq_norm": 9.991098366316365e-09
+  },
+  "encoder_films.3.affine.weight": {
+   "abs_sum": 0.08197706389397907,
+   "max_abs": 3.883149111061357e-05,
+   "sq_norm": 6.660057404263301e-07
+  },
+  "encoder_films.4.affine.bias": {
+   "abs_sum": 0.00016667953357085707,
+   "max_abs": 1.6090391454781638e-06,
+   "sq_norm": 8.667212537811923e-11
+  },
+  "encoder_films.4.affine.weight": {
+   "abs_sum": 0.008976898736639427,
+   "max_abs": 4.00867929783999e-06,
+   "sq_norm": 5.777556245902093e-09
+  },
+  "encoder_films.5.affine.bias": {
+   "abs_sum": 5.018381277710482e-05,
+   "max_abs": 4.593442213263188e-07,
+   "sq_norm": 7.80085080391839e-12
+  },
+  "encoder_films.5.affine.weight": {
+   "abs_sum": 0.002702761371224075,
+   "max_abs": 1.144387169915717e-06,
+   "sq_norm": 5.200040229942552e-10
+  },
+  "modality_embedding.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  }
+ },
+ "input_shape": [
+  2,
+  1,
+  64,
+  64,
+  64
+ ],
+ "logged_keys": [
+  "train/features/embedding_norm_mean",
+  "train/features/embedding_norm_std",
+  "train/features/embedding_sample_count",
+  "train/loss/inv_adv/config_weight",
+  "train/loss/inv_adv/enabled",
+  "train/loss/inv_adv/raw",
+  "train/loss/inv_adv/schedule_weight",
+  "train/loss/inv_adv/weighted",
+  "train/loss/mse/config_weight",
+  "train/loss/mse/enabled",
+  "train/loss/mse/raw",
+  "train/loss/mse/schedule_weight",
+  "train/loss/mse/weighted",
+  "train/loss/pathology/config_weight",
+  "train/loss/pathology/enabled",
+  "train/loss/pathology/raw",
+  "train/loss/pathology/schedule_weight",
+  "train/loss/pathology/weighted",
+  "train/loss/scanner_pos/config_weight",
+  "train/loss/scanner_pos/enabled",
+  "train/loss/scanner_pos/raw",
+  "train/loss/scanner_pos/schedule_weight",
+  "train/loss/scanner_pos/weighted",
+  "train/loss/stage1/anatomy/config_weight",
+  "train/loss/stage1/anatomy/enabled",
+  "train/loss/stage1/anatomy/raw",
+  "train/loss/stage1/anatomy/schedule_weight",
+  "train/loss/stage1/anatomy/weighted",
+  "train/loss/stage1/modality/config_weight",
+  "train/loss/stage1/modality/enabled",
+  "train/loss/stage1/modality/raw",
+  "train/loss/stage1/modality/schedule_weight",
+  "train/loss/stage1/modality/weighted",
+  "train/loss/stage1/modality_adversary/config_weight",
+  "train/loss/stage1/modality_adversary/enabled",
+  "train/loss/stage1/modality_adversary/raw",
+  "train/loss/stage1/modality_adversary/schedule_weight",
+  "train/loss/stage1/modality_adversary/weighted",
+  "train/loss/stage2/adv_mod_on_anat/config_weight",
+  "train/loss/stage2/adv_mod_on_anat/enabled",
+  "train/loss/stage2/adv_mod_on_anat/raw",
+  "train/loss/stage2/adv_mod_on_anat/schedule_weight",
+  "train/loss/stage2/adv_mod_on_anat/weighted",
+  "train/loss/stage2/anatomy/config_weight",
+  "train/loss/stage2/anatomy/enabled",
+  "train/loss/stage2/anatomy/raw",
+  "train/loss/stage2/anatomy/schedule_weight",
+  "train/loss/stage2/anatomy/weighted",
+  "train/loss/stage2/cross_reconstruction/config_weight",
+  "train/loss/stage2/cross_reconstruction/enabled",
+  "train/loss/stage2/cross_reconstruction/raw",
+  "train/loss/stage2/cross_reconstruction/schedule_weight",
+  "train/loss/stage2/cross_reconstruction/weighted",
+  "train/loss/stage2/modality/config_weight",
+  "train/loss/stage2/modality/enabled",
+  "train/loss/stage2/modality/raw",
+  "train/loss/stage2/modality/schedule_weight",
+  "train/loss/stage2/modality/weighted",
+  "train/loss/stage2/reconstruction/cross/config_weight",
+  "train/loss/stage2/reconstruction/cross/enabled",
+  "train/loss/stage2/reconstruction/cross/raw",
+  "train/loss/stage2/reconstruction/cross/schedule_weight",
+  "train/loss/stage2/reconstruction/cross/weighted",
+  "train/loss/stage2/reconstruction/self/config_weight",
+  "train/loss/stage2/reconstruction/self/enabled",
+  "train/loss/stage2/reconstruction/self/raw",
+  "train/loss/stage2/reconstruction/self/schedule_weight",
+  "train/loss/stage2/reconstruction/self/weighted",
+  "train/loss/stage2/self_reconstruction/config_weight",
+  "train/loss/stage2/self_reconstruction/enabled",
+  "train/loss/stage2/self_reconstruction/raw",
+  "train/loss/stage2/self_reconstruction/schedule_weight",
+  "train/loss/stage2/self_reconstruction/weighted",
+  "train/loss/stage2/sigreg/config_weight",
+  "train/loss/stage2/sigreg/enabled",
+  "train/loss/stage2/sigreg/raw",
+  "train/loss/stage2/sigreg/schedule_weight",
+  "train/loss/stage2/sigreg/weighted",
+  "train/loss/stage2/xcov/config_weight",
+  "train/loss/stage2/xcov/enabled",
+  "train/loss/stage2/xcov/raw",
+  "train/loss/stage2/xcov/schedule_weight",
+  "train/loss/stage2/xcov/weighted",
+  "train/loss/total",
+  "train/masking/fg_fraction",
+  "train/masking/fg_fraction_masked",
+  "train/masking/fg_fraction_visible",
+  "train/masking/fg_masked_enrichment",
+  "train/masking/fg_visible_enrichment",
+  "train/masking/mask_ratio_realized",
+  "train/masking/mask_ratio_std",
+  "train/masking/masked_tokens",
+  "train/masking/visible_tokens",
+  "train/reconstruction_loss/fg_bonus_active_fraction",
+  "train/reconstruction_loss/fg_bonus_config_weight",
+  "train/reconstruction_loss/fg_bonus_schedule_weight",
+  "train/reconstruction_loss/fg_fraction_hidden_loss",
+  "train/reconstruction_loss/foreground_mode/bonus_patch",
+  "train/reconstruction_loss/foreground_mode/bonus_voxel",
+  "train/reconstruction_loss/foreground_mode/none",
+  "train/reconstruction_loss/foreground_mode/weighted_replace",
+  "train/reconstruction_loss/loss",
+  "train/reconstruction_loss/loss_completed_full",
+  "train/reconstruction_loss/loss_hidden",
+  "train/reconstruction_loss/loss_hidden_bg_unweighted",
+  "train/reconstruction_loss/loss_hidden_fg_bonus",
+  "train/reconstruction_loss/loss_hidden_fg_bonus_weighted",
+  "train/reconstruction_loss/loss_hidden_fg_unweighted",
+  "train/reconstruction_loss/loss_hidden_patch_fg",
+  "train/reconstruction_loss/loss_hidden_unweighted",
+  "train/reconstruction_loss/patch_fg_fraction_hidden",
+  "train/stability/inf_activations",
+  "train/stability/inf_loss",
+  "train/stability/inf_predictions",
+  "train/stability/nan_activations",
+  "train/stability/nan_loss",
+  "train/stability/nan_predictions"
+ ],
+ "losses": [
+  10.862284660339355,
+  10.823636054992676,
+  10.470272064208984
+ ],
+ "parameters_after_steps": {
+  "decoder.decoder_conv1.conv1.conv.bias": {
+   "abs_sum": 1.1592938357630374,
+   "max_abs": 0.0074478439055383205,
+   "sq_norm": 0.005610745016429416
+  },
+  "decoder.decoder_conv1.conv1.conv.weight": {
+   "abs_sum": 22530.851923266164,
+   "max_abs": 0.010458137840032578,
+   "sq_norm": 129.44222484163814
+  },
+  "decoder.decoder_conv1.conv1.norm_op.bias": {
+   "abs_sum": 0.5796201821794966,
+   "max_abs": 0.0027996397111564875,
+   "sq_norm": 0.0012175340878264438
+  },
+  "decoder.decoder_conv1.conv1.norm_op.weight": {
+   "abs_sum": 319.97524386644363,
+   "max_abs": 1.002812385559082,
+   "sq_norm": 319.9517572428363
+  },
+  "decoder.decoder_conv2.conv1.conv.bias": {
+   "abs_sum": 1.1336192767412285,
+   "max_abs": 0.00849208328872919,
+   "sq_norm": 0.00654456972061663
+  },
+  "decoder.decoder_conv2.conv1.conv.weight": {
+   "abs_sum": 15928.786621030777,
+   "max_abs": 0.011476298794150352,
+   "sq_norm": 100.32905258658737
+  },
+  "decoder.decoder_conv2.conv1.norm_op.bias": {
+   "abs_sum": 0.45653423575276975,
+   "max_abs": 0.002992665395140648,
+   "sq_norm": 0.0010102185639316158
+  },
+  "decoder.decoder_conv2.conv1.norm_op.weight": {
+   "abs_sum": 256.02932262420654,
+   "max_abs": 1.00296151638031,
+   "sq_norm": 256.0597379645953
+  },
+  "decoder.decoder_conv3.conv1.conv.bias": {
+   "abs_sum": 0.7316073975234758,
+   "max_abs": 0.012012830004096031,
+   "sq_norm": 0.005675759088331279
+  },
+  "decoder.decoder_conv3.conv1.conv.weight": {
+   "abs_sum": 5467.5130665658735,
+   "max_abs": 0.015019746497273445,
+   "sq_norm": 46.19436737397904
+  },
+  "decoder.decoder_conv3.conv1.norm_op.bias": {
+   "abs_sum": 0.23613246926106513,
+   "max_abs": 0.003001796081662178,
+   "sq_norm": 0.0005548791549224578
+  },
+  "decoder.decoder_conv3.conv1.norm_op.weight": {
+   "abs_sum": 127.98202848434448,
+   "max_abs": 1.0029335021972656,
+   "sq_norm": 127.9645612266545
+  },
+  "decoder.decoder_conv4.conv1.conv.bias": {
+   "abs_sum": 0.5173829291306902,
+   "max_abs": 0.016213368624448776,
+   "sq_norm": 0.005658142163769308
+  },
+  "decoder.decoder_conv4.conv1.conv.weight": {
+   "abs_sum": 1908.5087973575378,
+   "max_abs": 0.02000061422586441,
+   "sq_norm": 22.213261996585928
+  },
+  "decoder.decoder_conv4.conv1.norm_op.bias": {
+   "abs_sum": 0.0702584070386365,
+   "max_abs": 0.0029486955609172583,
+   "sq_norm": 0.00016178191974165713
+  },
+  "decoder.decoder_conv4.conv1.norm_op.weight": {
+   "abs_sum": 63.93870437145233,
+   "max_abs": 1.002642273902893,
+   "sq_norm": 63.877597633298464
+  },
+  "decoder.decoder_conv5.conv1.conv.bias": {
+   "abs_sum": 0.37650506052887067,
+   "max_abs": 0.023368055000901222,
+   "sq_norm": 0.0065347966621473585
+  },
+  "decoder.decoder_conv5.conv1.conv.weight": {
+   "abs_sum": 668.7154840594449,
+   "max_abs": 0.02702016942203045,
+   "sq_norm": 10.818602668118817
+  },
+  "decoder.decoder_conv5.conv1.norm_op.bias": {
+   "abs_sum": 0.09453885396942496,
+   "max_abs": 0.003001527627930045,
+   "sq_norm": 0.00027935360321705094
+  },
+  "decoder.decoder_conv5.conv1.norm_op.weight": {
+   "abs_sum": 31.990284264087677,
+   "max_abs": 1.002927303314209,
+   "sq_norm": 31.980798465792166
+  },
+  "decoder.out_conv.bias": {
+   "abs_sum": 0.1670825183391571,
+   "max_abs": 0.1670825183391571,
+   "sq_norm": 0.02791656793455477
+  },
+  "decoder.out_conv.weight": {
+   "abs_sum": 2.343652792274952,
+   "max_abs": 0.16545909643173218,
+   "sq_norm": 0.23022707377995788
+  },
+  "decoder.upsample1.bias": {
+   "abs_sum": 3.1543120283458848,
+   "max_abs": 0.021838102489709854,
+   "sq_norm": 0.0425497282431381
+  },
+  "decoder.upsample1.weight": {
+   "abs_sum": 8173.889050591664,
+   "max_abs": 0.02230774611234665,
+   "sq_norm": 109.75630392276757
+  },
+  "decoder.upsample2.bias": {
+   "abs_sum": 2.9500205428048503,
+   "max_abs": 0.024387864395976067,
+   "sq_norm": 0.04441958252690622
+  },
+  "decoder.upsample2.weight": {
+   "abs_sum": 7304.511151848126,
+   "max_abs": 0.024975845590233803,
+   "sq_norm": 109.40000981696156
+  },
+  "decoder.upsample3.bias": {
+   "abs_sum": 2.05804478758364,
+   "max_abs": 0.03382791578769684,
+   "sq_norm": 0.045889872994215014
+  },
+  "decoder.upsample3.weight": {
+   "abs_sum": 4117.814037175681,
+   "max_abs": 0.03422873467206955,
+   "sq_norm": 86.54334544732697
+  },
+  "decoder.upsample4.bias": {
+   "abs_sum": 1.1873546417918988,
+   "max_abs": 0.04079444333910942,
+   "sq_norm": 0.03256600801480232
+  },
+  "decoder.upsample4.weight": {
+   "abs_sum": 1451.4276875933283,
+   "max_abs": 0.047097861766815186,
+   "sq_norm": 42.97578102691519
+  },
+  "decoder.upsample5.bias": {
+   "abs_sum": 0.9790993748465553,
+   "max_abs": 0.060645535588264465,
+   "sq_norm": 0.042275381069983
+  },
+  "decoder.upsample5.weight": {
+   "abs_sum": 508.4161646281227,
+   "max_abs": 0.06513433158397675,
+   "sq_norm": 21.150822222782924
+  },
+  "decoder_films.0.affine.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.0.affine.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.1.affine.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.1.affine.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.2.affine.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.2.affine.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.3.affine.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.3.affine.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.4.affine.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.4.affine.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.5.affine.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "decoder_films.5.affine.weight": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "encoder.stages.0.blocks.0.conv1.conv.bias": {
+   "abs_sum": 0.6051038678269833,
+   "max_abs": 0.03529306501150131,
+   "sq_norm": 0.014930575468812598
+  },
+  "encoder.stages.0.blocks.0.conv1.conv.weight": {
+   "abs_sum": 470.83077287607375,
+   "max_abs": 0.036949366331100464,
+   "sq_norm": 10.749055191670285
+  },
+  "encoder.stages.0.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.04296686765155755,
+   "max_abs": 0.0029795418959110975,
+   "sq_norm": 8.388832561743005e-05
+  },
+  "encoder.stages.0.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 31.999723315238953,
+   "max_abs": 1.002838134765625,
+   "sq_norm": 31.999533414185052
+  },
+  "encoder.stages.0.blocks.0.conv2.conv.bias": {
+   "abs_sum": 0.49940262106247246,
+   "max_abs": 0.03051667846739292,
+   "sq_norm": 0.009822998189871444
+  },
+  "encoder.stages.0.blocks.0.conv2.conv.weight": {
+   "abs_sum": 474.3012238446581,
+   "max_abs": 0.036910075694322586,
+   "sq_norm": 10.851893052732684
+  },
+  "encoder.stages.0.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.04099776584189385,
+   "max_abs": 0.0029954875353723764,
+   "sq_norm": 8.301573073517937e-05
+  },
+  "encoder.stages.0.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 31.997133135795593,
+   "max_abs": 1.0029563903808594,
+   "sq_norm": 31.994359169781895
+  },
+  "encoder.stages.1.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.048012962914072,
+   "max_abs": 0.033316243439912796,
+   "sq_norm": 0.022486824395583107
+  },
+  "encoder.stages.1.blocks.0.conv1.conv.weight": {
+   "abs_sum": 941.0992570594444,
+   "max_abs": 0.03701379895210266,
+   "sq_norm": 21.455163299157093
+  },
+  "encoder.stages.1.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.1222610018303385,
+   "max_abs": 0.0029981653206050396,
+   "sq_norm": 0.00028010823617742174
+  },
+  "encoder.stages.1.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 63.99897575378418,
+   "max_abs": 1.002929449081421,
+   "sq_norm": 63.998230800401195
+  },
+  "encoder.stages.1.blocks.0.conv2.conv.bias": {
+   "abs_sum": 0.7220631948148366,
+   "max_abs": 0.023776262998580933,
+   "sq_norm": 0.011484087914099446
+  },
+  "encoder.stages.1.blocks.0.conv2.conv.weight": {
+   "abs_sum": 1336.4123558991578,
+   "max_abs": 0.027043169364333153,
+   "sq_norm": 21.708759133360562
+  },
+  "encoder.stages.1.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.10817371746816207,
+   "max_abs": 0.002993606496602297,
+   "sq_norm": 0.00023573354903855926
+  },
+  "encoder.stages.1.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 63.99645406007767,
+   "max_abs": 1.0029575824737549,
+   "sq_norm": 63.99317309342344
+  },
+  "encoder.stages.1.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 181.15147355711088,
+   "max_abs": 0.17906850576400757,
+   "sq_norm": 21.484787098304608
+  },
+  "encoder.stages.1.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.10817371746816207,
+   "max_abs": 0.002993606496602297,
+   "sq_norm": 0.00023573354903855926
+  },
+  "encoder.stages.1.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 64.0041931271553,
+   "max_abs": 1.0027625560760498,
+   "sq_norm": 64.00862780818191
+  },
+  "encoder.stages.1.blocks.1.conv1.conv.bias": {
+   "abs_sum": 0.8501175263445475,
+   "max_abs": 0.02403612993657589,
+   "sq_norm": 0.014596632530845376
+  },
+  "encoder.stages.1.blocks.1.conv1.conv.weight": {
+   "abs_sum": 1338.5291208295012,
+   "max_abs": 0.027015505358576775,
+   "sq_norm": 21.737502587096593
+  },
+  "encoder.stages.1.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.12030262339976616,
+   "max_abs": 0.0029999203979969025,
+   "sq_norm": 0.0002694990739457313
+  },
+  "encoder.stages.1.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 63.9869310259819,
+   "max_abs": 1.0029290914535522,
+   "sq_norm": 63.97410610908684
+  },
+  "encoder.stages.1.blocks.1.conv2.conv.bias": {
+   "abs_sum": 0.709140062564984,
+   "max_abs": 0.02415720745921135,
+   "sq_norm": 0.010659290447981196
+  },
+  "encoder.stages.1.blocks.1.conv2.conv.weight": {
+   "abs_sum": 1341.0463581209897,
+   "max_abs": 0.026993751525878906,
+   "sq_norm": 21.841348377943994
+  },
+  "encoder.stages.1.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.10006609003175981,
+   "max_abs": 0.002948035951703787,
+   "sq_norm": 0.0002222355301086169
+  },
+  "encoder.stages.1.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 63.975747764110565,
+   "max_abs": 1.0029529333114624,
+   "sq_norm": 63.95171993070562
+  },
+  "encoder.stages.1.blocks.2.conv1.conv.bias": {
+   "abs_sum": 0.7314323215687182,
+   "max_abs": 0.023108823224902153,
+   "sq_norm": 0.011189806415341168
+  },
+  "encoder.stages.1.blocks.2.conv1.conv.weight": {
+   "abs_sum": 1339.9098525369118,
+   "max_abs": 0.02703932672739029,
+   "sq_norm": 21.783584541312262
+  },
+  "encoder.stages.1.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.11004183735349216,
+   "max_abs": 0.0030029264744371176,
+   "sq_norm": 0.00024836452809713313
+  },
+  "encoder.stages.1.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 63.993445217609406,
+   "max_abs": 1.002816915512085,
+   "sq_norm": 63.987097053718884
+  },
+  "encoder.stages.1.blocks.2.conv2.conv.bias": {
+   "abs_sum": 0.8231459790258668,
+   "max_abs": 0.02409573830664158,
+   "sq_norm": 0.013793069764543548
+  },
+  "encoder.stages.1.blocks.2.conv2.conv.weight": {
+   "abs_sum": 1340.274286249386,
+   "max_abs": 0.027024105191230774,
+   "sq_norm": 21.77819879101313
+  },
+  "encoder.stages.1.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.10235110289067961,
+   "max_abs": 0.002968821208924055,
+   "sq_norm": 0.00022079771013170675
+  },
+  "encoder.stages.1.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 64.00850313901901,
+   "max_abs": 1.0029709339141846,
+   "sq_norm": 64.01725510272135
+  },
+  "encoder.stages.2.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.4870064179995097,
+   "max_abs": 0.023883825168013573,
+   "sq_norm": 0.023386117325983363
+  },
+  "encoder.stages.2.blocks.0.conv1.conv.weight": {
+   "abs_sum": 2681.1100986327256,
+   "max_abs": 0.027015449479222298,
+   "sq_norm": 43.61251825109383
+  },
+  "encoder.stages.2.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.24373359703167807,
+   "max_abs": 0.0030000582337379456,
+   "sq_norm": 0.0005485096007226086
+  },
+  "encoder.stages.2.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 127.97948306798935,
+   "max_abs": 1.0029633045196533,
+   "sq_norm": 127.95946599146068
+  },
+  "encoder.stages.2.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.1972802978852997,
+   "max_abs": 0.017024841159582138,
+   "sq_norm": 0.014199065806990898
+  },
+  "encoder.stages.2.blocks.0.conv2.conv.weight": {
+   "abs_sum": 3819.799361615062,
+   "max_abs": 0.020007990300655365,
+   "sq_norm": 44.576790442601336
+  },
+  "encoder.stages.2.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.24167317600222304,
+   "max_abs": 0.0029990668408572674,
+   "sq_norm": 0.0005498559514420959
+  },
+  "encoder.stages.2.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 127.98933213949203,
+   "max_abs": 1.0029504299163818,
+   "sq_norm": 127.9792108386601
+  },
+  "encoder.stages.2.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 513.2755852819664,
+   "max_abs": 0.12794867157936096,
+   "sq_norm": 42.82668211228801
+  },
+  "encoder.stages.2.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.24167317600222304,
+   "max_abs": 0.0029990668408572674,
+   "sq_norm": 0.0005498559514420959
+  },
+  "encoder.stages.2.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 127.99316364526749,
+   "max_abs": 1.0029654502868652,
+   "sq_norm": 127.98689652873074
+  },
+  "encoder.stages.2.blocks.1.conv1.conv.bias": {
+   "abs_sum": 1.1278630076922127,
+   "max_abs": 0.016904091462492943,
+   "sq_norm": 0.01273261043075936
+  },
+  "encoder.stages.2.blocks.1.conv1.conv.weight": {
+   "abs_sum": 3820.229993442309,
+   "max_abs": 0.020004747435450554,
+   "sq_norm": 44.57298778697141
+  },
+  "encoder.stages.2.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.23336200389894657,
+   "max_abs": 0.002969509456306696,
+   "sq_norm": 0.0005237534842587481
+  },
+  "encoder.stages.2.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 127.98480927944183,
+   "max_abs": 1.0029445886611938,
+   "sq_norm": 127.97020558645212
+  },
+  "encoder.stages.2.blocks.1.conv2.conv.bias": {
+   "abs_sum": 1.0095151783025358,
+   "max_abs": 0.016634540632367134,
+   "sq_norm": 0.010995000513420602
+  },
+  "encoder.stages.2.blocks.1.conv2.conv.weight": {
+   "abs_sum": 3816.5780900447417,
+   "max_abs": 0.02000880241394043,
+   "sq_norm": 44.51120216777182
+  },
+  "encoder.stages.2.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.23631857325381134,
+   "max_abs": 0.003002509940415621,
+   "sq_norm": 0.0005276150544092804
+  },
+  "encoder.stages.2.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 127.9833396077156,
+   "max_abs": 1.0029470920562744,
+   "sq_norm": 127.96717022886637
+  },
+  "encoder.stages.2.blocks.2.conv1.conv.bias": {
+   "abs_sum": 1.0801694141409826,
+   "max_abs": 0.01699391007423401,
+   "sq_norm": 0.01251856475493546
+  },
+  "encoder.stages.2.blocks.2.conv1.conv.weight": {
+   "abs_sum": 3813.363102173991,
+   "max_abs": 0.020010408014059067,
+   "sq_norm": 44.45479887776232
+  },
+  "encoder.stages.2.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.2276366281148512,
+   "max_abs": 0.002958672121167183,
+   "sq_norm": 0.0005013789764220337
+  },
+  "encoder.stages.2.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 127.99449944496155,
+   "max_abs": 1.0029274225234985,
+   "sq_norm": 127.98948964669819
+  },
+  "encoder.stages.2.blocks.2.conv2.conv.bias": {
+   "abs_sum": 1.1289286984829232,
+   "max_abs": 0.016972657293081284,
+   "sq_norm": 0.013113683502720673
+  },
+  "encoder.stages.2.blocks.2.conv2.conv.weight": {
+   "abs_sum": 3818.4682537814097,
+   "max_abs": 0.019993353635072708,
+   "sq_norm": 44.52239750325964
+  },
+  "encoder.stages.2.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.2384811005613301,
+   "max_abs": 0.003002272918820381,
+   "sq_norm": 0.0005420800838692149
+  },
+  "encoder.stages.2.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 127.98671388626099,
+   "max_abs": 1.0029609203338623,
+   "sq_norm": 127.9739447294333
+  },
+  "encoder.stages.2.blocks.3.conv1.conv.bias": {
+   "abs_sum": 1.0900463557991316,
+   "max_abs": 0.016770953312516212,
+   "sq_norm": 0.01260414211558125
+  },
+  "encoder.stages.2.blocks.3.conv1.conv.weight": {
+   "abs_sum": 3818.1575497249514,
+   "max_abs": 0.019991103559732437,
+   "sq_norm": 44.541754485683725
+  },
+  "encoder.stages.2.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 0.2360612276388565,
+   "max_abs": 0.002964753657579422,
+   "sq_norm": 0.0005244662578028177
+  },
+  "encoder.stages.2.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 127.99723875522614,
+   "max_abs": 1.0029524564743042,
+   "sq_norm": 127.99496857277157
+  },
+  "encoder.stages.2.blocks.3.conv2.conv.bias": {
+   "abs_sum": 1.1803885057743173,
+   "max_abs": 0.017006849870085716,
+   "sq_norm": 0.013990395742017426
+  },
+  "encoder.stages.2.blocks.3.conv2.conv.weight": {
+   "abs_sum": 3814.442425878835,
+   "max_abs": 0.01998167112469673,
+   "sq_norm": 44.46660140006155
+  },
+  "encoder.stages.2.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 0.22265713330125436,
+   "max_abs": 0.002993965055793524,
+   "sq_norm": 0.0004980379191884402
+  },
+  "encoder.stages.2.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 127.99022179841995,
+   "max_abs": 1.0029014348983765,
+   "sq_norm": 127.9809502241577
+  },
+  "encoder.stages.3.blocks.0.conv1.conv.bias": {
+   "abs_sum": 2.2118233202781994,
+   "max_abs": 0.016968458890914917,
+   "sq_norm": 0.024693461902768783
+  },
+  "encoder.stages.3.blocks.0.conv1.conv.weight": {
+   "abs_sum": 7653.660484227646,
+   "max_abs": 0.019984005019068718,
+   "sq_norm": 89.5593784109048
+  },
+  "encoder.stages.3.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.5268322258925764,
+   "max_abs": 0.002839624183252454,
+   "sq_norm": 0.0011546387596964912
+  },
+  "encoder.stages.3.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 256.00126254558563,
+   "max_abs": 1.0027896165847778,
+   "sq_norm": 256.00370463777574
+  },
+  "encoder.stages.3.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.696681307927065,
+   "max_abs": 0.011809851042926311,
+   "sq_norm": 0.014149460452482096
+  },
+  "encoder.stages.3.blocks.0.conv2.conv.weight": {
+   "abs_sum": 10979.888624066909,
+   "max_abs": 0.014984318055212498,
+   "sq_norm": 93.42787766427521
+  },
+  "encoder.stages.3.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.5229108798375819,
+   "max_abs": 0.0028922222554683685,
+   "sq_norm": 0.0011537817328669832
+  },
+  "encoder.stages.3.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 256.02231734991074,
+   "max_abs": 1.0028847455978394,
+   "sq_norm": 256.0458098126093
+  },
+  "encoder.stages.3.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 1451.793099096516,
+   "max_abs": 0.09113555401563644,
+   "sq_norm": 85.84790825729888
+  },
+  "encoder.stages.3.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.5229108798375819,
+   "max_abs": 0.0028922222554683685,
+   "sq_norm": 0.0011537817328669832
+  },
+  "encoder.stages.3.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 255.93357586860657,
+   "max_abs": 1.002882480621338,
+   "sq_norm": 255.86825138112113
+  },
+  "encoder.stages.3.blocks.1.conv1.conv.bias": {
+   "abs_sum": 1.5778474885828473,
+   "max_abs": 0.011989148333668709,
+   "sq_norm": 0.01279080436226255
+  },
+  "encoder.stages.3.blocks.1.conv1.conv.weight": {
+   "abs_sum": 10974.42868346095,
+   "max_abs": 0.014976185746490955,
+   "sq_norm": 93.39500783861433
+  },
+  "encoder.stages.3.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.5242890067747794,
+   "max_abs": 0.0028141180519014597,
+   "sq_norm": 0.0011421449706751183
+  },
+  "encoder.stages.3.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 255.98523265123367,
+   "max_abs": 1.0028105974197388,
+   "sq_norm": 255.97161566350815
+  },
+  "encoder.stages.3.blocks.1.conv2.conv.bias": {
+   "abs_sum": 1.4433407752003404,
+   "max_abs": 0.011973457410931587,
+   "sq_norm": 0.011144533543992021
+  },
+  "encoder.stages.3.blocks.1.conv2.conv.weight": {
+   "abs_sum": 10981.999811516582,
+   "max_abs": 0.01496066339313984,
+   "sq_norm": 93.45930369605655
+  },
+  "encoder.stages.3.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.5122161632170901,
+   "max_abs": 0.002944121602922678,
+   "sq_norm": 0.0011230577870812728
+  },
+  "encoder.stages.3.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 256.0128131508827,
+   "max_abs": 1.0028315782546997,
+   "sq_norm": 256.0267562259078
+  },
+  "encoder.stages.3.blocks.2.conv1.conv.bias": {
+   "abs_sum": 1.51453035826853,
+   "max_abs": 0.011973205953836441,
+   "sq_norm": 0.011736245163599529
+  },
+  "encoder.stages.3.blocks.2.conv1.conv.weight": {
+   "abs_sum": 10980.518540620256,
+   "max_abs": 0.014972435310482979,
+   "sq_norm": 93.43830279494954
+  },
+  "encoder.stages.3.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.5199286393180955,
+   "max_abs": 0.0028787243645638227,
+   "sq_norm": 0.001135358980800763
+  },
+  "encoder.stages.3.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 255.9613396525383,
+   "max_abs": 1.0029335021972656,
+   "sq_norm": 255.92384399533304
+  },
+  "encoder.stages.3.blocks.2.conv2.conv.bias": {
+   "abs_sum": 1.4744085519537293,
+   "max_abs": 0.012004217132925987,
+   "sq_norm": 0.011356000571324942
+  },
+  "encoder.stages.3.blocks.2.conv2.conv.weight": {
+   "abs_sum": 10970.339890292966,
+   "max_abs": 0.014964225701987743,
+   "sq_norm": 93.28540376105519
+  },
+  "encoder.stages.3.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.5164529154371849,
+   "max_abs": 0.0029109129682183266,
+   "sq_norm": 0.0011480559312550928
+  },
+  "encoder.stages.3.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 256.05096942186356,
+   "max_abs": 1.0029202699661255,
+   "sq_norm": 256.10309608845637
+  },
+  "encoder.stages.3.blocks.3.conv1.conv.bias": {
+   "abs_sum": 1.5282531789189306,
+   "max_abs": 0.012025101110339165,
+   "sq_norm": 0.012087359309377568
+  },
+  "encoder.stages.3.blocks.3.conv1.conv.weight": {
+   "abs_sum": 10974.235168855366,
+   "max_abs": 0.014915935695171356,
+   "sq_norm": 93.37802172809968
+  },
+  "encoder.stages.3.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 0.5103068281459855,
+   "max_abs": 0.002890060655772686,
+   "sq_norm": 0.0011010488013624225
+  },
+  "encoder.stages.3.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 255.98069268465042,
+   "max_abs": 1.002865195274353,
+   "sq_norm": 255.96259211005588
+  },
+  "encoder.stages.3.blocks.3.conv2.conv.bias": {
+   "abs_sum": 1.6193294918130618,
+   "max_abs": 0.012024834752082825,
+   "sq_norm": 0.01318427024678551
+  },
+  "encoder.stages.3.blocks.3.conv2.conv.weight": {
+   "abs_sum": 10974.05756880438,
+   "max_abs": 0.014993897639214993,
+   "sq_norm": 93.32335459564943
+  },
+  "encoder.stages.3.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 0.5169986479741056,
+   "max_abs": 0.002936790930107236,
+   "sq_norm": 0.0011503780127011813
+  },
+  "encoder.stages.3.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 255.93964141607285,
+   "max_abs": 1.002906322479248,
+   "sq_norm": 255.8804591902591
+  },
+  "encoder.stages.3.blocks.4.conv1.conv.bias": {
+   "abs_sum": 1.5307008102354303,
+   "max_abs": 0.012008796446025372,
+   "sq_norm": 0.012265369001777836
+  },
+  "encoder.stages.3.blocks.4.conv1.conv.weight": {
+   "abs_sum": 10976.017199925363,
+   "max_abs": 0.014994073659181595,
+   "sq_norm": 93.3284273439036
+  },
+  "encoder.stages.3.blocks.4.conv1.norm_op.bias": {
+   "abs_sum": 0.5063552538049407,
+   "max_abs": 0.002915334887802601,
+   "sq_norm": 0.0011111396287848394
+  },
+  "encoder.stages.3.blocks.4.conv1.norm_op.weight": {
+   "abs_sum": 256.00063675642014,
+   "max_abs": 1.0028953552246094,
+   "sq_norm": 256.00240420651204
+  },
+  "encoder.stages.3.blocks.4.conv2.conv.bias": {
+   "abs_sum": 1.6323700913330867,
+   "max_abs": 0.012020980007946491,
+   "sq_norm": 0.013691740639489127
+  },
+  "encoder.stages.3.blocks.4.conv2.conv.weight": {
+   "abs_sum": 10966.175219601215,
+   "max_abs": 0.014959577471017838,
+   "sq_norm": 93.17802700587714
+  },
+  "encoder.stages.3.blocks.4.conv2.norm_op.bias": {
+   "abs_sum": 0.5151648088358343,
+   "max_abs": 0.0029479977674782276,
+   "sq_norm": 0.001152783932767971
+  },
+  "encoder.stages.3.blocks.4.conv2.norm_op.weight": {
+   "abs_sum": 255.92890548706055,
+   "max_abs": 1.002914547920227,
+   "sq_norm": 255.85893434280442
+  },
+  "encoder.stages.3.blocks.5.conv1.conv.bias": {
+   "abs_sum": 1.5479528299438243,
+   "max_abs": 0.012019090354442596,
+   "sq_norm": 0.012394484774277544
+  },
+  "encoder.stages.3.blocks.5.conv1.conv.weight": {
+   "abs_sum": 10973.520500379782,
+   "max_abs": 0.014944297261536121,
+   "sq_norm": 93.30028041143784
+  },
+  "encoder.stages.3.blocks.5.conv1.norm_op.bias": {
+   "abs_sum": 0.5196979531028774,
+   "max_abs": 0.002899923361837864,
+   "sq_norm": 0.001156249801829114
+  },
+  "encoder.stages.3.blocks.5.conv1.norm_op.weight": {
+   "abs_sum": 255.98191571235657,
+   "max_abs": 1.00286066532135,
+   "sq_norm": 255.96495465939103
+  },
+  "encoder.stages.3.blocks.5.conv2.conv.bias": {
+   "abs_sum": 1.5925589442413184,
+   "max_abs": 0.011964443139731884,
+   "sq_norm": 0.012681006823189525
+  },
+  "encoder.stages.3.blocks.5.conv2.conv.weight": {
+   "abs_sum": 10960.991897439824,
+   "max_abs": 0.014975938946008682,
+   "sq_norm": 93.09094893814284
+  },
+  "encoder.stages.3.blocks.5.conv2.norm_op.bias": {
+   "abs_sum": 0.5165799427195452,
+   "max_abs": 0.002904302906244993,
+   "sq_norm": 0.0011599028873412651
+  },
+  "encoder.stages.3.blocks.5.conv2.norm_op.weight": {
+   "abs_sum": 256.0114868283272,
+   "max_abs": 1.0029256343841553,
+   "sq_norm": 256.024067532941
+  },
+  "encoder.stages.4.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.9890897603363555,
+   "max_abs": 0.011991872452199459,
+   "sq_norm": 0.016154687089669946
+  },
+  "encoder.stages.4.blocks.0.conv1.conv.weight": {
+   "abs_sum": 13714.478078326792,
+   "max_abs": 0.014521542005240917,
+   "sq_norm": 116.52683805684572
+  },
+  "encoder.stages.4.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.6343870130367577,
+   "max_abs": 0.002224109135568142,
+   "sq_norm": 0.0012971000646666278
+  },
+  "encoder.stages.4.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 319.93882137537,
+   "max_abs": 1.0021865367889404,
+   "sq_norm": 319.8789681296599
+  },
+  "encoder.stages.4.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.755250057678495,
+   "max_abs": 0.010746271349489689,
+   "sq_norm": 0.012518787616526828
+  },
+  "encoder.stages.4.blocks.0.conv2.conv.weight": {
+   "abs_sum": 15427.795993385595,
+   "max_abs": 0.013284417800605297,
+   "sq_norm": 118.63886623579376
+  },
+  "encoder.stages.4.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.6459880308975698,
+   "max_abs": 0.002300690393894911,
+   "sq_norm": 0.0013361294915416597
+  },
+  "encoder.stages.4.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 319.9696419239044,
+   "max_abs": 1.0022186040878296,
+   "sq_norm": 319.9406299870986
+  },
+  "encoder.stages.4.blocks.0.skip.1.conv.weight": {
+   "abs_sum": 2554.4624006338163,
+   "max_abs": 0.06487040966749191,
+   "sq_norm": 106.49528853116598
+  },
+  "encoder.stages.4.blocks.0.skip.1.norm_op.bias": {
+   "abs_sum": 0.6459880308975698,
+   "max_abs": 0.002300690393894911,
+   "sq_norm": 0.0013361294915416597
+  },
+  "encoder.stages.4.blocks.0.skip.1.norm_op.weight": {
+   "abs_sum": 320.01517474651337,
+   "max_abs": 1.002313494682312,
+   "sq_norm": 320.0316921231357
+  },
+  "encoder.stages.4.blocks.1.conv1.conv.bias": {
+   "abs_sum": 1.7206803130484332,
+   "max_abs": 0.010753273032605648,
+   "sq_norm": 0.01230233307217813
+  },
+  "encoder.stages.4.blocks.1.conv1.conv.weight": {
+   "abs_sum": 15420.76906280815,
+   "max_abs": 0.013309887610375881,
+   "sq_norm": 118.54382289282469
+  },
+  "encoder.stages.4.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.6350624722981593,
+   "max_abs": 0.002214836422353983,
+   "sq_norm": 0.001294006257583742
+  },
+  "encoder.stages.4.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 319.98144006729126,
+   "max_abs": 1.0021723508834839,
+   "sq_norm": 319.96416656331564
+  },
+  "encoder.stages.4.blocks.1.conv2.conv.bias": {
+   "abs_sum": 1.6588130091968196,
+   "max_abs": 0.010709845460951328,
+   "sq_norm": 0.011796657033841708
+  },
+  "encoder.stages.4.blocks.1.conv2.conv.weight": {
+   "abs_sum": 15420.642039349623,
+   "max_abs": 0.013262073509395123,
+   "sq_norm": 118.51892262075484
+  },
+  "encoder.stages.4.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.6186168870408437,
+   "max_abs": 0.0023308866657316685,
+   "sq_norm": 0.0012512080940771146
+  },
+  "encoder.stages.4.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 319.9872798919678,
+   "max_abs": 1.0022703409194946,
+   "sq_norm": 319.97583509615436
+  },
+  "encoder.stages.4.blocks.2.conv1.conv.bias": {
+   "abs_sum": 1.807780118942901,
+   "max_abs": 0.010752939619123936,
+   "sq_norm": 0.013293040666370052
+  },
+  "encoder.stages.4.blocks.2.conv1.conv.weight": {
+   "abs_sum": 15438.355933577062,
+   "max_abs": 0.013282842002809048,
+   "sq_norm": 118.65375521991783
+  },
+  "encoder.stages.4.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.6258096544770524,
+   "max_abs": 0.002235185354948044,
+   "sq_norm": 0.0012516502642898044
+  },
+  "encoder.stages.4.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 319.9737294316292,
+   "max_abs": 1.00218665599823,
+   "sq_norm": 319.94874341085364
+  },
+  "encoder.stages.4.blocks.2.conv2.conv.bias": {
+   "abs_sum": 1.7279293459796463,
+   "max_abs": 0.01074191927909851,
+   "sq_norm": 0.012559982187729808
+  },
+  "encoder.stages.4.blocks.2.conv2.conv.weight": {
+   "abs_sum": 15413.415001055668,
+   "max_abs": 0.013296172022819519,
+   "sq_norm": 118.28773784057603
+  },
+  "encoder.stages.4.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.6087667580941343,
+   "max_abs": 0.0023070417810231447,
+   "sq_norm": 0.0012128813097652031
+  },
+  "encoder.stages.4.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 319.96971625089645,
+   "max_abs": 1.0022542476654053,
+   "sq_norm": 319.9406881433963
+  },
+  "encoder.stages.4.blocks.3.conv1.conv.bias": {
+   "abs_sum": 1.7592803003317385,
+   "max_abs": 0.010730202309787273,
+   "sq_norm": 0.012679555080394892
+  },
+  "encoder.stages.4.blocks.3.conv1.conv.weight": {
+   "abs_sum": 15416.43574927656,
+   "max_abs": 0.013208494521677494,
+   "sq_norm": 118.33673200235981
+  },
+  "encoder.stages.4.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 0.613428570846736,
+   "max_abs": 0.0022287783212959766,
+   "sq_norm": 0.001219510787208617
+  },
+  "encoder.stages.4.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 320.0075399875641,
+   "max_abs": 1.0021778345108032,
+   "sq_norm": 320.01633730825216
+  },
+  "encoder.stages.4.blocks.3.conv2.conv.bias": {
+   "abs_sum": 1.7808691041645943,
+   "max_abs": 0.010619697161018848,
+   "sq_norm": 0.013125713754529112
+  },
+  "encoder.stages.4.blocks.3.conv2.conv.weight": {
+   "abs_sum": 15415.476817799288,
+   "max_abs": 0.013323240913450718,
+   "sq_norm": 118.22711050855264
+  },
+  "encoder.stages.4.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 0.5910152817814378,
+   "max_abs": 0.002289396245032549,
+   "sq_norm": 0.001152587216967827
+  },
+  "encoder.stages.4.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 319.99138087034225,
+   "max_abs": 1.0024409294128418,
+   "sq_norm": 319.98402156487674
+  },
+  "encoder.stages.4.blocks.4.conv1.conv.bias": {
+   "abs_sum": 1.7088928078719618,
+   "max_abs": 0.01073179580271244,
+   "sq_norm": 0.012227977094995516
+  },
+  "encoder.stages.4.blocks.4.conv1.conv.weight": {
+   "abs_sum": 15410.198573860229,
+   "max_abs": 0.013240084983408451,
+   "sq_norm": 118.20185725517263
+  },
+  "encoder.stages.4.blocks.4.conv1.norm_op.bias": {
+   "abs_sum": 0.6138983176570036,
+   "max_abs": 0.0022909960243850946,
+   "sq_norm": 0.0012159533515738762
+  },
+  "encoder.stages.4.blocks.4.conv1.norm_op.weight": {
+   "abs_sum": 319.96654146909714,
+   "max_abs": 1.0022200345993042,
+   "sq_norm": 319.9342983163109
+  },
+  "encoder.stages.4.blocks.4.conv2.conv.bias": {
+   "abs_sum": 1.6401020934354165,
+   "max_abs": 0.010743565857410431,
+   "sq_norm": 0.011626104613712527
+  },
+  "encoder.stages.4.blocks.4.conv2.conv.weight": {
+   "abs_sum": 15397.351791177725,
+   "max_abs": 0.013293548487126827,
+   "sq_norm": 117.98290348039146
+  },
+  "encoder.stages.4.blocks.4.conv2.norm_op.bias": {
+   "abs_sum": 0.5954887198167853,
+   "max_abs": 0.0023021309170871973,
+   "sq_norm": 0.0011561865319974917
+  },
+  "encoder.stages.4.blocks.4.conv2.norm_op.weight": {
+   "abs_sum": 319.9585264325142,
+   "max_abs": 1.0022437572479248,
+   "sq_norm": 319.91825926721344
+  },
+  "encoder.stages.4.blocks.5.conv1.conv.bias": {
+   "abs_sum": 1.7773378075762594,
+   "max_abs": 0.01071231160312891,
+   "sq_norm": 0.012829857979827008
+  },
+  "encoder.stages.4.blocks.5.conv1.conv.weight": {
+   "abs_sum": 15386.36329867948,
+   "max_abs": 0.013277709484100342,
+   "sq_norm": 117.8421769263031
+  },
+  "encoder.stages.4.blocks.5.conv1.norm_op.bias": {
+   "abs_sum": 0.5990650322273723,
+   "max_abs": 0.0022529030684381723,
+   "sq_norm": 0.0011755595272059673
+  },
+  "encoder.stages.4.blocks.5.conv1.norm_op.weight": {
+   "abs_sum": 319.9893212914467,
+   "max_abs": 1.0022046566009521,
+   "sq_norm": 319.9798291172513
+  },
+  "encoder.stages.4.blocks.5.conv2.conv.bias": {
+   "abs_sum": 1.6216032131465,
+   "max_abs": 0.010738130658864975,
+   "sq_norm": 0.011371695035211628
+  },
+  "encoder.stages.4.blocks.5.conv2.conv.weight": {
+   "abs_sum": 15389.968719128243,
+   "max_abs": 0.013318857178092003,
+   "sq_norm": 117.76236320228901
+  },
+  "encoder.stages.4.blocks.5.conv2.norm_op.bias": {
+   "abs_sum": 0.5790498324058717,
+   "max_abs": 0.0023627853952348232,
+   "sq_norm": 0.001106704095611241
+  },
+  "encoder.stages.4.blocks.5.conv2.norm_op.weight": {
+   "abs_sum": 320.05846029520035,
+   "max_abs": 1.0023220777511597,
+   "sq_norm": 320.1180821902732
+  },
+  "encoder.stages.5.blocks.0.conv1.conv.bias": {
+   "abs_sum": 1.7118022211616335,
+   "max_abs": 0.010704985819756985,
+   "sq_norm": 0.01236091803588314
+  },
+  "encoder.stages.5.blocks.0.conv1.conv.weight": {
+   "abs_sum": 15281.470243860902,
+   "max_abs": 0.012914846651256084,
+   "sq_norm": 115.46644518501752
+  },
+  "encoder.stages.5.blocks.0.conv1.norm_op.bias": {
+   "abs_sum": 0.5371729301987216,
+   "max_abs": 0.0021061087027192116,
+   "sq_norm": 0.0009565054292052298
+  },
+  "encoder.stages.5.blocks.0.conv1.norm_op.weight": {
+   "abs_sum": 319.96953439712524,
+   "max_abs": 1.0020679235458374,
+   "sq_norm": 319.940025019705
+  },
+  "encoder.stages.5.blocks.0.conv2.conv.bias": {
+   "abs_sum": 1.7141246231276455,
+   "max_abs": 0.010755360126495361,
+   "sq_norm": 0.012148119270840094
+  },
+  "encoder.stages.5.blocks.0.conv2.conv.weight": {
+   "abs_sum": 15200.731104712435,
+   "max_abs": 0.012975336983799934,
+   "sq_norm": 113.69014729303453
+  },
+  "encoder.stages.5.blocks.0.conv2.norm_op.bias": {
+   "abs_sum": 0.5140427453297889,
+   "max_abs": 0.0021020786371082067,
+   "sq_norm": 0.0008805626633985864
+  },
+  "encoder.stages.5.blocks.0.conv2.norm_op.weight": {
+   "abs_sum": 319.96077877283096,
+   "max_abs": 1.0020564794540405,
+   "sq_norm": 319.92244058997414
+  },
+  "encoder.stages.5.blocks.1.conv1.conv.bias": {
+   "abs_sum": 1.7251134912712587,
+   "max_abs": 0.010719932615756989,
+   "sq_norm": 0.012610953916440567
+  },
+  "encoder.stages.5.blocks.1.conv1.conv.weight": {
+   "abs_sum": 15234.175225569214,
+   "max_abs": 0.012915381230413914,
+   "sq_norm": 114.48230278231343
+  },
+  "encoder.stages.5.blocks.1.conv1.norm_op.bias": {
+   "abs_sum": 0.5107084641877009,
+   "max_abs": 0.0020795376040041447,
+   "sq_norm": 0.0008894056427530302
+  },
+  "encoder.stages.5.blocks.1.conv1.norm_op.weight": {
+   "abs_sum": 320.0305336713791,
+   "max_abs": 1.0020368099212646,
+   "sq_norm": 320.0619593717793
+  },
+  "encoder.stages.5.blocks.1.conv2.conv.bias": {
+   "abs_sum": 1.8114619304978987,
+   "max_abs": 0.010745431296527386,
+   "sq_norm": 0.013301777959456444
+  },
+  "encoder.stages.5.blocks.1.conv2.conv.weight": {
+   "abs_sum": 15157.756861628517,
+   "max_abs": 0.013036387972533703,
+   "sq_norm": 112.87609424480858
+  },
+  "encoder.stages.5.blocks.1.conv2.norm_op.bias": {
+   "abs_sum": 0.499979715088557,
+   "max_abs": 0.0020837802439928055,
+   "sq_norm": 0.0008359053547980231
+  },
+  "encoder.stages.5.blocks.1.conv2.norm_op.weight": {
+   "abs_sum": 320.0209573507309,
+   "max_abs": 1.0020544528961182,
+   "sq_norm": 320.04273979986664
+  },
+  "encoder.stages.5.blocks.2.conv1.conv.bias": {
+   "abs_sum": 1.706347250214094,
+   "max_abs": 0.010756738483905792,
+   "sq_norm": 0.012265902962587196
+  },
+  "encoder.stages.5.blocks.2.conv1.conv.weight": {
+   "abs_sum": 15197.640309909,
+   "max_abs": 0.012923098169267178,
+   "sq_norm": 113.71316018690202
+  },
+  "encoder.stages.5.blocks.2.conv1.norm_op.bias": {
+   "abs_sum": 0.49573830613007885,
+   "max_abs": 0.0020567127503454685,
+   "sq_norm": 0.0008283304338755443
+  },
+  "encoder.stages.5.blocks.2.conv1.norm_op.weight": {
+   "abs_sum": 319.98942667245865,
+   "max_abs": 1.0020520687103271,
+   "sq_norm": 319.97966178750255
+  },
+  "encoder.stages.5.blocks.2.conv2.conv.bias": {
+   "abs_sum": 1.7119250037067104,
+   "max_abs": 0.010730006732046604,
+   "sq_norm": 0.012339712680571158
+  },
+  "encoder.stages.5.blocks.2.conv2.conv.weight": {
+   "abs_sum": 15153.999249180504,
+   "max_abs": 0.01296449825167656,
+   "sq_norm": 112.66629952055325
+  },
+  "encoder.stages.5.blocks.2.conv2.norm_op.bias": {
+   "abs_sum": 0.4765059679230035,
+   "max_abs": 0.002068964997306466,
+   "sq_norm": 0.0007799810133635088
+  },
+  "encoder.stages.5.blocks.2.conv2.norm_op.weight": {
+   "abs_sum": 320.02871239185333,
+   "max_abs": 1.0020254850387573,
+   "sq_norm": 320.0582145812939
+  },
+  "encoder.stages.5.blocks.3.conv1.conv.bias": {
+   "abs_sum": 1.6781703902352092,
+   "max_abs": 0.010733421891927719,
+   "sq_norm": 0.011816248675923548
+  },
+  "encoder.stages.5.blocks.3.conv1.conv.weight": {
+   "abs_sum": 15191.686022675856,
+   "max_abs": 0.012918268330395222,
+   "sq_norm": 113.53932537359893
+  },
+  "encoder.stages.5.blocks.3.conv1.norm_op.bias": {
+   "abs_sum": 0.46790497412803234,
+   "max_abs": 0.0020298268646001816,
+   "sq_norm": 0.0007491746726363243
+  },
+  "encoder.stages.5.blocks.3.conv1.norm_op.weight": {
+   "abs_sum": 319.99834883213043,
+   "max_abs": 1.0019867420196533,
+   "sq_norm": 319.9974591544596
+  },
+  "encoder.stages.5.blocks.3.conv2.conv.bias": {
+   "abs_sum": 1.706064680878626,
+   "max_abs": 0.010731017217040062,
+   "sq_norm": 0.012105922566829663
+  },
+  "encoder.stages.5.blocks.3.conv2.conv.weight": {
+   "abs_sum": 15133.967677173561,
+   "max_abs": 0.012913389131426811,
+   "sq_norm": 112.34557259124017
+  },
+  "encoder.stages.5.blocks.3.conv2.norm_op.bias": {
+   "abs_sum": 0.4551160917417292,
+   "max_abs": 0.002048921538516879,
+   "sq_norm": 0.0007270854117010241
+  },
+  "encoder.stages.5.blocks.3.conv2.norm_op.weight": {
+   "abs_sum": 319.9942405819893,
+   "max_abs": 1.00203537940979,
+   "sq_norm": 319.98923901682
+  },
+  "encoder.stages.5.blocks.4.conv1.conv.bias": {
+   "abs_sum": 1.6512433814787073,
+   "max_abs": 0.01075301319360733,
+   "sq_norm": 0.011474492222032003
+  },
+  "encoder.stages.5.blocks.4.conv1.conv.weight": {
+   "abs_sum": 15178.712326381068,
+   "max_abs": 0.012912836857140064,
+   "sq_norm": 113.27261009144031
+  },
+  "encoder.stages.5.blocks.4.conv1.norm_op.bias": {
+   "abs_sum": 0.47842016257345676,
+   "max_abs": 0.0020421682856976986,
+   "sq_norm": 0.0007781018899263432
+  },
+  "encoder.stages.5.blocks.4.conv1.norm_op.weight": {
+   "abs_sum": 319.9954841732979,
+   "max_abs": 1.0019853115081787,
+   "sq_norm": 319.9917803422772
+  },
+  "encoder.stages.5.blocks.4.conv2.conv.bias": {
+   "abs_sum": 1.6773499562696088,
+   "max_abs": 0.01071216445416212,
+   "sq_norm": 0.011839358442228089
+  },
+  "encoder.stages.5.blocks.4.conv2.conv.weight": {
+   "abs_sum": 15139.01396272437,
+   "max_abs": 0.012914815917611122,
+   "sq_norm": 112.31411123153953
+  },
+  "encoder.stages.5.blocks.4.conv2.norm_op.bias": {
+   "abs_sum": 0.4504470190277061,
+   "max_abs": 0.002034262288361788,
+   "sq_norm": 0.0007137269172985797
+  },
+  "encoder.stages.5.blocks.4.conv2.norm_op.weight": {
+   "abs_sum": 320.00728648900986,
+   "max_abs": 1.0020127296447754,
+   "sq_norm": 320.01526781073255
+  },
+  "encoder.stages.5.blocks.5.conv1.conv.bias": {
+   "abs_sum": 1.687081494937047,
+   "max_abs": 0.01062116026878357,
+   "sq_norm": 0.012092867898016776
+  },
+  "encoder.stages.5.blocks.5.conv1.conv.weight": {
+   "abs_sum": 15175.193407274235,
+   "max_abs": 0.012910108081996441,
+   "sq_norm": 113.15126219871817
+  },
+  "encoder.stages.5.blocks.5.conv1.norm_op.bias": {
+   "abs_sum": 0.45613098370085936,
+   "max_abs": 0.0020216319244354963,
+   "sq_norm": 0.0007209312947341539
+  },
+  "encoder.stages.5.blocks.5.conv1.norm_op.weight": {
+   "abs_sum": 319.9852566123009,
+   "max_abs": 1.001960039138794,
+   "sq_norm": 319.9712736025783
+  },
+  "encoder.stages.5.blocks.5.conv2.conv.bias": {
+   "abs_sum": 1.7485269023154615,
+   "max_abs": 0.01074470765888691,
+   "sq_norm": 0.01261245796553358
+  },
+  "encoder.stages.5.blocks.5.conv2.conv.weight": {
+   "abs_sum": 15125.977903219593,
+   "max_abs": 0.012985910288989544,
+   "sq_norm": 112.09939501615914
+  },
+  "encoder.stages.5.blocks.5.conv2.norm_op.bias": {
+   "abs_sum": 0.45335862342835753,
+   "max_abs": 0.0020387121476233006,
+   "sq_norm": 0.000720609595904167
+  },
+  "encoder.stages.5.blocks.5.conv2.norm_op.weight": {
+   "abs_sum": 320.00596421957016,
+   "max_abs": 1.0019712448120117,
+   "sq_norm": 320.0126406689769
+  },
+  "encoder.stem.conv1.conv.bias": {
+   "abs_sum": 2.694240021985024,
+   "max_abs": 0.18375135958194733,
+   "sq_norm": 0.3010986277399392
+  },
+  "encoder.stem.conv1.conv.weight": {
+   "abs_sum": 83.9447801168717,
+   "max_abs": 0.1942507028579712,
+   "sq_norm": 10.910568335115082
+  },
+  "encoder.stem.conv1.norm_op.bias": {
+   "abs_sum": 0.047944153513526544,
+   "max_abs": 0.002982891397550702,
+   "sq_norm": 0.00010412613250363624
+  },
+  "encoder.stem.conv1.norm_op.weight": {
+   "abs_sum": 32.02297526597977,
+   "max_abs": 1.0029187202453613,
+   "sq_norm": 32.04603770818906
+  },
+  "encoder_films.0.affine.bias": {
+   "abs_sum": 0.09220112671027891,
+   "max_abs": 0.0029734240379184484,
+   "sq_norm": 0.00019383390067007942
+  },
+  "encoder_films.0.affine.weight": {
+   "abs_sum": 5.901121101516765,
+   "max_abs": 0.002974056638777256,
+   "sq_norm": 0.012406005399712646
+  },
+  "encoder_films.1.affine.bias": {
+   "abs_sum": 0.18593271776626352,
+   "max_abs": 0.0029961606487631798,
+   "sq_norm": 0.00040024387090255076
+  },
+  "encoder_films.1.affine.weight": {
+   "abs_sum": 11.899165781884221,
+   "max_abs": 0.002996263559907675,
+   "sq_norm": 0.025612587331497644
+  },
+  "encoder_films.2.affine.bias": {
+   "abs_sum": 0.46675803601101507,
+   "max_abs": 0.0029974007047712803,
+   "sq_norm": 0.0010533695475705685
+  },
+  "encoder_films.2.affine.weight": {
+   "abs_sum": 29.827656216279138,
+   "max_abs": 0.0029993411153554916,
+   "sq_norm": 0.0672117548921927
+  },
+  "encoder_films.3.affine.bias": {
+   "abs_sum": 1.0046990492846817,
+   "max_abs": 0.0029761213809251785,
+   "sq_norm": 0.0022300237589846054
+  },
+  "encoder_films.3.affine.weight": {
+   "abs_sum": 63.38687537803344,
+   "max_abs": 0.0029842110816389322,
+   "sq_norm": 0.13881528462989556
+  },
+  "encoder_films.4.affine.bias": {
+   "abs_sum": 1.2136604018887738,
+   "max_abs": 0.002617954509332776,
+   "sq_norm": 0.002419706683213796
+  },
+  "encoder_films.4.affine.weight": {
+   "abs_sum": 71.80556706490643,
+   "max_abs": 0.0026935769710689783,
+   "sq_norm": 0.13677013561547643
+  },
+  "encoder_films.5.affine.bias": {
+   "abs_sum": 1.015037828587083,
+   "max_abs": 0.0024100812152028084,
+   "sq_norm": 0.001780678612842728
+  },
+  "encoder_films.5.affine.weight": {
+   "abs_sum": 57.08148943552669,
+   "max_abs": 0.0026314002461731434,
+   "sq_norm": 0.0945176773962684
+  },
+  "head_demo.net.0.bias": {
+   "abs_sum": 7.438538649412294,
+   "max_abs": 0.029874129220843315,
+   "sq_norm": 0.14647044730085562
+  },
+  "head_demo.net.0.weight": {
+   "abs_sum": 8567.035416080627,
+   "max_abs": 0.029880618676543236,
+   "sq_norm": 170.6996908073471
+  },
+  "head_demo.net.1.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "head_demo.net.1.weight": {
+   "abs_sum": 512.0,
+   "max_abs": 1.0,
+   "sq_norm": 512.0
+  },
+  "head_demo.net.3.bias": {
+   "abs_sum": 5.657751277700299,
+   "max_abs": 0.043964460492134094,
+   "sq_norm": 0.16502295999568828
+  },
+  "head_demo.net.3.weight": {
+   "abs_sum": 2895.776475905779,
+   "max_abs": 0.044192008674144745,
+   "sq_norm": 85.2872549600839
+  },
+  "head_patho.net.0.bias": {
+   "abs_sum": 7.665897161801695,
+   "max_abs": 0.02983834035694599,
+   "sq_norm": 0.1535507351209594
+  },
+  "head_patho.net.0.weight": {
+   "abs_sum": 8568.872498138197,
+   "max_abs": 0.029880614951252937,
+   "sq_norm": 170.7302329400785
+  },
+  "head_patho.net.1.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "head_patho.net.1.weight": {
+   "abs_sum": 512.0,
+   "max_abs": 1.0,
+   "sq_norm": 512.0
+  },
+  "head_patho.net.3.bias": {
+   "abs_sum": 5.638429379574518,
+   "max_abs": 0.044150739908218384,
+   "sq_norm": 0.16775370353461327
+  },
+  "head_patho.net.3.weight": {
+   "abs_sum": 2895.7000921533936,
+   "max_abs": 0.04419384151697159,
+   "sq_norm": 85.32979605229848
+  },
+  "head_stage1_anatomy.net.0.bias": {
+   "abs_sum": 7.476517164407596,
+   "max_abs": 0.0297988373786211,
+   "sq_norm": 0.1472254405212585
+  },
+  "head_stage1_anatomy.net.0.weight": {
+   "abs_sum": 8573.720637369619,
+   "max_abs": 0.029880665242671967,
+   "sq_norm": 170.89437922908024
+  },
+  "head_stage1_anatomy.net.1.bias": {
+   "abs_sum": 0.0,
+   "max_abs": 0.0,
+   "sq_norm": 0.0
+  },
+  "head_stage1_anatomy.net.1.weight": {
+   "abs_sum": 512.0,
+   "max_abs": 1.0,
+   "sq_norm": 512.0
+  },
+  "head_stage1_anatomy.net.3.bias": {
+   "abs_sum": 5.658144029803225,
+   "max_abs": 0.04401298239827156,
+   "sq_norm": 0.16846347676218493
+  },
+  "head_stage1_anatomy.net.3.weight": {
+   "abs_sum": 2891.234223049127,
+   "max_abs": 0.044193726032972336,
+   "sq_norm": 85.14091545431855
+  },
+  "modality_embedding.weight": {
+   "abs_sum": 809.376619371018,
+   "max_abs": 2.81571626663208,
+   "sq_norm": 994.0562641582978
+  }
+ },
+ "schema": "fomo26-amaes-step-reference-v1",
+ "seed": 20260908,
+ "shapes": {
+  "decoder.decoder_conv1.conv1.conv.bias": [
+   320
+  ],
+  "decoder.decoder_conv1.conv1.conv.weight": [
+   320,
+   640,
+   3,
+   3,
+   3
+  ],
+  "decoder.decoder_conv1.conv1.norm_op.bias": [
+   320
+  ],
+  "decoder.decoder_conv1.conv1.norm_op.weight": [
+   320
+  ],
+  "decoder.decoder_conv2.conv1.conv.bias": [
+   256
+  ],
+  "decoder.decoder_conv2.conv1.conv.weight": [
+   256,
+   512,
+   3,
+   3,
+   3
+  ],
+  "decoder.decoder_conv2.conv1.norm_op.bias": [
+   256
+  ],
+  "decoder.decoder_conv2.conv1.norm_op.weight": [
+   256
+  ],
+  "decoder.decoder_conv3.conv1.conv.bias": [
+   128
+  ],
+  "decoder.decoder_conv3.conv1.conv.weight": [
+   128,
+   256,
+   3,
+   3,
+   3
+  ],
+  "decoder.decoder_conv3.conv1.norm_op.bias": [
+   128
+  ],
+  "decoder.decoder_conv3.conv1.norm_op.weight": [
+   128
+  ],
+  "decoder.decoder_conv4.conv1.conv.bias": [
+   64
+  ],
+  "decoder.decoder_conv4.conv1.conv.weight": [
+   64,
+   128,
+   3,
+   3,
+   3
+  ],
+  "decoder.decoder_conv4.conv1.norm_op.bias": [
+   64
+  ],
+  "decoder.decoder_conv4.conv1.norm_op.weight": [
+   64
+  ],
+  "decoder.decoder_conv5.conv1.conv.bias": [
+   32
+  ],
+  "decoder.decoder_conv5.conv1.conv.weight": [
+   32,
+   64,
+   3,
+   3,
+   3
+  ],
+  "decoder.decoder_conv5.conv1.norm_op.bias": [
+   32
+  ],
+  "decoder.decoder_conv5.conv1.norm_op.weight": [
+   32
+  ],
+  "decoder.out_conv.bias": [
+   1
+  ],
+  "decoder.out_conv.weight": [
+   1,
+   32,
+   1,
+   1,
+   1
+  ],
+  "decoder.upsample1.bias": [
+   320
+  ],
+  "decoder.upsample1.weight": [
+   320,
+   320,
+   2,
+   2,
+   2
+  ],
+  "decoder.upsample2.bias": [
+   256
+  ],
+  "decoder.upsample2.weight": [
+   320,
+   256,
+   2,
+   2,
+   2
+  ],
+  "decoder.upsample3.bias": [
+   128
+  ],
+  "decoder.upsample3.weight": [
+   256,
+   128,
+   2,
+   2,
+   2
+  ],
+  "decoder.upsample4.bias": [
+   64
+  ],
+  "decoder.upsample4.weight": [
+   128,
+   64,
+   2,
+   2,
+   2
+  ],
+  "decoder.upsample5.bias": [
+   32
+  ],
+  "decoder.upsample5.weight": [
+   64,
+   32,
+   2,
+   2,
+   2
+  ],
+  "decoder_films.0.affine.bias": [
+   64
+  ],
+  "decoder_films.0.affine.weight": [
+   64,
+   64
+  ],
+  "decoder_films.1.affine.bias": [
+   128
+  ],
+  "decoder_films.1.affine.weight": [
+   128,
+   64
+  ],
+  "decoder_films.2.affine.bias": [
+   256
+  ],
+  "decoder_films.2.affine.weight": [
+   256,
+   64
+  ],
+  "decoder_films.3.affine.bias": [
+   512
+  ],
+  "decoder_films.3.affine.weight": [
+   512,
+   64
+  ],
+  "decoder_films.4.affine.bias": [
+   640
+  ],
+  "decoder_films.4.affine.weight": [
+   640,
+   64
+  ],
+  "decoder_films.5.affine.bias": [
+   640
+  ],
+  "decoder_films.5.affine.weight": [
+   640,
+   64
+  ],
+  "encoder.stages.0.blocks.0.conv1.conv.bias": [
+   32
+  ],
+  "encoder.stages.0.blocks.0.conv1.conv.weight": [
+   32,
+   32,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.0.blocks.0.conv1.norm_op.bias": [
+   32
+  ],
+  "encoder.stages.0.blocks.0.conv1.norm_op.weight": [
+   32
+  ],
+  "encoder.stages.0.blocks.0.conv2.conv.bias": [
+   32
+  ],
+  "encoder.stages.0.blocks.0.conv2.conv.weight": [
+   32,
+   32,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.0.blocks.0.conv2.norm_op.bias": [
+   32
+  ],
+  "encoder.stages.0.blocks.0.conv2.norm_op.weight": [
+   32
+  ],
+  "encoder.stages.1.blocks.0.conv1.conv.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.conv1.conv.weight": [
+   64,
+   32,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.1.blocks.0.conv1.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.conv1.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.conv2.conv.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.conv2.conv.weight": [
+   64,
+   64,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.1.blocks.0.conv2.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.conv2.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.skip.1.conv.weight": [
+   64,
+   32,
+   1,
+   1,
+   1
+  ],
+  "encoder.stages.1.blocks.0.skip.1.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.0.skip.1.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.1.blocks.1.conv1.conv.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.1.conv1.conv.weight": [
+   64,
+   64,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.1.blocks.1.conv1.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.1.conv1.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.1.blocks.1.conv2.conv.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.1.conv2.conv.weight": [
+   64,
+   64,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.1.blocks.1.conv2.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.1.conv2.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.1.blocks.2.conv1.conv.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.2.conv1.conv.weight": [
+   64,
+   64,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.1.blocks.2.conv1.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.2.conv1.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.1.blocks.2.conv2.conv.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.2.conv2.conv.weight": [
+   64,
+   64,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.1.blocks.2.conv2.norm_op.bias": [
+   64
+  ],
+  "encoder.stages.1.blocks.2.conv2.norm_op.weight": [
+   64
+  ],
+  "encoder.stages.2.blocks.0.conv1.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.conv1.conv.weight": [
+   128,
+   64,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.0.conv1.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.conv1.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.conv2.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.conv2.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.0.conv2.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.conv2.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.skip.1.conv.weight": [
+   128,
+   64,
+   1,
+   1,
+   1
+  ],
+  "encoder.stages.2.blocks.0.skip.1.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.0.skip.1.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.1.conv1.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.1.conv1.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.1.conv1.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.1.conv1.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.1.conv2.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.1.conv2.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.1.conv2.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.1.conv2.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.2.conv1.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.2.conv1.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.2.conv1.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.2.conv1.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.2.conv2.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.2.conv2.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.2.conv2.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.2.conv2.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.3.conv1.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.3.conv1.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.3.conv1.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.3.conv1.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.2.blocks.3.conv2.conv.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.3.conv2.conv.weight": [
+   128,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.2.blocks.3.conv2.norm_op.bias": [
+   128
+  ],
+  "encoder.stages.2.blocks.3.conv2.norm_op.weight": [
+   128
+  ],
+  "encoder.stages.3.blocks.0.conv1.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.conv1.conv.weight": [
+   256,
+   128,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.0.conv1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.conv1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.conv2.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.conv2.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.0.conv2.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.conv2.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.skip.1.conv.weight": [
+   256,
+   128,
+   1,
+   1,
+   1
+  ],
+  "encoder.stages.3.blocks.0.skip.1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.0.skip.1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.1.conv1.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.1.conv1.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.1.conv1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.1.conv1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.1.conv2.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.1.conv2.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.1.conv2.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.1.conv2.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.2.conv1.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.2.conv1.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.2.conv1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.2.conv1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.2.conv2.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.2.conv2.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.2.conv2.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.2.conv2.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.3.conv1.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.3.conv1.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.3.conv1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.3.conv1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.3.conv2.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.3.conv2.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.3.conv2.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.3.conv2.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.4.conv1.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.4.conv1.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.4.conv1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.4.conv1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.4.conv2.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.4.conv2.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.4.conv2.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.4.conv2.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.5.conv1.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.5.conv1.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.5.conv1.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.5.conv1.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.3.blocks.5.conv2.conv.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.5.conv2.conv.weight": [
+   256,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.3.blocks.5.conv2.norm_op.bias": [
+   256
+  ],
+  "encoder.stages.3.blocks.5.conv2.norm_op.weight": [
+   256
+  ],
+  "encoder.stages.4.blocks.0.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.conv1.conv.weight": [
+   320,
+   256,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.0.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.0.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.skip.1.conv.weight": [
+   320,
+   256,
+   1,
+   1,
+   1
+  ],
+  "encoder.stages.4.blocks.0.skip.1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.0.skip.1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.1.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.1.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.1.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.1.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.1.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.1.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.1.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.1.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.2.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.2.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.2.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.2.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.2.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.2.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.2.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.2.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.3.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.3.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.3.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.3.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.3.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.3.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.3.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.3.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.4.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.4.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.4.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.4.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.4.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.4.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.4.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.4.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.5.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.5.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.5.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.5.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.4.blocks.5.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.5.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.4.blocks.5.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.4.blocks.5.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.0.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.0.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.0.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.0.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.0.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.0.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.0.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.0.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.1.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.1.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.1.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.1.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.1.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.1.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.1.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.1.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.2.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.2.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.2.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.2.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.2.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.2.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.2.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.2.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.3.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.3.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.3.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.3.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.3.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.3.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.3.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.3.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.4.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.4.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.4.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.4.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.4.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.4.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.4.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.4.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.5.conv1.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.5.conv1.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.5.conv1.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.5.conv1.norm_op.weight": [
+   320
+  ],
+  "encoder.stages.5.blocks.5.conv2.conv.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.5.conv2.conv.weight": [
+   320,
+   320,
+   3,
+   3,
+   3
+  ],
+  "encoder.stages.5.blocks.5.conv2.norm_op.bias": [
+   320
+  ],
+  "encoder.stages.5.blocks.5.conv2.norm_op.weight": [
+   320
+  ],
+  "encoder.stem.conv1.conv.bias": [
+   32
+  ],
+  "encoder.stem.conv1.conv.weight": [
+   32,
+   1,
+   3,
+   3,
+   3
+  ],
+  "encoder.stem.conv1.norm_op.bias": [
+   32
+  ],
+  "encoder.stem.conv1.norm_op.weight": [
+   32
+  ],
+  "encoder_films.0.affine.bias": [
+   64
+  ],
+  "encoder_films.0.affine.weight": [
+   64,
+   64
+  ],
+  "encoder_films.1.affine.bias": [
+   128
+  ],
+  "encoder_films.1.affine.weight": [
+   128,
+   64
+  ],
+  "encoder_films.2.affine.bias": [
+   256
+  ],
+  "encoder_films.2.affine.weight": [
+   256,
+   64
+  ],
+  "encoder_films.3.affine.bias": [
+   512
+  ],
+  "encoder_films.3.affine.weight": [
+   512,
+   64
+  ],
+  "encoder_films.4.affine.bias": [
+   640
+  ],
+  "encoder_films.4.affine.weight": [
+   640,
+   64
+  ],
+  "encoder_films.5.affine.bias": [
+   640
+  ],
+  "encoder_films.5.affine.weight": [
+   640,
+   64
+  ],
+  "head_demo.net.0.bias": [
+   512
+  ],
+  "head_demo.net.0.weight": [
+   512,
+   1120
+  ],
+  "head_demo.net.1.bias": [
+   512
+  ],
+  "head_demo.net.1.weight": [
+   512
+  ],
+  "head_demo.net.3.bias": [
+   256
+  ],
+  "head_demo.net.3.weight": [
+   256,
+   512
+  ],
+  "head_patho.net.0.bias": [
+   512
+  ],
+  "head_patho.net.0.weight": [
+   512,
+   1120
+  ],
+  "head_patho.net.1.bias": [
+   512
+  ],
+  "head_patho.net.1.weight": [
+   512
+  ],
+  "head_patho.net.3.bias": [
+   256
+  ],
+  "head_patho.net.3.weight": [
+   256,
+   512
+  ],
+  "head_stage1_anatomy.net.0.bias": [
+   512
+  ],
+  "head_stage1_anatomy.net.0.weight": [
+   512,
+   1120
+  ],
+  "head_stage1_anatomy.net.1.bias": [
+   512
+  ],
+  "head_stage1_anatomy.net.1.weight": [
+   512
+  ],
+  "head_stage1_anatomy.net.3.bias": [
+   256
+  ],
+  "head_stage1_anatomy.net.3.weight": [
+   256,
+   512
+  ],
+  "modality_embedding.weight": [
+   16,
+   64
+  ]
+ },
+ "steps": 3,
+ "update_totals": {
+  "abs_sum": 185226.2854176344,
+  "sq_norm": 376.13518417064324
+ }
+}

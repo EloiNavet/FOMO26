@@ -1,0 +1,21 @@
+# @package _global_
+defaults:
+  - /default_finetune_seg
+  - /model/resenc_unet_b@model
+  - _self_
+
+task: SEG902_FOMO26_Task2_lesion
+checkpoint_path: ${oc.env:FOMO26_RESENC_CHECKPOINT,${oc.env:PWD}/finetuning/resenc_unet_b.ckpt}
+
+data:
+  train_split: split_70_15_15
+  test_split: TEST_70_15_15
+
+training:
+  batch_size: 1
+  patch_size: [160, 160, 32]
+  load_decoder: False
+  repeat_stem_weights: True
+
+logger:
+  wandb_logging: False

@@ -1,0 +1,62 @@
+# @package _global_
+# Experiment A: pure ResEnc-B AMAES on the finalized curated P0 corpus.
+#
+# This is the plain reconstruction comparator for the safety matrix. Lane A is ResEnc Dense-EMA
+# JEPA + AMAES and Lane B is UNet-M stacked, so without this arm there is no ResEnc-AMAES control
+# on the same corpus, the same optimizer horizon and the same downstream representation path.
+#
+# Strictly AMAES reconstruction. Every other objective is explicitly off below rather than left to
+# a default, so the arm cannot silently acquire a term.
+defaults:
+  - base
+  - /model/resenc_unet_b@model
+  - _self_
+
+campaign:
+  architecture: resenc_unet_b
+  candidate_id: SAFETY_RESENC_AMAES
+  objective: amaes_reconstruction_only
+
+training:
+  # Same global optimizer batch (32) as both active lanes; geometry comes from the launcher.
+  batch_size: 4
+  accumulate_grad_batches: 2
+
+model:
+  # Downstream transfer loads the encoder only, and modality conditioning is unavailable at
+  # finetune time, so FiLM must stay off for the trunk to be transferable.
+  modality_conditioning: false
+  use_skip_connections: true
+
+data:
+  same_session_multimodal_batches: false
+  multimodal_batch_probability: 0.0
+  demographic_batch_probability: 0.0
+  modality_targets: {enabled: false}
+  scanner_targets: {enabled: false}
+  registered_only: false
+
+transforms:
+  # AMAES owns the mask: the reconstruction target is the masked input.
+  masking: true
+  mask_policy: random
+
+ssl:
+  # Plain reconstruction: no EMA teacher, no predictor, no latent objective. `matched_control`
+  # forces the execution path so a control arm differs from its treatment by the objective alone.
+  matched_control:
+    force_contrastive_path: false
+    force_momentum_encoder: false
+
+losses:
+  # AMAES reconstruction is the only objective this distribution provides, and the only one
+  # the published run used. The arms it was compared against are not part of the code release.
+  mse:
+    enabled: true
+    weight: 10.0
+    foreground_mode: none
+    foreground_aware: false
+
+logger:
+  log_every_n_steps: 10
+  loss_gradient_norm_every_n_steps: 100

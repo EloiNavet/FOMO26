@@ -1,0 +1,89 @@
+# @package _global_
+# Safety-lane backup pretraining base.
+#
+# This is NOT the Task-5 screening campaign. It shares the finalized P0 curated corpus and the
+# identical optimizer horizon so that checkpoints are comparable, but it carries its own campaign
+# identity, its own per-lane model root, and never references the frozen Task-5 candidate matrix.
+#
+# The dataset contract below is enforced by _validate_campaign_dataset_contract() before any setup:
+# the canonical manifest is re-hashed and the split is checked, so a toy or alternate corpus cannot
+# be substituted silently.
+defaults:
+  - /default_pretrain
+  - _self_
+
+task: PT900_FOMO300K
+root: fomo26
+stem: safety
+resume_training: false
+
+completion_validation:
+  enabled: false
+  expected_step: null
+  expected_epoch: null
+  checkpoint_sha256: null
+
+campaign:
+  protocol: safety_backup_v1
+  architecture: null
+  candidate_id: null
+  objective: null
+  phase: safety
+  calibration_pending: false
+  campaign_sha256: ${oc.env:FOMO26_CAMPAIGN_SHA256,UNSET}
+  source_git_commit: ${oc.env:FOMO26_SOURCE_GIT_COMMIT,UNSET}
+  launch_git_commit: ${oc.env:FOMO26_LAUNCH_GIT_COMMIT,UNSET}
+  checkpoint_steps: [32000]
+  stop_at_checkpoint_step: 32000
+  pause_at_stop: true
+  dataset_contract:
+    required_root: ${oc.env:ASPARAGUS_DATA}
+    manifest_relative_path: PT900_FOMO300K/canonical_manifest_v2.tsv
+    manifest_sha256: 78ce45fd74d330687bd8a993d648b58504e6da8e3397f3716dedc6e4799a1eb9
+    tensor_manifest_relative_path: PT900_FOMO300K/tensor_manifest.tsv
+    tensor_manifest_sha256: ea4ada4400b78993ec2aea6e9ca0ee518c238a5e467834713f8e8a6bf4784702
+    accepted_tensors: 33336
+    excluded_tensors: 0
+    tensor_dtype: float32
+    split: split_99_01_00
+
+training:
+  patch_size: [160, 160, 160]
+  # batch_size / accumulate_grad_batches are set per lane so that global_batch_size, steps and
+  # steps_per_epoch all resolve from the same numbers the launcher is given on the command line.
+  global_batch_size: ${eval:"${training.batch_size} * ${hardware.num_devices} * ${hardware.num_nodes} * ${training.accumulate_grad_batches}"}
+  max_samples: 6_000_000
+  # Identical optimizer horizon to the official campaign: the safety runs stop at an exact
+  # checkpoint step, they never shorten or rescale the LR schedule.
+  steps: ${eval:"${training.max_samples} // ${training.global_batch_size}"}
+  stop_after_steps: null
+  steps_per_epoch: ${eval:"1000 * ${training.accumulate_grad_batches}"}
+  val_steps_per_epoch: ${eval:"${training.steps_per_epoch} // 100"}
+  check_val_every_n_epoch: 8
+  warmup_ratio: 0.02
+  # Corrected, accumulation-independent warmup contract: exactly warmup_ratio of the optimizer
+  # horizon, in optimizer steps (187500 * 0.02 = 3750). The inherited warmup_epochs expression
+  # divides optimizer steps by microbatches-per-epoch, so it scales with accumulate_grad_batches:
+  # the calibrations measured 300 warmup steps at accumulation 8 and 900 at accumulation 4 for the
+  # same nominal 2%. warmup_steps takes precedence and makes every geometry identical.
+  warmup_steps: ${eval:"int(round(${training.steps} * ${training.warmup_ratio}))"}
+  seed: 431027
+  mask_ratio: 0.6
+  rec_loss_masked_only: true
+
+model:
+  modality_conditioning: false
+  ckpt_every_n_epoch: 8
+
+transforms:
+  mask_policy: random
+
+hardware:
+  num_devices: 4
+  trainer_devices: 4
+  num_nodes: 1
+  precision: bf16-mixed
+
+logger:
+  loss_gradient_norm_every_n_steps: 100
+  csv_logging: true

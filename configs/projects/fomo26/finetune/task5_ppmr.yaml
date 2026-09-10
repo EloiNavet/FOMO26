@@ -1,0 +1,20 @@
+# @package _global_
+defaults:
+  - /default_finetune_cls
+  - /model/resenc_unet_b_clsreg@model
+  - _self_
+
+task: CLS905_FOMO26_Task5_ppmr
+checkpoint_path: ${oc.env:FOMO26_RESENC_CHECKPOINT,${oc.env:PWD}/finetuning/resenc_unet_b.ckpt}
+
+data:
+  train_split: split_70_15_15
+  test_split: TEST_70_15_15
+
+training:
+  batch_size: 1
+  target_size: [128, 128, 128]
+  repeat_stem_weights: True
+
+logger:
+  wandb_logging: False

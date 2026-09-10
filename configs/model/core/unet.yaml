@@ -1,0 +1,42 @@
+_pretrain_net:
+  _target_: asparagus.modules.networks.unet.${model.pretrain_net}
+  dimensions: ${model.dimensions}
+  use_skip_connections: ${model.use_skip_connections}
+  head_out_dim: ${model.head_out_dim}
+  head_hidden_dim: ${model.head_hidden_dim}
+  num_modalities: ${model.num_modalities}
+  modality_embedding_dim: ${model.modality_embedding_dim}
+  modality_conditioning: ${model.modality_conditioning}
+  h_global_layer_norm: ${model.h_global_layer_norm}
+  input_channels: 1
+  output_channels: 1
+
+_seg_net:
+  _target_: asparagus.modules.networks.unet.${model.seg_net}
+  dimensions: ${model.dimensions}
+  deep_supervision: ${model.deep_supervision}
+
+_cls_net:
+  _target_: asparagus.modules.networks.unet.${model.cls_net}
+  dimensions: ${model.dimensions}
+
+_plugin_seg_net:
+  _target_: asparagus.modules.networks.unet.${model.plugin_seg_net}
+  dimensions: ${model.dimensions}
+
+pretrain_optim: AdamW
+pretrain_lr: 3e-4
+pretrain_weight_decay: 0.05
+
+train_optim: SGD
+train_lr: 1e-2
+finetune_optim: AdamW
+finetune_lr: 1e-3
+
+weight_decay: 3e-5
+nesterov: True
+momentum: 0.99
+patch_embed_size: 4
+
+use_skip_connections: True
+deep_supervision: False

@@ -1,0 +1,19 @@
+# @package _global_
+# Experiment A stage: safety_calibration - one bounded 200-step geometry/health calibration.
+# Inherits the curated P0 contract, global batch 32, seed 431027, the 187,500-step
+# scheduler horizon and the corrected 3,750-step warmup from resenc_amaes/base.
+defaults:
+  - resenc_amaes
+  - _self_
+
+campaign:
+  phase: safety_calibration
+  checkpoint_steps: [100, 200]
+  stop_at_checkpoint_step: 200
+  pause_at_stop: true
+  resume_audit_delta_steps: 10
+
+training:
+  steps_per_epoch: ${eval:"100 * ${training.accumulate_grad_batches}"}
+  check_val_every_n_epoch: 1
+  val_steps_per_epoch: 16

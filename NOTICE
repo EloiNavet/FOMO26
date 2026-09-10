@@ -1,0 +1,258 @@
+NOTICE
+======
+
+SCOPE
+-----
+This repository distributes SOURCE CODE. It does not redistribute any third-party package.
+Those are resolved from public indexes by the reader, under their own licences. That
+distinction decides what this file must cover:
+
+  A. Third-party source actually distributed HERE .... none; see below
+  B. Declared dependencies, installed by the reader ... listed as courtesy, not redistribution
+  C. Packages baked into a future container image .... that image needs its OWN NOTICE
+
+Lock entries: 169 = 1 first-party (asparagus, this project) + 168 third-party resolutions,
+which are 167 distinct names: tifffile resolves conditionally to two versions, one per Python
+range. Public-minimal runtime closure: 20 direct dependencies.
+Dev/optional groups are intentionally outside scope B: they are not installed by
+`uv sync --no-dev` and are never part of the released runtime.
+
+A. THIRD-PARTY SOURCE DISTRIBUTED IN THIS REPOSITORY
+---------------------------------------------------
+  None.
+
+  The official FOMO26 container validator used to be vendored here, 84 files under
+  third_party/fomo26_container_validator/. It has been removed. Its upstream declares no
+  licence, and shipping it inside a public release would have been redistribution on
+  undefined terms -- the one thing a source-only release cannot argue away.
+
+  What remains is our own record, not upstream's code:
+    finetuning/container/validator_manifest.json   paths + digests of the pinned commit
+    finetuning/container/official_contract.json    the task interface, as data
+
+  The validator is an external tool. Acquiring and running it is the reader's own act under
+  whatever terms upstream offers; nothing here grants any right to it. It is fetched
+  explicitly (release.py validator acquire), only ever at the pinned commit
+  d442af2e9bdade58be20c2ee0cbabf8d0439e32b, and verified against the manifest before use.
+  Its absence is an error, never a pass.
+
+B. DECLARED DEPENDENCIES (not redistributed here)
+-------------------------------------------------
+Resolved from public indexes by the reader. Each retains its own licence and notices.
+
+  Reciprocal / source-offer terms, relevant to anyone shipping a built artefact:
+    certifi 2026.5.20 -- MPL-2.0
+      RESOLVED: weak-copyleft. Not redistributed by this repository; a source offer attaches to whoever ships a built artefact containing it.
+    tqdm 4.68.2 -- MPL-2.0 AND MIT
+      RESOLVED: same as certifi -- reciprocal terms bind a distributor of binaries, not a source repository that merely depends on it.
+
+  Conditionally resolved, both versions locked:
+    tifffile 2026.3.3 -- BSD-3-Clause -- marker: python_full_version < '3.12'
+    tifffile 2026.6.1 -- BSD-3-Clause -- marker: python_full_version >= '3.12'
+      RESOLVED: the lock holds both, selected by Python version; the validated runtime is 3.11 and therefore installs 2026.3.3. Both are BSD-3-Clause, so the licence conclusion does not depend on which one a given interpreter selects. An earlier revision of this file named only one of them and described the lock as holding that one alone; it holds both.
+
+  Still open:
+    colorama 0.4.6 -- (metadata unresolved)
+      OPEN: licence not resolvable from recorded metadata. It is not in the public-minimal runtime closure -- transitive/dev only -- so it is out of NOTICE scope for this repository, but must be resolved by anyone building an image that installs it.
+
+C. CONTAINER IMAGES
+-------------------
+A built SIF redistributes its installed packages as binaries, which is a different act from
+publishing this source. Any image built from this repository needs its own NOTICE covering
+what it actually contains; see finetuning/container/historical_sif_profile.json for the
+submitted image's dependency set.
+
+STATUS: SOURCE-RELEASE APPROVED BY THE PROJECT OWNER
+---------------------------------------------------
+The project owner has approved publication under this source-only scope. That is an owner's
+release decision, not legal-counsel review: this file is assembled from package metadata and
+lock evidence, metadata is preliminary evidence and not legal certainty, and nothing here
+constitutes a legal opinion.
+
+The blocking item is resolved by removal rather than by argument -- no validator source is
+redistributed. One item stays open and is deliberately out of scope for a source release:
+colorama's licence is unresolved in the recorded metadata, and it is not in the runtime
+closure, but anyone building an image that installs it must resolve it there.
+
+This repository distributes source. It ships no dependency wheels and no SIF, and makes no
+binary-distribution claim. The submitted image's dependency lineage is recorded in
+finetuning/container/historical_sif_profile.json; no binary-identical SIF was rebuilt or
+validated, and none is claimed.
+
+THIRD-PARTY LOCK INVENTORY
+--------------------------
+Every third-party resolution in uv.lock, one line per [[package]] block. The project's own
+first-party entry (asparagus) is excluded: it is what this repository publishes, not something
+it depends on. A name that resolves conditionally appears once per resolution, with its marker,
+so the count of lines here equals the count of third-party blocks in the lock and not the count
+of distinct names. `[runtime]` marks a direct dependency of the public-minimal runtime.
+
+  aenum 3.1.17
+  aiohappyeyeballs 2.6.2
+  aiohttp 3.14.1
+  aiosignal 1.4.0
+  alembic 1.18.4
+  annotated-doc 0.0.4
+  annotated-types 0.7.0
+  antlr4-python3-runtime 4.9.3
+  anyio 4.13.0
+  attrs 26.1.0
+  blinker 1.9.0
+  cachetools 7.1.4
+  certifi 2026.5.20
+  cffi 2.0.0
+  charset-normalizer 3.4.7
+  click 8.4.1
+  cloudpickle 3.1.2
+  colorama 0.4.6
+  contourpy 1.3.3
+  cryptography 48.0.0
+  cycler 0.12.1
+  databricks-sdk 0.115.0
+  docker 7.1.0
+  einops 0.8.2 [runtime]
+  et-xmlfile 2.0.0
+  fastapi 0.136.3
+  filelock 3.29.1
+  flask 3.1.3
+  flask-cors 6.0.5
+  fonttools 4.63.0
+  frozenlist 1.8.0
+  fsspec 2025.12.0
+  gardening-tools 0.3.2 [runtime]
+  gitdb 4.0.12
+  gitpython 3.1.50
+  google-auth 2.53.0
+  graphene 3.4.3
+  graphql-core 3.2.11
+  graphql-relay 3.2.0
+  greenlet 3.5.1
+  gunicorn 26.0.0
+  h11 0.16.0
+  hf-xet 1.5.1
+  httpcore 1.0.9
+  httpx 0.28.1
+  huey 3.0.1
+  huggingface-hub 1.18.0 [runtime]
+  hydra-core 1.3.2 [runtime]
+  idna 3.18
+  imageio 2.37.3
+  importlib-metadata 9.0.0
+  importlib-resources 7.1.0
+  iniconfig 2.3.0
+  itsdangerous 2.2.0
+  jinja2 3.1.6
+  joblib 1.5.3
+  kiwisolver 1.5.0
+  lazy-loader 0.5
+  lightly 1.5.25 [runtime]
+  lightly-utils 0.0.2
+  lightning 2.4.0 [runtime]
+  lightning-utilities 0.15.3
+  llvmlite 0.47.0
+  mako 1.3.12
+  markdown-it-py 4.2.0
+  markupsafe 3.0.3
+  matplotlib 3.10.9 [runtime]
+  mdurl 0.1.2
+  mlflow 3.13.0
+  mlflow-skinny 3.13.0
+  mlflow-tracing 3.13.0
+  monai 1.5.2
+  mpmath 1.3.0
+  multidict 6.7.1
+  networkx 3.6.1
+  nibabel 5.4.2 [runtime]
+  numba 0.65.1
+  numpy 2.4.6 [runtime]
+  nvidia-cublas-cu12 12.6.4.1
+  nvidia-cuda-cupti-cu12 12.6.80
+  nvidia-cuda-nvrtc-cu12 12.6.77
+  nvidia-cuda-runtime-cu12 12.6.77
+  nvidia-cudnn-cu12 9.5.1.17
+  nvidia-cufft-cu12 11.3.0.4
+  nvidia-cufile-cu12 1.11.1.6
+  nvidia-curand-cu12 10.3.7.77
+  nvidia-cusolver-cu12 11.7.1.2
+  nvidia-cusparse-cu12 12.5.4.2
+  nvidia-cusparselt-cu12 0.6.3
+  nvidia-nccl-cu12 2.26.2
+  nvidia-nvjitlink-cu12 12.6.85
+  nvidia-nvtx-cu12 12.6.77
+  omegaconf 2.3.0 [runtime]
+  openpyxl 3.1.5
+  opentelemetry-api 1.42.1
+  opentelemetry-proto 1.42.1
+  opentelemetry-sdk 1.42.1
+  opentelemetry-semantic-conventions 0.63b1
+  packaging 24.2
+  pandas 2.3.3 [runtime]
+  pillow 12.2.0 [runtime]
+  platformdirs 4.10.0
+  pluggy 1.6.0
+  polars 1.41.2
+  polars-runtime-32 1.41.2
+  prettytable 3.17.0
+  propcache 0.5.2
+  protobuf 6.33.6
+  pyarrow 24.0.0
+  pyasn1 0.6.3
+  pyasn1-modules 0.4.2
+  pycparser 3.0
+  pydantic 2.13.4
+  pydantic-core 2.46.4
+  pygments 2.20.0
+  pynndescent 0.6.0
+  pyparsing 3.3.2
+  pytest 9.0.3
+  pytest-timeout 2.4.0
+  python-dateutil 2.9.0.post0
+  python-dotenv 1.2.2 [runtime]
+  pytorch-lightning 2.6.5
+  pytz 2026.2
+  pywin32 312
+  pyyaml 6.0.3
+  regex 2026.5.9
+  requests 2.34.2
+  rich 15.0.0
+  ruff 0.15.16
+  safetensors 0.8.0
+  scikit-image 0.26.0
+  scikit-learn 1.8.0 [runtime]
+  scipy 1.17.1
+  sentry-sdk 2.62.0
+  setuptools 82.0.1
+  shellingham 1.5.4
+  six 1.17.0
+  skops 0.14.0
+  smmap 5.0.3
+  sqlalchemy 2.0.50
+  sqlparse 0.5.5
+  starlette 1.2.1
+  sympy 1.14.0
+  threadpoolctl 3.6.0
+  tifffile 2026.3.3 [marker: python_full_version < '3.12']
+  tifffile 2026.6.1 [marker: python_full_version >= '3.12']
+  timm 1.0.14
+  tokenizers 0.22.2
+  torch 2.7.0 [runtime]
+  torchmetrics 1.9.0 [runtime]
+  torchvision 0.22.0 [runtime]
+  tqdm 4.68.2
+  transformers 5.10.2 [runtime]
+  triton 3.3.0
+  typer 0.25.1
+  typing-extensions 4.15.0
+  typing-inspection 0.4.2
+  tzdata 2026.2
+  umap-learn 0.5.12 [runtime]
+  urllib3 2.7.0
+  uvicorn 0.49.0
+  waitress 3.0.2
+  wandb 0.26.1 [runtime]
+  wcwidth 0.8.1
+  werkzeug 3.1.8
+  xlrd 2.0.2
+  yarl 1.24.2
+  zipp 4.1.0
+

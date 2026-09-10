@@ -1,0 +1,9 @@
+# @package _global_
+# Task3 age (regression) — from-scratch baseline (no pretrained encoder).
+defaults:
+  - /projects/fomo26/finetune/task3_age
+  - _self_
+
+checkpoint_path: null
+pretrained:
+  enabled: false

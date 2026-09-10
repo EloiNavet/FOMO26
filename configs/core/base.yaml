@@ -1,0 +1,217 @@
+hydra:
+  verbose: false
+  callbacks:
+    save_job_info:
+      _target_: hydra.experimental.callbacks.PickleJobInfoCallback
+  job:
+    config:
+      override_dirname:
+        exclude_keys:
+          - +model
+          - +hardware
+          - checkpoint_run_id
+          - hf_model_id
+          - hf_weight_format
+          - data.test_split
+          # already encoded as a dedicated path component (/${data.train_split}__fold=${data.fold}/);
+          # excluding them from clargs keeps the run-dir component under the 255-byte filename limit.
+          - data.train_split
+          - data.fold
+          - hardware
+          - hardware.accelerator
+          - hardware.compile_mode
+          - hardware.num_devices
+          - hardware.num_nodes
+          - hardware.num_workers
+          - hardware.precision
+          - hardware.strategy
+          - hardware.trainer_devices
+          - load_checkpoint_name
+          - logger.progress_bar
+          - logger.wandb_logging
+          - model
+          - model.net
+          - model.dimensions
+          - root
+          - run_id
+          - resume_training
+          - stem
+          - task
+          - data.fold
+          - test_checkpoint
+          - testing.run_after_fit
+          - training.check_val_every_n_epoch
+          - training.decoder_warmup_epochs
+          - training.epochs
+          - training.limit_train_batches
+          - training.limit_val_batches
+          - training.num_sanity_val_steps
+          - training.train_batches_per_epoch_per_device
+          - training.val_batches_per_epoch_per_device
+          - training.warmup_epochs
+
+  output_subdir: hydra
+  run:
+    dir: ${oc.env:ASPARAGUS_MODELS}/${task}/${model.net}__${model.dimensions}/script=${hydra:job.name}/root=${root}__stem=${stem}/leaf=${hydra:job.config_name}__clargs=${hydra.job.override_dirname}/${data.train_split}__fold=${data.fold}/run_id=${run_id}
+  sweep:
+    dir: ${oc.env:ASPARAGUS_MODELS}/${task}/${model.net}__${model.dimensions}
+    subdir: script=${hydra:job.name}/root=${root}__stem=${stem}/leaf=${hydra:job.config_name}__clargs=${hydra.job.override_dirname}/${data.train_split}__fold=${data.fold}/run_id=${run_id}
+
+lightning:
+  _data_module:
+    _target_: asparagus.modules.data_modules.${lightning.data_module}
+    batch_size: ${training.batch_size}
+    num_workers: ${eval:${hardware.num_workers} // ${hardware.num_devices}}
+  _lightning_module:
+    _target_: asparagus.modules.lightning_modules.${lightning.lightning_module}
+    # NOTE: `momentum_transforms` is a pretraining-only field (SelfSupervisedModule); it is added in
+    # default_pretrain.yaml, not here, so non-SSL modules (seg/cls/reg/probe) don't receive it.
+    warmup_epochs: ${training.warmup_epochs}
+    compile_mode: ${hardware.compile_mode}
+  _trainer:
+    _target_: lightning.Trainer
+    accelerator: ${hardware.accelerator}
+    default_root_dir: ${hydra:run.dir}
+    devices: ${hardware.trainer_devices}
+    num_nodes: ${hardware.num_nodes}
+    enable_progress_bar: ${logger.progress_bar}
+    num_sanity_val_steps: ${training.num_sanity_val_steps}
+    precision: ${hardware.precision}
+    strategy: ${hardware.strategy}
+
+train_split_path: ${oc.env:ASPARAGUS_DATA}/${task}/${data.train_split}.json
+test_task: ${task}
+test_split_path: ${oc.env:ASPARAGUS_DATA}/${test_task}/${data.test_split}.json
+
+transforms:
+  _gpu_tr_transforms:
+    _target_: asparagus.modules.transforms.presets.${transforms.gpu_tr_transforms}
+  _gpu_unmasked_tr_transforms:
+    _target_: asparagus.modules.transforms.presets.${transforms.gpu_unmasked_tr_transforms}
+  _gpu_val_transforms:
+    _target_: asparagus.modules.transforms.presets.${transforms.gpu_val_transforms}
+  _cpu_tr_transforms:
+    _target_: asparagus.modules.transforms.presets.${transforms.cpu_tr_transforms}
+  _cpu_val_transforms:
+    _target_: asparagus.modules.transforms.presets.${transforms.cpu_val_transforms}
+  # NOTE: `_cpu_demo_tr_transforms` is pretraining-only (demographic head); it is added in
+  # default_pretrain.yaml, not here, so finetune/train configs don't reference an undefined preset.
+  gpu_unmasked_tr_transforms: none
+
+data:
+  train_split:
+  test_split:
+
+checkpoint_run_id:
+checkpoint_path:
+hf_model_id:
+hf_weight_format: asparagus.functional.huggingface.HuggingFaceWeightMapper
+
+# Remap a checkpoint_path that holds an externally published backbone (a third-party release
+# staged to disk, e.g. on a cluster whose compute nodes have no network access). Same mappers as
+# hf_weight_format; null means the checkpoint already uses asparagus naming.
+external_weight_format: null
+
+# Loading an SSL-pretrained encoder (AMAES / JEPA / deep-supervision) into downstream finetuning.
+# Disabled by default -> the existing checkpoint_path/load_decoder behaviour is unchanged.
+pretrained:
+  enabled: false
+  checkpoint_path: null            # SSL checkpoint to transfer from (defaults to the resolved checkpoint)
+  source: ema_if_available         # online | ema | ema_if_available (EMA/target encoder if present, else online)
+  load_scope: encoder_only         # encoder_only (fair transfer) | encoder_decoder (AMAES-full ablation)
+  strict_shapes: true              # shape correctness enforced by the downstream loader (mismatches never load)
+  fail_if_no_encoder_keys_loaded: true
+  fail_if_missing_encoder_keys: true # never silently accept a partially exported encoder
+  allow_missing_decoder: true      # downstream decoder/head stay randomly initialised
+  allow_missing_head: true
+  adapt_decoder_skip_channels: false # exact no-skip -> skip kernel expansion; opt-in for compatible CNN decoders
+  print_key_report: true
+  # Export-scope contract. A JEPA run that supervises only a shallow feature level leaves
+  # deeper encoder stages at their random initialisation; such a checkpoint must not be
+  # consumed as if every stage were pretrained.
+  #   allow_partial_encoder       accept a checkpoint whose scope is KNOWN to be partial.
+  #   allow_unknown_encoder_scope accept a checkpoint whose scope cannot be established at
+  #                               all (no recorded scope, no JEPA predictors to derive it
+  #                               from). Unknown is reported as `unknown`, never as "all":
+  #                               missing metadata is not evidence of full pretraining.
+  #                               Exploratory use only; loading warns prominently.
+  allow_partial_encoder: false
+  allow_unknown_encoder_scope: false
+
+plugins:
+resume_training: True
+run_dir: ${oc.env:ASPARAGUS_MODELS}/${task}/${model.net}__${model.dimensions}/script=${hydra:job.name}/root=${root}__stem=${stem}/leaf=${hydra:job.config_name}__clargs=${hydra:job.override_dirname}/${data.train_split}__fold=${data.fold}
+run_id: ${version:${resume_training},${run_dir}}
+
+training:
+  patch_size:
+  batch_size:
+  mask_ratio:
+  # Shared default for the trainer's `num_sanity_val_steps` interpolation; pretraining overrides to 2.
+  num_sanity_val_steps: 0
+
+model:
+  head_out_dim: 256
+  head_hidden_dim: 512
+  scanner_target_class_counts:
+    manufacturer: 1
+    field_strength: 1
+    spacing_bin: 1
+  scanner_head:
+    enabled: false
+    hidden_dim:
+    out_dim: 128
+    depth: 2
+    dropout: 0.0
+    use_layer_norm: true
+    detach_input: false
+  inv_head:
+    enabled: false
+    hidden_dim:
+    out_dim: 128
+    depth: 2
+    dropout: 0.0
+    use_layer_norm: true
+    discriminator_input: raw
+    discriminator_hidden_dim:
+    discriminator_depth: 1
+    discriminator_dropout: 0.0
+    discriminator_use_layer_norm: true
+  stage1_modality_head:
+    enabled: false
+    hidden_dim:
+    out_dim: 128
+    depth: 2
+    dropout: 0.0
+    use_layer_norm: true
+  stage2_factorized_head:
+    enabled: false
+    anat_dim: 256
+    mod_dim: 64
+    hidden_dim:
+    dropout: 0.0
+    use_layer_norm: true
+  stage2_decoder:
+    enabled: false
+    base_channels: 32
+    max_channels: 128
+    film_hidden_dim:
+    dropout: 0.0
+    norm: group
+    film_levels: all
+    film_init_std: 0.001
+  num_modalities: 15
+  modality_embedding_dim: 64
+  modality_conditioning: true
+  decoder_modality_conditioning: false
+  stage2_decoder_enabled: false
+  h_global_layer_norm: false
+  encoder_pool: max
+
+profiler:
+  enabled: false
+  _callback:
+    _target_: asparagus.modules.callbacks.ProfilerCallback
+    profile_every_n_steps: 500
+    warmup_steps: 10
+    profile_memory: true

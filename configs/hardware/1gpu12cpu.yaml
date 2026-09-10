@@ -1,0 +1,8 @@
+accelerator: "auto"
+num_nodes: 1
+num_devices: 1
+trainer_devices: 1
+num_workers: 12
+precision: "bf16-mixed"
+strategy: "auto"
+compile_mode: "default"

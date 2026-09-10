@@ -1,0 +1,11 @@
+# @package _global_
+# Task3 age (regression) — AMAES encoder-only transfer (regression head stays random).
+defaults:
+  - /projects/fomo26/finetune/task3_age
+  - _self_
+
+checkpoint_path: ${oc.env:FOMO26_AMAES_CHECKPOINT,null}
+pretrained:
+  enabled: true
+  source: online
+  load_scope: encoder_only

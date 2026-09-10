@@ -1,0 +1,62 @@
+name: Pipeline tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  # asparagus/paths.py raises at import when these are unset, which reads as a collection error
+  # rather than a skip. Throwaway workspace roots; no real data is read.
+  ASPARAGUS_DATA: "${{ github.workspace }}/.ci/data"
+  ASPARAGUS_MODELS: "${{ github.workspace }}/.ci/models"
+  ASPARAGUS_RESULTS: "${{ github.workspace }}/.ci/results"
+  ASPARAGUS_RAW_LABELS: "${{ github.workspace }}/.ci/raw_labels"
+  ASPARAGUS_CONFIGS: "${{ github.workspace }}/configs"
+  CUDA_VISIBLE_DEVICES: ""
+  HYDRA_FULL_ERROR: 1
+  TQDM_DISABLE: "1"
+  WANDB_MODE: "offline"
+  WANDB_ENTITY: "test"
+
+jobs:
+  pipeline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create throwaway data roots
+        run: mkdir -p .ci/data .ci/models .ci/results .ci/raw_labels
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "uv==0.12.7"
+          uv sync --locked --all-extras --all-groups
+
+      - name: Run pretrain test
+        run: |
+          uv run pytest tests/test_pretrain.py -v --timeout=300
+
+      - name: Run finetune_seg test
+        run: |
+          uv run pytest tests/test_finetune_seg.py -v --timeout=300
+
+      - name: Run train_reg test
+        run: |
+          uv run pytest tests/test_train_reg.py -v --timeout=300
+
+      - name: Run test_cls test
+        run: |
+          uv run pytest tests/test_test_cls.py -v --timeout=300
+
+      - name: Run linear probe test
+        run: |
+          uv run pytest tests/test_linear_probe.py -v --timeout=300

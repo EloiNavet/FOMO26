@@ -1,0 +1,29 @@
+{
+  "authoritative_for": [
+    "submitted SIF reconstruction"
+  ],
+  "base_image": "pytorch/pytorch@sha256:27c3135420bc184e86977170b6158c6133be3c7cc5c35e9e4fa87bdda629dc2b",
+  "dependencies": {
+    "gardening_tools": "0.3.2",
+    "lightning": "2.4.0",
+    "natten": "0.21.0",
+    "torch": "2.7.0",
+    "torchvision": "0.22.0"
+  },
+  "natten_wheels": {
+    "note": "Installed by Apptainer.def only when the model manifest architecture matched medvit*. That branch is removed from the public recipe with MedViT; the pins are preserved here so removing it loses no reproduction evidence.",
+    "python": {
+      "3.11": "https://github.com/SHI-Labs/NATTEN/releases/download/v0.21.0/natten-0.21.0%2Btorch270cu126-cp311-cp311-linux_x86_64.whl#sha256=e2ea0d21900565488af7126aee87ab650ca7a7575083ed6981b65c9da9ba3a52",
+      "3.12": "https://github.com/SHI-Labs/NATTEN/releases/download/v0.21.0/natten-0.21.0%2Btorch270cu126-cp312-cp312-linux_x86_64.whl#sha256=adfb93a16d1acdeb43dfdde07aa7a8eca17a0bd94f397e55e8d3adf746c80c48"
+    }
+  },
+  "not_authoritative_for": [
+    "local CPU use",
+    "local CUDA use",
+    "tests",
+    "checkpoint/D1 parity"
+  ],
+  "purpose": "Exact dependency inputs of the SUBMITTED container lineage. Recorded, never installed. The public-minimal rail (pyproject.toml + uv.lock) is deliberately NATTEN-free because no retained module imports it; describing that environment as the submitted SIF would be false, and keeping NATTEN in the public runtime because a retired model once imported it would be equally false. Hence two rails.",
+  "reproduction_status": "NOT built here: no apptainer/singularity on this machine. No binary-identical SIF reproduction is claimed. What is established is functional parity of the dependency set and the retained entrypoints; a digest match would require an actual build.",
+  "schema": "fomo26-historical-sif-profile-v1"
+}

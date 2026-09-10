@@ -1,0 +1,735 @@
+{
+  "acquisition": {
+    "entrypoint": "finetuning.container.validator_bridge.acquire_validator",
+    "explicit": true,
+    "note": "Never runs during import, test collection, CI, training, inference or a container build. The pinned commit is the only thing ever fetched -- never main, HEAD, latest or a tag."
+  },
+  "entries": [
+    {
+      "path": ".gitattributes",
+      "snapshot_sha256": "8fb7855b387c47535bbe268853d0b462c5bbddc1e37deb8f419187e4ec34285b",
+      "snapshot_size": 45,
+      "vendored": true
+    },
+    {
+      "path": ".gitignore",
+      "snapshot_sha256": "9e470eef395f2fd5b1de863b81223ea819365339afdb503688fbf08ee0e06fb1",
+      "snapshot_size": 4664,
+      "vendored": true
+    },
+    {
+      "path": "README.md",
+      "snapshot_sha256": "c0eac1b5186332d432d7350e2899b8dc689a9ada24d72430b3f4beb808f6f660",
+      "snapshot_size": 1978,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/container_tests.py",
+      "snapshot_sha256": "d240bd4b1c3fe9e894931c7c0b41bcc71ce9e43629f698888100d19bc105bd68",
+      "snapshot_size": 1631,
+      "vendored": true
+    },
+    {
+      "lfs": {
+        "oid_sha256": "7ac4465cb9c272de8cea56e0349b289bd27db04c9b056a13be4d41f994ca4756",
+        "size": 57435
+      },
+      "path": "container_validator/data/inputs/task1/sub_1/adc.nii.gz",
+      "snapshot_sha256": "025e6900c7f552f069effcc5d2c7c4848e147358c09442b240f9911483b65455",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "96a1b404b2c59fee0da419c6ec017285ee09918c2c5c918b2f546637a2c69da0",
+        "size": 57429
+      },
+      "path": "container_validator/data/inputs/task1/sub_1/dwi.nii.gz",
+      "snapshot_sha256": "f91993b0663557aeade2c82d0286d5201c1a1ac25e2b8f77bcf537464145ac08",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "4cb04289d1478fdc853740ef34aea112ca859433d3e88123858e7d21a8df86c8",
+        "size": 57465
+      },
+      "path": "container_validator/data/inputs/task1/sub_1/flair.nii.gz",
+      "snapshot_sha256": "a7415304c15a125da765b772306e3355058407ce4a138d6b2c7ce9f930cee470",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "c398a69650f6af2c727dffedb4d7f6d76c92260789e6c9009f6754927940fc96",
+        "size": 57465
+      },
+      "path": "container_validator/data/inputs/task1/sub_1/swi.nii.gz",
+      "snapshot_sha256": "abfe0f2ad259781f7b7d8cf63d26e70babe73768416dd4d4e4fe97be377e1e9b",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "f4da4bb3844b085751ea3271def9ac39f50a74e95e76dfe897e5570e98e82b1f",
+        "size": 57449
+      },
+      "path": "container_validator/data/inputs/task1/sub_2/adc.nii.gz",
+      "snapshot_sha256": "f816e8257f8bb97582314cadbef4f00530e89d04426a1cfb45192415894d60b6",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "bc192dc2a656805fdf50ad67ccd70045df6c2a15d67352c136111c62f7cb30a7",
+        "size": 57467
+      },
+      "path": "container_validator/data/inputs/task1/sub_2/dwi.nii.gz",
+      "snapshot_sha256": "5d7349d66c293081f3535333c20c82927cbff3b58e6468c2a865c99bd679235e",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "04836b4204bb944e39000155a45cf901c396b2c8b07dfcdaecb1bae707461099",
+        "size": 57434
+      },
+      "path": "container_validator/data/inputs/task1/sub_2/flair.nii.gz",
+      "snapshot_sha256": "2a2e8e20e3847f48c41cc1988f7656fe2e83eb24b27be126f0551c1e9d3d6b56",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "cf82780421a852be45a86c57558db2ef6474106e3677fcb76732325cf36e5c4c",
+        "size": 57463
+      },
+      "path": "container_validator/data/inputs/task1/sub_2/t2s.nii.gz",
+      "snapshot_sha256": "aaa5b459801331e5a7034c8df51b53767998d0f27779111b12e22ccab01bc4a2",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "a07f62caf4638ea10010b7293ab0f9118c2e8366fa354d703497c417bc081bba",
+        "size": 57454
+      },
+      "path": "container_validator/data/inputs/task2/case_swi/dwi.nii.gz",
+      "snapshot_sha256": "e89c4bc44719ab78359704083fb7c5c6f793397b3e4e2369a8a175ba72447058",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "36520c5eda3a5575af8153263a87c295a1a6ed17333e7c44b14374de7dc60d06",
+        "size": 57432
+      },
+      "path": "container_validator/data/inputs/task2/case_swi/flair.nii.gz",
+      "snapshot_sha256": "2e16e82b7545b0fe9774bf71ff1d87df4b83072d7282d17922f781cbfd183953",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "aec0948056d0506ecd46f1a835aa2c046ca92417008089641884fbc4c24fb8d8",
+        "size": 57454
+      },
+      "path": "container_validator/data/inputs/task2/case_swi/swi.nii.gz",
+      "snapshot_sha256": "f6c375d8babca5d5455e01c66225f5e443209203815ee846aee37ba4b229d312",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "1c2b364528d11eeb49a1583a1f2558dd62f02786ff11079caacc66822b9567f5",
+        "size": 57426
+      },
+      "path": "container_validator/data/inputs/task2/case_t2s/dwi.nii.gz",
+      "snapshot_sha256": "c0ed6ccbba414bfcbe27f7ab37f35589998875a92a74b74195d75ee3440fc522",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "deebc7decc902808516e06ba245bd0e36b95adaa07f965b8521a453a4a7c16ae",
+        "size": 57491
+      },
+      "path": "container_validator/data/inputs/task2/case_t2s/flair.nii.gz",
+      "snapshot_sha256": "5452a717028a83a3b3c7c395f456e990d57929bdd35ed40d5e29f671a30208c1",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "3ca13e8a69dfdbb2bd2dcbf1b578f25d8f600a52e06ba07fadbf5fb787bc6df7",
+        "size": 57472
+      },
+      "path": "container_validator/data/inputs/task2/case_t2s/t2s.nii.gz",
+      "snapshot_sha256": "49d8fa153985c9aec12012ff978720d78311cc5e9db295fa9a9eba4ec5790b57",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "5e6686edfb14b2d1531295c75cf74d79836300341046e0aa9d019f417ca99613",
+        "size": 57430
+      },
+      "path": "container_validator/data/inputs/task3/case_001/t1w.nii.gz",
+      "snapshot_sha256": "90e83972612c247da15a74286b1fa8cbf979a1edb3305ec1f5deed9e92b5116b",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "67736952c8d3e9cd12c0c658380268ce0975c2bbcbd03f298539957e00e86115",
+        "size": 57415
+      },
+      "path": "container_validator/data/inputs/task4/case_001/t2w.nii.gz",
+      "snapshot_sha256": "025a199ec44ee1037f4b75a46f42ec461f34cb086313125fb588b4152ea42003",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "417719f1369e14c526dcc0a168dec1964a85e850f34696178e533bdbdc9ee325",
+        "size": 57447
+      },
+      "path": "container_validator/data/inputs/task5/case_001/input.nii.gz",
+      "snapshot_sha256": "ad92450bc45eab7bd73572d45a374b8c89d020aab0c8e3bc846c2e0ee2c588d2",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "b07904206dad8641118637dc8d0d9c8085c27bbb8d940daa406e7d0bbb9803f2",
+        "size": 57453
+      },
+      "path": "container_validator/data/inputs/task6/case_001/t2w.nii.gz",
+      "snapshot_sha256": "6d4e32539bc44d3759c14051cab53a517a7a070cbaf77a3dc0aa3d2fded36d5e",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "lfs": {
+        "oid_sha256": "136f18f6f168af6ab9c05e20deb4f5c02712c0299408927649587bf989ef7b04",
+        "size": 57461
+      },
+      "path": "container_validator/data/inputs/task6/case_002/t1w.nii.gz",
+      "snapshot_sha256": "60e1524f4ee5ce2f86fc0e7cae7a722181b6461e3b652e9941e303ba06a1b87c",
+      "snapshot_size": 130,
+      "vendored": false
+    },
+    {
+      "path": "container_validator/data/manifest.yaml",
+      "snapshot_sha256": "a57c135802230dc0ae86026e12d861ceafe9df401fa511192f8535dfea79090e",
+      "snapshot_size": 1114,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/output_nifti.py",
+      "snapshot_sha256": "8b7633575995468410d39c187833dea1176ad937d67a58419e2d8bcadf8105db",
+      "snapshot_size": 5747,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/output_numpy.py",
+      "snapshot_sha256": "4103089d488aefde8fa26b258e95bc16b88e43c9cb9bd37d33b6d811c05eb20a",
+      "snapshot_size": 3001,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/output_text.py",
+      "snapshot_sha256": "21d7cd05df6dffd0b4e91ea3679641ad784bad22daf477e4694059c0eca07092",
+      "snapshot_size": 2042,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/preflight.py",
+      "snapshot_sha256": "d1e02b0b4b5ebb1d0f9f089637c4eff3e2c14fd5addaf148fce240a4a209ee10",
+      "snapshot_size": 3046,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/preinference.py",
+      "snapshot_sha256": "1cd162975676845fd0ed202f26bfb5196251ddcec0d6cadbb7e006d9a74cda3c",
+      "snapshot_size": 2235,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/result.py",
+      "snapshot_sha256": "3bf8a84d299fd2fa63474c9e11d84982958a98340ab93b6aad0fe6cae1e1f945",
+      "snapshot_size": 182,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/runner.py",
+      "snapshot_sha256": "de574ebbde31f13b1e6d17915d4745664b77e0cab5a9790d12380f9a76a0c600",
+      "snapshot_size": 1997,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/tasks.py",
+      "snapshot_sha256": "8484d2c70b28c4c7b3f0c52f7a2b22f5f602c2cc9aeeb3ffbf3b7d22ea050f31",
+      "snapshot_size": 2936,
+      "vendored": true
+    },
+    {
+      "path": "container_validator/validate.py",
+      "snapshot_sha256": "1575d5f261c02a9af642ab85fb9ec04c47e8f9c161b389c89645ff8b077dc0af",
+      "snapshot_size": 21112,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/corruptions.txt",
+      "snapshot_sha256": "6906ee546681cdd2d299d47b85b83747ea2b4c3be133fa67623b3786804a9731",
+      "snapshot_size": 10683,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task1_v1/Apptainer.def",
+      "snapshot_sha256": "a07df1c845363e9ecc94e8de90ef11d3273a2efe2fe9174508b9c18f75a8515b",
+      "snapshot_size": 1538,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task1_v1/predict.py",
+      "snapshot_sha256": "57fc456294032d3bb2a36c65036aeb8a8049c565eedec5f7ab2b693725509933",
+      "snapshot_size": 1430,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task1_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task1_v2/Apptainer.def",
+      "snapshot_sha256": "a07df1c845363e9ecc94e8de90ef11d3273a2efe2fe9174508b9c18f75a8515b",
+      "snapshot_size": 1538,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task1_v2/predict.py",
+      "snapshot_sha256": "6c948b44f0d5a906e84bab05578005df428aa7ea6ebdef4c0b2823ced405d7bc",
+      "snapshot_size": 1433,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task1_v2/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v1/Apptainer.def",
+      "snapshot_sha256": "dd1cbde69291c8212129cbf78ab7303edf74fedb85968a5fa9df6430b6029339",
+      "snapshot_size": 1293,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v1/predict.py",
+      "snapshot_sha256": "50470ca750de12876fa46dab64cf6e31666267dc319afe92764e17cc7bc5268b",
+      "snapshot_size": 2487,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v2/Apptainer.def",
+      "snapshot_sha256": "4b8dea30f7d2f6ea3521eecc355ff3cc5223276b49744e6332fe91213352c0be",
+      "snapshot_size": 1611,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v2/predict.py",
+      "snapshot_sha256": "2d36af49dbf82b90024c2912ea0ff60afa16547cafd7be4f182213e0504bb234",
+      "snapshot_size": 2482,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v2/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v3/Apptainer.def",
+      "snapshot_sha256": "4b8dea30f7d2f6ea3521eecc355ff3cc5223276b49744e6332fe91213352c0be",
+      "snapshot_size": 1611,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v3/predict.py",
+      "snapshot_sha256": "50470ca750de12876fa46dab64cf6e31666267dc319afe92764e17cc7bc5268b",
+      "snapshot_size": 2487,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v3/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v4/Apptainer.def",
+      "snapshot_sha256": "dc5edeb6b106c80ed1e4cdc1dfae1bf561db258ad270418394b33e256faa6af9",
+      "snapshot_size": 1381,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v4/predict.py",
+      "snapshot_sha256": "50470ca750de12876fa46dab64cf6e31666267dc319afe92764e17cc7bc5268b",
+      "snapshot_size": 2487,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task2_v4/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task3_v1/Apptainer.def",
+      "snapshot_sha256": "6f595ca4ecaa602041799bb8dddc675b94926191a31df29b9066a54545c0968c",
+      "snapshot_size": 1362,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task3_v1/predict.py",
+      "snapshot_sha256": "d3857994c675806c8ae7476b513eec0489cf82ad1b1f25164bcf1b1c65d3c7c5",
+      "snapshot_size": 1611,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task3_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task3_v2/Apptainer.def",
+      "snapshot_sha256": "6f595ca4ecaa602041799bb8dddc675b94926191a31df29b9066a54545c0968c",
+      "snapshot_size": 1362,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task3_v2/predict.py",
+      "snapshot_sha256": "87c6fcbf46eb58373e53dc3a9d5f3a76d8b35e711e37c550255b01bfa8361384",
+      "snapshot_size": 1609,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task3_v2/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task4_v1/Apptainer.def",
+      "snapshot_sha256": "4883d7a8255b39ff3b21615cc34381e831cc630ba14192250c5dd9569bbc0562",
+      "snapshot_size": 1158,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task4_v1/predict.py",
+      "snapshot_sha256": "07b1bce8d2a278a7de32bcb7811d12c3d24c6cb4ba7d38c28affac927023af3a",
+      "snapshot_size": 1951,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task4_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task4_v2/Apptainer.def",
+      "snapshot_sha256": "4883d7a8255b39ff3b21615cc34381e831cc630ba14192250c5dd9569bbc0562",
+      "snapshot_size": 1158,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task4_v2/predict.py",
+      "snapshot_sha256": "ac6fea53311d1e2b6a477c3da7f1ac9feb4f93fd25706283503b7ba7569c8cf3",
+      "snapshot_size": 1950,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task4_v2/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task5_v1/Apptainer.def",
+      "snapshot_sha256": "610ff60d388b4a076c5ccaf7fff0940f4d38103efc3e74af163cdad9f1b3dbcd",
+      "snapshot_size": 1284,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task5_v1/predict.py",
+      "snapshot_sha256": "a4e2206cf322b15cae952ff5a4eff16f520298be810b42143404485f474f3e6c",
+      "snapshot_size": 1630,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task5_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task6_v1/Apptainer.def",
+      "snapshot_sha256": "0f458dac936a2bfd5a7ed1fef6106a125b7e5f1063cdb63dddbd744c98768d9c",
+      "snapshot_size": 1184,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task6_v1/predict.py",
+      "snapshot_sha256": "6fff2a92b8acbfbadd17a9d9ca7064f7e7a41fed0ec8b46bed80b1d292a15e73",
+      "snapshot_size": 1767,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task6_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task6_v2/Apptainer.def",
+      "snapshot_sha256": "5c8f41df524d2cdb193c16238f5602ee74362c63643fa52e3ed7689e7b2f4560",
+      "snapshot_size": 1083,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task6_v2/predict.py",
+      "snapshot_sha256": "b90dea0c0dd4841b204ede82cd7fb876e17785455c1e1600815a52ba86a72491",
+      "snapshot_size": 1747,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task7_v1/Apptainer.def",
+      "snapshot_sha256": "dd27c8ece12f2d021ecc18f6b9fce5d8dfe9d06664347657e9d4bcd6a1520bfa",
+      "snapshot_size": 1191,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task7_v1/predict.py",
+      "snapshot_sha256": "1e412534a6df93cbe73ca780b3d2d06aef47aae7db7d8de2d2edd18e6ea06d05",
+      "snapshot_size": 1779,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task7_v1/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task7_v2/Apptainer.def",
+      "snapshot_sha256": "dd27c8ece12f2d021ecc18f6b9fce5d8dfe9d06664347657e9d4bcd6a1520bfa",
+      "snapshot_size": 1191,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task7_v2/predict.py",
+      "snapshot_sha256": "d74e0dfd3364ef9c657feb146b32de2e34ce8f5681b84b80514f606075eddbde",
+      "snapshot_size": 1611,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/task7_v2/requirements.txt",
+      "snapshot_sha256": "a68c1b5bdbf40e18a6ca09e847baa2575726a8c7e2c184b45e950c5d0e290a32",
+      "snapshot_size": 19,
+      "vendored": true
+    },
+    {
+      "lfs": {
+        "oid_sha256": "c6139dc0fb7f718d598436f68d709d8b154a1a0d5ccf413c92e36e86900575b0",
+        "size": 6700798
+      },
+      "path": "corrupted_test_builds/test_data/inputs/sub-strokecase0003_ses-0001_FLAIR.nii.gz",
+      "snapshot_sha256": "2264076614c278e338a64fb4cb5f9111db978b81e555b0bf13eb23c620a0cc1b",
+      "snapshot_size": 132,
+      "vendored": false
+    },
+    {
+      "path": "corrupted_test_builds/test_data/outputs/task1v1cls.txt",
+      "snapshot_sha256": "9e18394d88e324963ba70c4fa707212bb112f274545e8ffa111259659488fd67",
+      "snapshot_size": 5,
+      "vendored": true
+    },
+    {
+      "lfs": {
+        "oid_sha256": "15695209b67efa9fa5377fa45d81ffe150f6a8c2cd4eb2c822f5fff789fb2eb9",
+        "size": 586287
+      },
+      "path": "corrupted_test_builds/test_data/outputs/task2seg.nii.gz",
+      "snapshot_sha256": "accf364097292c2b30148ce76e4f797dab4d3b2a4c255028ccbf017dbed5dcb8",
+      "snapshot_size": 131,
+      "vendored": false
+    },
+    {
+      "path": "corrupted_test_builds/test_data/outputs/task5cls.txt",
+      "snapshot_sha256": "3d6ef1d2458ee40a931ddeb321e93f0423163a2b9c746b3147c5c6b37316a922",
+      "snapshot_size": 12,
+      "vendored": true
+    },
+    {
+      "path": "corrupted_test_builds/test_data/outputs/task6v1emb.npy",
+      "snapshot_sha256": "28cb41cdc263f909c5778467211561a99e126456a7dda3d2dd47e821ab0bcbe8",
+      "snapshot_size": 3200,
+      "vendored": true
+    },
+    {
+      "path": "requirements.txt",
+      "snapshot_sha256": "d0e0f55ef562a5fefdfb45a82f917635231587a538bdc97a05586cc18e35636b",
+      "snapshot_size": 194,
+      "vendored": true
+    },
+    {
+      "path": "templates/task1/Apptainer.def",
+      "snapshot_sha256": "4d8193b78c46456815d78d81e25c2a8381570111e9d94261bd3a6c099e3559db",
+      "snapshot_size": 1572,
+      "vendored": true
+    },
+    {
+      "path": "templates/task1/predict.py",
+      "snapshot_sha256": "5dfd7289b145c1264d673be7f298806eb5669813453ad02508689596483b4020",
+      "snapshot_size": 2771,
+      "vendored": true
+    },
+    {
+      "path": "templates/task1/requirements.txt",
+      "snapshot_sha256": "c167f48811d01d69617b1bd0ef38fe6c887a5672cb7521abb2e14efcec08dd02",
+      "snapshot_size": 14,
+      "vendored": true
+    },
+    {
+      "path": "templates/task2/Apptainer.def",
+      "snapshot_sha256": "3a5fffeaf184d59e7e1bcb7367693cf46c02f180fdd1aae0faf1a278c96fdf0a",
+      "snapshot_size": 1563,
+      "vendored": true
+    },
+    {
+      "path": "templates/task2/predict.py",
+      "snapshot_sha256": "c575c6414ad62c8beced188c414ec470ebd076cc66c5ba3eaafcf8874601cb66",
+      "snapshot_size": 3571,
+      "vendored": true
+    },
+    {
+      "path": "templates/task2/requirements.txt",
+      "snapshot_sha256": "c167f48811d01d69617b1bd0ef38fe6c887a5672cb7521abb2e14efcec08dd02",
+      "snapshot_size": 14,
+      "vendored": true
+    },
+    {
+      "path": "templates/task3/Apptainer.def",
+      "snapshot_sha256": "1c9e863f8ace60e6df251016e7f75d4b1d8b3c7514e9b90b37828eb44d60c5d3",
+      "snapshot_size": 1488,
+      "vendored": true
+    },
+    {
+      "path": "templates/task3/predict.py",
+      "snapshot_sha256": "91ac83bbcff1c4ba88930355282896097d65044d3f72ace3b92502c0ea355111",
+      "snapshot_size": 1615,
+      "vendored": true
+    },
+    {
+      "path": "templates/task3/requirements.txt",
+      "snapshot_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot_size": 0,
+      "vendored": true
+    },
+    {
+      "path": "templates/task4/Apptainer.def",
+      "snapshot_sha256": "8255804bba177d92c103c3e8dd9ec2af74d4fbca4fe3e7c099b379124f00cc43",
+      "snapshot_size": 1188,
+      "vendored": true
+    },
+    {
+      "path": "templates/task4/predict.py",
+      "snapshot_sha256": "6c1fcc079b69eb441f7056b3862eb2da4dd5a78eeac9a2893218d95fa8f1b506",
+      "snapshot_size": 1930,
+      "vendored": true
+    },
+    {
+      "path": "templates/task4/requirements.txt",
+      "snapshot_sha256": "c167f48811d01d69617b1bd0ef38fe6c887a5672cb7521abb2e14efcec08dd02",
+      "snapshot_size": 14,
+      "vendored": true
+    },
+    {
+      "path": "templates/task5/Apptainer.def",
+      "snapshot_sha256": "ca7dabf7f5457a50a41611fdf71fd3be24977420147e8648da4074f86654bb70",
+      "snapshot_size": 1314,
+      "vendored": true
+    },
+    {
+      "path": "templates/task5/predict.py",
+      "snapshot_sha256": "1fc47ebf4604ff67c353399b63693f546305fb72eb7ed577b23b6a4243148b72",
+      "snapshot_size": 1590,
+      "vendored": true
+    },
+    {
+      "path": "templates/task5/requirements.txt",
+      "snapshot_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot_size": 0,
+      "vendored": true
+    },
+    {
+      "path": "templates/task6/Apptainer.def",
+      "snapshot_sha256": "e360b411fb4b614b87806694e449ac8a285823bb5a1f44e91beb2f00f324c830",
+      "snapshot_size": 1213,
+      "vendored": true
+    },
+    {
+      "path": "templates/task6/predict.py",
+      "snapshot_sha256": "e6fbdb7d45f4d4f08542266af7c5f793d9b2edda5d45a6a28c46b8687f6981e6",
+      "snapshot_size": 1598,
+      "vendored": true
+    },
+    {
+      "path": "templates/task6/requirements.txt",
+      "snapshot_sha256": "e09f656c130b9c08b2c5ab7187c891295e449ed77febea2a6ceee9cc98ccb0fc",
+      "snapshot_size": 6,
+      "vendored": true
+    },
+    {
+      "path": "templates/task7/Apptainer.def",
+      "snapshot_sha256": "b1169e473e167bbcf915fdd61b85bf303260e1348a77d263736b415fc6e004fd",
+      "snapshot_size": 1221,
+      "vendored": true
+    },
+    {
+      "path": "templates/task7/predict.py",
+      "snapshot_sha256": "dd9f5a40b9b1037589b33d6fb731f85938ce7d614cbf9da0e1269022946c09c8",
+      "snapshot_size": 1603,
+      "vendored": true
+    },
+    {
+      "path": "templates/task7/requirements.txt",
+      "snapshot_sha256": "e09f656c130b9c08b2c5ab7187c891295e449ed77febea2a6ceee9cc98ccb0fc",
+      "snapshot_size": 6,
+      "vendored": true
+    }
+  ],
+  "lfs_member_count": 21,
+  "member_count": 84,
+  "purpose": "Identity of the official FOMO26 container validator at the pinned commit. This repository redistributes NONE of its source: the upstream project declares no licence, so vendoring it would be a redistribution on undefined terms. What is kept is this manifest -- paths and digests -- which is our own record and is what makes an acquired copy verifiable.",
+  "retrieval_date": "2026-08-13",
+  "schema_version": "fomo26-external-validator-manifest-v1",
+  "upstream_commit": "d442af2e9bdade58be20c2ee0cbabf8d0439e32b",
+  "upstream_license": {
+    "declared": false,
+    "note": "The upstream repository declares no licence. Acquiring and running it is the user's own act under whatever terms upstream offers; nothing here grants any right to it."
+  },
+  "upstream_tree": "091c889c7c3d16204039f67b190e9a794e61a7f8",
+  "upstream_url": "https://github.com/fomo26/container-validator.git"
+}

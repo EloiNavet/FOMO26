@@ -1,0 +1,269 @@
+import logging
+import os
+import torch
+import torch.nn as nn
+import wandb
+from abc import abstractmethod
+from asparagus.functional.metrics.utils import format_multilabel_metrics
+from asparagus.modules.lightning_modules.base_module import BaseModule
+from gardening_tools.functional.paths.write import save_json
+from torchmetrics import MetricCollection
+from torchmetrics.classification import (
+    MulticlassAccuracy,
+    MulticlassAUROC,
+    MulticlassF1Score,
+    MulticlassPrecision,
+    MulticlassRecall,
+)
+from torchmetrics.regression import MeanAbsoluteError, MeanSquaredError, PearsonCorrCoef
+from torchvision import transforms
+from typing import Optional
+
+
+class ClsRegBase(BaseModule):
+    def __init__(
+        self,
+        model: nn.Module,
+        learning_rate: float = 1e-2,
+        warmup_epochs: int = 10,
+        decoder_warmup_epochs: int = 0,
+        cosine_period_ratio: float = 1,
+        compile_mode: str = None,
+        weights: dict = None,
+        optimizer: str = "SGD",
+        train_transforms: Optional[transforms.Compose] = None,
+        test_transforms: Optional[transforms.Compose] = None,
+        val_transforms: Optional[transforms.Compose] = None,
+        weight_decay: float = 3e-5,
+        nesterov: bool = True,
+        momentum: float = 0.99,
+        log_image_every_n_epochs: int = 50,
+        test_output_path: str = None,
+        load_decoder: bool = True,
+        repeat_stem_weights: bool = True,
+    ):
+        super().__init__(
+            model=model,
+            learning_rate=learning_rate,
+            warmup_epochs=warmup_epochs,
+            decoder_warmup_epochs=decoder_warmup_epochs,
+            cosine_period_ratio=cosine_period_ratio,
+            compile_mode=compile_mode,
+            weights=weights,
+            optimizer=optimizer,
+            train_transforms=train_transforms,
+            val_transforms=val_transforms,
+            test_transforms=test_transforms,
+            weight_decay=weight_decay,
+            nesterov=nesterov,
+            momentum=momentum,
+            load_decoder=load_decoder,
+            repeat_stem_weights=repeat_stem_weights,
+        )
+        self.loss = None
+        self.task_type = None
+        self.num_classes = model.num_classes
+        self.log_image_every_n_epochs = log_image_every_n_epochs
+        self.test_output_path = test_output_path
+        self.ignore_index_in_metrics = -1
+        self.train_metrics = self.configure_metrics("train")
+        self.val_metrics = self.configure_metrics("val")
+        self.test_metrics = self.configure_test_metrics()
+
+    @abstractmethod
+    def configure_test_metrics(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def configure_metrics(self, prefix: str):
+        raise NotImplementedError
+
+    def training_step(self, batch, batch_idx):
+        batch = self._apply_train_transforms(batch)
+        x, y = batch["image"], batch["CLSREG_label"]
+
+        pred = self.model(x)
+        loss = self.loss(pred, y)
+
+        self.log(
+            "train/loss", loss, on_step=False, on_epoch=True, sync_dist=True, batch_size=self.trainer.datamodule.batch_size
+        )
+
+        self.train_metrics.update(pred, y)
+
+        if (
+            self.current_epoch > 0
+            and batch_idx == 0
+            and wandb.run is not None
+            and self.current_epoch % self.log_image_every_n_epochs == 0
+        ):
+            self._log_dict_of_images_to_wandb(
+                {
+                    "input": x.detach().cpu().to(torch.float32).numpy(),
+                    "target": y.detach().cpu().to(torch.float32).numpy(),
+                    "output": pred.detach().cpu().to(torch.float32).numpy(),
+                    "file": batch["file_path"],
+                },
+                log_key="train",
+                task_type=self.task_type,
+            )
+
+        return loss
+
+    def on_train_epoch_end(self):
+        metrics_results = self.train_metrics.compute()
+        formatted_metrics = format_multilabel_metrics(metrics_results, ignore_index=self.ignore_index_in_metrics)
+        self.log_dict(formatted_metrics, sync_dist=True)
+        self.train_metrics.reset()
+
+    def validation_step(self, batch, batch_idx):
+        batch = self._apply_val_transforms(batch)
+        x, y = batch["image"], batch["CLSREG_label"]
+
+        pred = self.model(x)
+        loss = self.loss(pred, y)
+        self.log("val/loss", loss, on_step=False, on_epoch=True, sync_dist=True, batch_size=self.trainer.datamodule.batch_size)
+
+        self.val_metrics.update(pred, y)
+
+        if (
+            self.current_epoch > 0
+            and batch_idx == 0
+            and wandb.run is not None
+            and self.current_epoch % self.log_image_every_n_epochs == 0
+        ):
+            self._log_dict_of_images_to_wandb(
+                {
+                    "input": x.detach().cpu().to(torch.float32).numpy(),
+                    "target": y.detach().cpu().to(torch.float32).numpy(),
+                    "output": pred.detach().cpu().to(torch.float32).numpy(),
+                    "file": batch["file_path"],
+                },
+                log_key="val",
+                task_type=self.task_type,
+            )
+
+    def on_validation_epoch_end(self):
+        metrics_results = self.val_metrics.compute()
+        formatted_metrics = format_multilabel_metrics(metrics_results, ignore_index=self.ignore_index_in_metrics)
+        self.log_dict(formatted_metrics, sync_dist=True)
+        self.val_metrics.reset()
+
+    def on_test_epoch_start(self):
+        self.results = {}
+        self.predictions = []
+        self.labels = []
+        return super().on_test_epoch_start()
+
+    def test_step(self, batch, batch_idx):
+        batch = self._apply_test_transforms(batch)
+        x = batch["image"]
+        outputs = self.model.forward(x)
+        return outputs
+
+    def predict_step(self, batch, batch_idx):
+        x = batch["image"]
+        outputs = self.model.forward(x)
+        return outputs
+
+    def on_test_epoch_end(self):
+        avg_results = {}
+        predictions = torch.stack([prediction.detach() for prediction in self.predictions])
+        labels = torch.stack([label.detach() for label in self.labels]).to(predictions.device)
+        avg_results = self.test_metrics(
+            predictions,
+            labels,
+        )
+        avg_results = {key: value.cpu().numpy().tolist() for key, value in avg_results.items()}
+        self.results["metrics"] = avg_results
+        os.makedirs(os.path.split(self.test_output_path)[0], exist_ok=True)
+        save_json(self.results, self.test_output_path)
+        logging.info(f"Aggregated test results for {len(self.results)} files: {avg_results}")
+
+
+class ClassificationModule(ClsRegBase):
+    def __init__(self, label_smoothing: float = 0.0, loss_weight: list = None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.loss = torch.nn.CrossEntropyLoss(
+            weight=torch.Tensor(loss_weight) if loss_weight else None, label_smoothing=label_smoothing
+        )
+        self.task_type = "classification"
+
+    def configure_test_metrics(self):
+        return MetricCollection(
+            {
+                "Precision": MulticlassPrecision(num_classes=self.num_classes, average=None),
+                "Recall": MulticlassRecall(num_classes=self.num_classes, average=None),
+                "F1": MulticlassF1Score(num_classes=self.num_classes, average=None),
+                "AUROC": MulticlassAUROC(num_classes=self.num_classes, average=None),  # challenge metric
+            }
+        )
+
+    def configure_metrics(self, prefix: str):
+        return MetricCollection(
+            {
+                f"{prefix}/acc": MulticlassAccuracy(num_classes=self.num_classes, average=None),
+                f"{prefix}/auroc": MulticlassAUROC(num_classes=self.num_classes, average=None),
+                f"{prefix}/f1": MulticlassF1Score(num_classes=self.num_classes, average=None),  # OvR F1 (Tasks 6/7)
+            },
+        )
+
+    def on_before_batch_transfer(self, batch, dataloader_idx):
+        if not self.trainer.predicting:
+            batch["CLSREG_label"] = batch["CLSREG_label"].view(-1).long()
+        return batch
+
+    def on_test_batch_end(self, outputs, batch, batch_idx, dataloader_idx=0):
+        logits = outputs.detach().float()
+        predictions = logits.argmax(1).long()
+        labels = batch["CLSREG_label"].view(-1).long()
+        file_paths = batch["file_path"]
+        if isinstance(file_paths, (str, os.PathLike)):
+            file_paths = [file_paths]
+        for file_path, prediction, label, sample_logits in zip(file_paths, predictions, labels, logits):
+            self.results[str(file_path)] = {
+                "prediction": prediction.item(),
+                "label": label.item(),
+                "logits": sample_logits.cpu().tolist(),
+            }
+            self.predictions.append(sample_logits)
+            self.labels.append(label)
+
+
+class RegressionModule(ClsRegBase):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.loss = torch.nn.MSELoss()
+        self.task_type = "regression"
+
+    def configure_metrics(self, prefix: str):
+        return MetricCollection(
+            {
+                f"{prefix}/MSE": MeanSquaredError(num_outputs=self.num_classes),
+                f"{prefix}/MAE": MeanAbsoluteError(num_outputs=self.num_classes),  # challenge metric
+                f"{prefix}/corr": PearsonCorrCoef(num_outputs=self.num_classes),  # challenge correlation
+            },
+        )
+
+    def configure_test_metrics(self):
+        return MetricCollection(
+            {
+                "MSE": MeanSquaredError(num_outputs=self.num_classes),
+                "MAE": MeanAbsoluteError(num_outputs=self.num_classes),
+                "corr": PearsonCorrCoef(num_outputs=self.num_classes),
+            },
+        )
+
+    def on_test_batch_end(self, outputs, batch, batch_idx, dataloader_idx=0):
+        predictions = outputs.detach().float().reshape(-1)
+        labels = batch["CLSREG_label"].detach().float().reshape(-1)
+        file_paths = batch["file_path"]
+        if isinstance(file_paths, (str, os.PathLike)):
+            file_paths = [file_paths]
+        for file_path, prediction, label in zip(file_paths, predictions, labels):
+            self.results[str(file_path)] = {
+                "prediction": prediction.item(),
+                "label": label.item(),
+            }
+            self.predictions.append(prediction)
+            self.labels.append(label)

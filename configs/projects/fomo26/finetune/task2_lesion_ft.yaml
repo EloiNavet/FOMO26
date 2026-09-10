@@ -1,0 +1,37 @@
+# @package _global_
+# Task2 meningioma seg — encoder-only transfer from our chosen single backbone.
+# Our SSL checkpoints (amaes/dufumier/dufumier_amaes) are UNet-M (UNetSSL, starting_filters=64,
+# modality FiLM conditioning), NOT resenc/unet_b. Point FOMO26_BACKBONE_CHECKPOINT at the chosen .ckpt.
+defaults:
+  - /default_finetune_seg
+  - /model/unet_m@model
+  - _self_
+
+task: SEG902_FOMO26_Task2_lesion
+checkpoint_path: ${oc.env:FOMO26_BACKBONE_CHECKPOINT,null}
+pretrained:
+  enabled: true
+  source: online            # our SSL checkpoints store the online encoder (no EMA)
+  load_scope: encoder_only
+
+data:
+  train_split: split_70_15_15
+  test_split: TEST_70_15_15
+
+training:
+  batch_size: 1
+  patch_size: [160, 160, 32]
+  load_decoder: False
+  repeat_stem_weights: True
+  # MVP "short" budget on RTX 6000 (kept in-config so the orchestrator passes only fold/split
+  # -> empty clargs -> run-dir component stays under the 255-byte filename limit).
+  epochs: 120
+  warmup_epochs: 10
+  decoder_warmup_epochs: 10
+  train_batches_per_epoch_per_device: 40
+  val_batches_per_epoch_per_device: 8
+  check_val_every_n_epoch: 5
+
+logger:
+  wandb_logging: True
+  wandb_project: Finetune

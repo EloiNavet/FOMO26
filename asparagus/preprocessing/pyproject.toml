@@ -1,0 +1,75 @@
+[project]
+name = "asparagus_preprocessing"
+version = "0.1.6"
+authors = [
+  { name="Sebastian Llambias", email="llambias@live.com" },
+]
+description = ""
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache License 2.0",
+    "Operating System :: OS Independent",
+]
+keywords = ['deep learning', 'medical image analysis','foundation models']
+
+dependencies = [
+    "torch==2.6.0",
+    "numpy>=2.2.5",
+    "nibabel>=5.3.2",
+    "scikit-image>=0.21.0",
+    "scikit-learn>=1.7.2",
+    "pandas>=2.2.2",
+    "polars>=1.0.0",
+    "matplotlib>=3.8.0",
+    "tqdm>=4.66.0",
+    "python-dotenv>=1.0.0",
+    "openpyxl",
+    "xlrd>=2.0.1"
+]
+
+
+[dependency-groups]
+dcai = [
+    "pandas==2.2.2",
+]
+
+[project.optional-dependencies]
+test = [
+    "ruff>=0.14.8",
+]
+
+[project.scripts]
+asp_process = 'asparagus_preprocessing.scripts.process:main'
+asp_split = 'asparagus_preprocessing.scripts.split:main'
+asp_update_paths = 'asparagus_preprocessing.scripts.update_paths:main'
+
+[tool.setuptools.packages.find]
+include = ["asparagus_preprocessing*"]
+
+[project.urls]
+"Homepage" = "https://github.com/sllambias/asparagus_preprocessing"
+
+[build-system]
+requires = ["setuptools>=75.8", "wheel>=0.45"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 127
+
+[tool.ruff.lint]
+# "E": style/error codes (PEP 8–type errors, e.g. if x == None).
+# "F": Pyflakes-style errors (unused variables, undefined names, etc.).
+# "I": import-related issues (import order, duplicates, etc.).
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.isort]
+no-sections = true
+combine-as-imports = true
+
+[tool.ruff.format]
+# quote-style = "double": Ruff prefers " over ' when it reformats strings, as long as it’s safe.
+# indent-style = "space": indentation uses spaces, not tabs.
+quote-style = "double"
+indent-style = "space"

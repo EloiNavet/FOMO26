@@ -1,0 +1,53 @@
+# FOMO26 submission container (Apptainer / Singularity).
+#
+# Build ONE .sif per official task unit. Before building, stage task-specific assets into a context:
+#   build_context/
+#     ├── predict.py                 # the chosen finetuning/container/predict_taskN.py
+#     ├── models/
+#     │   ├── model_manifest.json     # one task and its common-pretrained lineage
+#     │   └── runs/<fold>/...         # only this task's finalized downstream folds
+#     └── asparagus_repo/             # this repository (for `pip install -e`)
+#
+# Then:  apptainer build --fakeroot taskN.sif Apptainer.def --arch amd64
+#
+# The evaluator runs the task-specific SIF in its matching queue.
+# (GPU via --nv; /input and /output are bind-mounted by the validator.)
+
+Bootstrap: docker
+From: pytorch/pytorch@sha256:27c3135420bc184e86977170b6158c6133be3c7cc5c35e9e4fa87bdda629dc2b
+
+%files
+    predict.py /app/predict.py
+    models /app/models
+    asparagus_repo /app/asparagus_repo
+    requirements-container.lock /app/requirements-container.lock
+    verify_runtime_contract.py /app/verify_runtime_contract.py
+
+%post
+    fomo_architecture="$(python -c 'import json; print(json.load(open("/app/models/model_manifest.json"))["architecture"])')"
+    # The public release ships ResEnc-B and the U-Net baseline. MedViT and Primus retired, and the
+    # NATTEN wheel they needed retired with them -- their pins live in
+    # finetuning/container/historical_sif_profile.json. An unknown architecture must stop the build here
+    # rather than produce an image whose runtime cannot construct its own backbone.
+    case "$fomo_architecture" in
+      resenc_b|unet_m) ;;
+      *) echo "Unsupported architecture for the public release image: $fomo_architecture" >&2; exit 1 ;;
+    esac
+    pip install --retries 10 --timeout 120 --no-cache-dir --require-hashes -r /app/requirements-container.lock
+    pip install --retries 10 --timeout 120 --no-cache-dir --no-deps -e /app/asparagus_repo
+    python /app/verify_runtime_contract.py
+    python -c "import torch; assert torch.__version__.startswith('2.7.')"
+    chmod +x /app/predict.py
+
+%environment
+    # Every task-specific inference choice is frozen into the generated env.sh. The shared image
+    # definition supplies no scientific or runtime-policy default.
+    if [ -f /app/models/env.sh ]; then . /app/models/env.sh; fi
+
+%runscript
+    if [ ! -f /app/models/env.sh ]; then
+        echo "Missing task-specific frozen runtime policy: /app/models/env.sh" >&2
+        exit 1
+    fi
+    . /app/models/env.sh
+    exec python /app/predict.py "$@"

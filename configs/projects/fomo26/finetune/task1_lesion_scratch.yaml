@@ -1,0 +1,9 @@
+# @package _global_
+# Task1 lesion (seg) — from-scratch baseline (no pretrained encoder).
+defaults:
+  - /projects/fomo26/finetune/task1_lesion
+  - _self_
+
+checkpoint_path: null
+pretrained:
+  enabled: false

@@ -1,0 +1,14 @@
+# @package _global_
+# Experiment A stage: safety_p2 (stop at 96000).
+# Inherits the curated P0 contract, global batch 32, seed 431027, the 187,500-step
+# scheduler horizon and the corrected 3,750-step warmup from resenc_amaes/base.
+defaults:
+  - resenc_amaes
+  - _self_
+
+campaign:
+  phase: safety_p2
+  checkpoint_steps: [48000, 64000, 80000, 96000]
+  stop_at_checkpoint_step: 96000
+  pause_at_stop: true
+  parent_candidate_id: SAFETY_RESENC_AMAES

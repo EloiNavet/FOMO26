@@ -1,0 +1,15 @@
+# Explicit release-runtime dependency overrides, applied to the exported lock before the image
+# installs it. Each entry states which locked version it replaces and why.
+#
+# gardening-tools: the lockfile resolves 0.3.5, but every FOMO26 downstream segmentation
+# checkpoint was trained in a Jean-Zay environment carrying 0.3.2. Between those releases
+# ResidualUNetDecoder's parameters were renamed from `decoder_conv1..5` / `upsample1..5` to a
+# `decoder_convs` ModuleList and `upsample_layers`. The architecture is unchanged, so the weights
+# load by shape but not by NAME: all 50 decoder tensors silently miss, the encoder's 450 load, and
+# `assert successful > 0` in base_module lets a half-random model through. Such an image builds,
+# passes the official validator, meets the runtime budget, and predicts background on every voxel.
+# Pinning the version that trained the weights is what makes the packaged model the trained model.
+# This is a packaging correction, not a change of model, objective, checkpoint or inference policy.
+gardening-tools==0.3.2 \
+    --hash=sha256:3a7c9c3f68f25b559c823c0c0061887e9adc24fdc0a85afb47692eb517be0601 \
+    --hash=sha256:7cfb052f3c41d661b84f273aa377ec2230e9d50b006feeb2ea89eac46dd59832

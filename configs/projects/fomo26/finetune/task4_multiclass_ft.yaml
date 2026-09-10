@@ -1,0 +1,35 @@
+# @package _global_
+# Task4 trigeminal neuralgia (multiclass seg, 3 classes) — encoder-only transfer from UNet-M backbone.
+# Point FOMO26_BACKBONE_CHECKPOINT at amaes/dufumier/dufumier_amaes (.ckpt).
+defaults:
+  - /default_finetune_seg
+  - /model/unet_m@model
+  - _self_
+
+task: SEG904_FOMO26_Task4_multiclass
+checkpoint_path: ${oc.env:FOMO26_BACKBONE_CHECKPOINT,null}
+pretrained:
+  enabled: true
+  source: online
+  load_scope: encoder_only
+
+data:
+  train_split: split_70_15_15
+  test_split: TEST_70_15_15
+
+training:
+  batch_size: 1
+  patch_size: [128, 128, 128]   # 160^3 OOMs unet_m on a 24GB RTX 6000; 128^3 fits (H100 inference can go larger)
+  load_decoder: False
+  repeat_stem_weights: True
+  # Comparison-campaign budget (in-config so the orchestrator passes only fold/split).
+  epochs: 100
+  warmup_epochs: 10
+  decoder_warmup_epochs: 10
+  train_batches_per_epoch_per_device: 40
+  val_batches_per_epoch_per_device: 8
+  check_val_every_n_epoch: 5
+
+logger:
+  wandb_logging: True
+  wandb_project: Finetune

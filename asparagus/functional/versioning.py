@@ -1,0 +1,124 @@
+import logging
+import numpy as np
+import os
+import yaml
+from asparagus.paths import get_models_path
+from gardening_tools.functional.paths.scan import subfiles
+from typing import Union
+
+RUN_DIR_PREFIXES = ("run_id=", "run_")
+
+
+def _run_id_from_dirname(dirname: str, prefixes=RUN_DIR_PREFIXES) -> Union[None, int]:
+    for prefix in prefixes:
+        if dirname.startswith(prefix):
+            suffix = dirname.removeprefix(prefix)
+            if suffix.isdigit():
+                return int(suffix)
+    return None
+
+
+def generate_unused_run_id(
+    resume_training: bool = False,
+    run_dir: str | None = None,
+    model_dir: str | None = None,
+    string_match="run_id=",
+) -> Union[None, int, str]:
+    if model_dir is None:
+        model_dir = get_models_path()
+
+    if resume_training and run_dir is not None and os.path.isdir(run_dir):
+        previous_runs = detect_previous_runs_with_ckpt(run_dir=run_dir, ckpt="last")
+        if len(previous_runs) > 0:
+            return get_id_for_most_recent_ckpt(run_dir, previous_runs, string_match=string_match, ckpt="last")
+
+    # get list of all run ids used by asparagus
+    global_used_ids = [0]
+    prefixes = (string_match,) if string_match is not None else RUN_DIR_PREFIXES
+    for dirpath, _, _ in os.walk(model_dir):
+        run_id = _run_id_from_dirname(os.path.split(dirpath)[1], prefixes=prefixes)
+        if run_id is not None:
+            global_used_ids.append(run_id)
+
+    # find a globally unique one
+    run_id = 0
+    while run_id in global_used_ids:
+        run_id = int(np.random.randint(1000, 999999))
+
+    return run_id
+
+
+def get_id_for_most_recent_ckpt(run_dir, previous_runs, string_match="run_id=", ckpt: str = "last"):
+    ctime = 0
+    id = ""
+    for run in previous_runs:
+        run_ctime = os.path.getctime(os.path.join(run_dir, run, f"checkpoints/{ckpt}.ckpt"))
+        if ctime < run_ctime:
+            id = run
+            ctime = run_ctime
+
+    return id.replace(string_match, "")
+
+
+def detect_previous_runs_with_ckpt(run_dir, ckpt: str = "last"):
+    previous_runs = os.listdir(run_dir)
+    valid_runs = []
+    for run in previous_runs:
+        if os.path.isfile(os.path.join(run_dir, run, f"checkpoints/{ckpt}.ckpt")):
+            valid_runs.append(run)
+    return valid_runs
+
+
+def detect_wandb_id(run_dir) -> Union[None, str]:
+    wandb_log_dir = os.path.join(run_dir, "wandb", "latest-run")
+    if not os.path.isdir(wandb_log_dir):
+        return None
+    files = subfiles(wandb_log_dir, suffix=".wandb", join=False)
+    if not len(files) > 0:
+        return None
+    id = files[0].replace("run-", "").replace(".wandb", "")
+    return id
+
+
+def detect_mlflow_id(run_dir: str) -> Union[None, int]:
+    mlruns_dir = os.path.join(run_dir, "mlruns")
+
+    run_id = None
+    max_start_time = 0
+
+    for root, _, files in os.walk(mlruns_dir):
+        if "meta.yaml" in files:
+            meta_yaml_path = os.path.join(root, "meta.yaml")
+
+            with open(meta_yaml_path, "r") as f:
+                meta_data = yaml.safe_load(f)
+
+            id = meta_data.get("run_id")
+            start_time = meta_data.get("start_time", 0)
+
+            # take the run which was started last if there are multiple...
+            if start_time > max_start_time:
+                run_id = id
+
+    return run_id
+
+
+def detect_id(id: str, model_dir: str | None = None):
+    if model_dir is None:
+        model_dir = get_models_path()
+
+    id = str(id)
+    all_cases = []
+    for dirpath, _, _ in os.walk(model_dir):
+        if os.path.basename(dirpath) in {f"run_id={id}", f"run_{id}"}:
+            all_cases.append(dirpath)
+    if len(all_cases) == 1:
+        logging.info(f"Found exactly 1 match for ID: {id} in {model_dir}")
+    else:
+        raise ValueError(f"Found {len(all_cases)} matches for ID: {id} in {model_dir}")
+
+    return all_cases[0]
+
+
+if __name__ == "__main__":
+    print(detect_id("582109"))

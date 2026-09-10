@@ -1,0 +1,253 @@
+"""
+Feature representation quality metrics for SSL pretraining.
+"""
+
+import torch
+import torch.nn as nn
+from typing import Dict
+
+
+def _to_channel_samples(features: torch.Tensor) -> torch.Tensor:
+    """Reshape [B, C, *spatial] → [B*N_spatial, C] for channel-space analysis.
+    2D inputs [B, C] are returned unchanged."""
+    if features.dim() <= 2:
+        return features
+    C = features.shape[1]
+    spatial_dims = list(range(2, features.dim()))
+    return features.permute(0, *spatial_dims, 1).reshape(-1, C)
+
+
+def compute_train(encoder_features: torch.Tensor) -> Dict[str, float]:
+    """Metrics computed every training step."""
+    return compute_embedding_metrics(encoder_features)
+
+
+def compute_val(encoder_features: torch.Tensor, model: nn.Module) -> Dict[str, float]:
+    """Metrics computed every validation step."""
+    metrics = compute_embedding_metrics(encoder_features)
+    metrics |= compute_feature_covariance(encoder_features)
+    metrics |= compute_whitening_diagnostics(encoder_features)
+    metrics |= compute_collapse_score(encoder_features)
+    metrics |= compute_participation_ratio(encoder_features)
+    return metrics
+
+
+def compute_embedding_metrics(encoder_features: torch.Tensor) -> Dict[str, float]:
+    """L2 norm statistics of encoder representations."""
+    if encoder_features is None or encoder_features.numel() == 0:
+        return {}
+
+    if encoder_features.dim() <= 1:
+        norms = encoder_features.reshape(-1).norm().reshape(1)
+    else:
+        norms = encoder_features.norm(dim=1).reshape(-1)
+
+    return {
+        "embedding_sample_count": norms.numel(),
+        "embedding_norm_mean": norms.mean().item(),
+        "embedding_norm_std": norms.std(unbiased=False).item(),
+    }
+
+
+def compute_feature_covariance(features: torch.Tensor) -> Dict[str, float]:
+    """Eigenspectrum analysis of feature covariance matrix."""
+    if features is None or features.numel() == 0:
+        return {}
+
+    features = _to_channel_samples(features)
+    sample_count = features.shape[0]
+
+    metrics = {
+        "feature_cov_sample_count": sample_count,
+        "feature_cov_available": int(sample_count >= 2),
+    }
+
+    if sample_count < 2:
+        return metrics
+
+    features_centered = features - features.mean(dim=0, keepdim=True)
+    cov = torch.mm(features_centered.T, features_centered) / (sample_count - 1)
+    trace = torch.trace(cov).item()
+
+    try:
+        eigenvalues = torch.linalg.eigvalsh(cov)
+        spectrum = torch.clamp(eigenvalues, min=0)
+        max_eigenval = spectrum.max().item()
+        min_eigenval = spectrum.min().item()
+        nonzero_variance = int(spectrum.sum().item() > 0)
+
+        metrics = {
+            **metrics,
+            "feature_cov_trace": trace,
+            "feature_cov_nonzero_variance": nonzero_variance,
+            "feature_cov_max_eigenval": max_eigenval,
+            "feature_cov_min_eigenval": min_eigenval,
+        }
+
+        # Condition number and effective rank are only meaningful when the
+        # covariance has strictly positive spectral support.
+        if min_eigenval > 1e-10:
+            metrics["feature_cov_condition_number"] = min(max_eigenval / min_eigenval, 1e6)
+
+        variance_sum = spectrum.sum().item()
+        if variance_sum > 0:
+            p = spectrum / variance_sum
+            eps = torch.finfo(p.dtype).tiny
+            H = -(p * torch.log(p + eps)).sum()
+            metrics["feature_effective_rank"] = torch.exp(H).item()
+
+        return metrics
+
+    except Exception:
+        return {
+            **metrics,
+            "feature_cov_trace": trace,
+            "feature_cov_nonzero_variance": int(trace > 0),
+        }
+
+
+def compute_collapse_score(features: torch.Tensor, eps: float = 1e-8) -> Dict[str, float]:
+    """Dimensional collapse detection via per-channel variance analysis."""
+    if features is None or features.numel() == 0:
+        return {}
+
+    features = _to_channel_samples(features)
+
+    dim_variance = features.var(dim=0, unbiased=False)
+
+    # Count dimensions with near-zero variance (collapsed)
+    zero_var_threshold = eps
+    n_collapsed = (dim_variance < zero_var_threshold).sum().item()
+    n_total = dim_variance.numel()
+
+    # Variance statistics across dimensions
+    collapse_var_mean = dim_variance.mean().item()
+    collapse_var_std = dim_variance.std(unbiased=False).item() if dim_variance.numel() > 1 else 0.0
+    collapse_var_min = dim_variance.min().item()
+    collapse_var_max = dim_variance.max().item()
+
+    # Coefficient of variation: std/mean
+    if collapse_var_mean > eps:
+        collapse_var_coeff = collapse_var_std / collapse_var_mean
+    else:
+        collapse_var_coeff = 0.0
+
+    # Effective dimensionality via entropy of variance distribution
+    variance_sum = dim_variance.sum()
+    if variance_sum > 0:
+        p = dim_variance / variance_sum
+        tiny_eps = torch.finfo(p.dtype).tiny
+        H = -(p * torch.log(p + tiny_eps)).sum()
+        effective_dims = torch.exp(H).item()
+    else:
+        effective_dims = 0.0
+
+    return {
+        "collapse_n_zero_var_dims": n_collapsed,
+        "collapse_pct_zero_var_dims": (n_collapsed / n_total * 100) if n_total > 0 else 0,
+        "collapse_var_mean": collapse_var_mean,
+        "collapse_var_std": collapse_var_std,
+        "collapse_var_min": collapse_var_min,
+        "collapse_var_max": collapse_var_max,
+        "collapse_var_coeff": collapse_var_coeff,
+        "collapse_effective_dims": effective_dims,
+        "collapse_dim_ratio": effective_dims / n_total if n_total > 0 else 0,
+    }
+
+
+def compute_participation_ratio(features: torch.Tensor, k_values: list = [10, 50, 100]) -> Dict[str, float]:
+    """Compute participation ratio - energy in top-k singular values."""
+    if features is None or features.numel() == 0:
+        return {}
+
+    features = _to_channel_samples(features).float()
+
+    features_centered = features - features.mean(dim=0, keepdim=True)
+
+    # SVD: use randomized version for high-dimensional features
+    try:
+        if features_centered.shape[1] > 1000:
+            U, S, V = torch.svd_lowrank(features_centered, q=min(200, min(features_centered.shape)))
+        else:
+            U, S, V = torch.linalg.svd(features_centered, full_matrices=False)
+    except Exception:
+        return {}
+
+    total_variance = (S**2).sum().item()
+
+    if total_variance > 0:
+        metrics = {}
+
+        # Fraction of variance in top-k components
+        for k in k_values:
+            if k <= len(S):
+                top_k_variance = (S[:k] ** 2).sum().item()
+                participation = top_k_variance / total_variance
+                metrics[f"participation_ratio_top{k}"] = participation
+
+        # Effective rank from singular value entropy
+        p = S / S.sum()
+        eps = torch.finfo(p.dtype).tiny
+        H = -(p * torch.log(p + eps)).sum()
+        effective_rank = torch.exp(H).item()
+
+        metrics["effective_rank"] = effective_rank
+        metrics["effective_rank_ratio"] = effective_rank / len(S)
+
+        return metrics
+
+    return {}
+
+
+def compute_whitening_diagnostics(features: torch.Tensor) -> Dict[str, float]:
+    """Compute whitening diagnostics - off-diagonal correlation statistics."""
+    if features is None or features.numel() == 0:
+        return {}
+
+    features = _to_channel_samples(features).float()
+    sample_count = features.shape[0]
+
+    metrics = {
+        "whitening_sample_count": sample_count,
+        "whitening_available": int(sample_count >= 2),
+    }
+
+    if sample_count < 2:
+        return metrics
+
+    # Compute correlation matrix
+    features_centered = features - features.mean(dim=0, keepdim=True)
+    features_std = features_centered.std(dim=0, keepdim=True, unbiased=False) + 1e-8
+    features_normalized = features_centered / features_std
+    corr_matrix = torch.mm(features_normalized.T, features_normalized) / sample_count
+
+    # Extract off-diagonal elements
+    n_features = corr_matrix.shape[0]
+    mask = ~torch.eye(n_features, dtype=torch.bool, device=corr_matrix.device)
+    off_diagonal = corr_matrix[mask]
+
+    # Off-diagonal statistics (should be near 0 for decorrelated features)
+    if off_diagonal.numel() > 0:
+        whitening_offdiag_mean = off_diagonal.mean().abs().item()
+        whitening_offdiag_std = off_diagonal.std(unbiased=False).item() if off_diagonal.numel() > 1 else 0.0
+        whitening_offdiag_max = off_diagonal.abs().max().item()
+        decorrelation_score = off_diagonal.abs().mean().item()
+
+        metrics.update(
+            {
+                "whitening_offdiag_mean": whitening_offdiag_mean,
+                "whitening_offdiag_std": whitening_offdiag_std,
+                "whitening_offdiag_max": whitening_offdiag_max,
+                "decorrelation_score": decorrelation_score,
+            }
+        )
+
+    # Diagonal elements (should be ~1 for normalized features)
+    diagonal = torch.diag(corr_matrix)
+    whitening_diag_mean = diagonal.mean().item()
+    whitening_diag_std = diagonal.std(unbiased=False).item() if diagonal.numel() > 1 else 0.0
+
+    metrics["whitening_diag_mean"] = whitening_diag_mean
+    metrics["whitening_diag_std"] = whitening_diag_std
+
+    return metrics

@@ -1,0 +1,124 @@
+{
+  "schema_version": "fomo26-task-definitions-v1",
+  "authority": "Weights, metrics and kinds were declared by the Task-5 screening collector (CHALLENGE_WEIGHTS_T1_T5, FINETUNE_TASK_METRICS, TASK_KIND) and its ranking module. That campaign code is not part of the public code release, so this file is now the record itself rather than a transcription of one. Tasks 6 and 7 are local proxies for hidden official tasks and carry zero challenge weight.",
+  "tasks": {
+    "1": {
+      "name": "presence",
+      "kind": "classification",
+      "dataset": "CLS901_FOMO26_Task1_presence",
+      "primary_metric": "auroc",
+      "direction": "higher",
+      "challenge_weight": 0.125,
+      "config": "configs/projects/fomo26/finetune/task1_presence*.yaml",
+      "evaluation_policy": "validation-selected best checkpoint unless the config declares otherwise",
+      "note": "A lesion-SEGMENTATION formulation also exists (SEG901_FOMO26_Task1_lesion, task1_lesion*.yaml). The DEFAULT protocol is presence classification. The safety-branch D0 collector hard-coded Task 1 as segmentation; that is corrected.",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Image-level infarct presence: a scalar class, unaffected by mirroring.",
+      "flip_label_permutation": null
+    },
+    "2": {
+      "name": "lesion segmentation",
+      "kind": "segmentation",
+      "dataset": "SEG902_FOMO26_Task2_lesion",
+      "primary_metric": "dsc",
+      "direction": "higher",
+      "challenge_weight": 0.3125,
+      "config": "configs/projects/fomo26/finetune/task2_lesion*.yaml",
+      "evaluation_policy": "validation-selected best checkpoint unless the config declares otherwise",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Single meningioma foreground class; no laterality encoded in the label space.",
+      "flip_label_permutation": null,
+      "max_tta": "flip3",
+      "max_tta_rationale": "Held-out OOF after the evaluator correctness fix: flip3 DSC 0.1192 vs flip7 0.1128. Richer TTA is measurably worse here, so the governor must not be free to buy it with spare time budget."
+    },
+    "3": {
+      "name": "brain age",
+      "kind": "regression",
+      "dataset": "REG903_FOMO26_Task3_age",
+      "primary_metric": "mae",
+      "direction": "lower",
+      "challenge_weight": 0.125,
+      "config": "configs/projects/fomo26/finetune/task3_age*.yaml",
+      "evaluation_policy": "validation-selected best checkpoint; scored through the policy-v2 constant-correlation representation derived from the immutable per-subject predictions (task5_task3_metrics.py)",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Scalar age regression; unaffected by mirroring.",
+      "flip_label_permutation": null,
+      "runtime_target_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "runtime_target_orientation": "RAS",
+      "runtime_geometry_rationale": "All 494/494 cases of the finetuning corpus are 1.0/1.0/1.0 mm RAS at a single shape 176x256x256. The model has therefore only ever seen this physical scale, and inference applies no resampling by default, so an incoming volume at any other spacing reaches the network at a scale it was never fitted on."
+    },
+    "4": {
+      "name": "multiclass segmentation",
+      "kind": "segmentation",
+      "dataset": "SEG904_FOMO26_Task4_multiclass",
+      "primary_metric": "dsc",
+      "direction": "higher",
+      "challenge_weight": 0.3125,
+      "config": "configs/projects/fomo26/finetune/task4_multiclass*.yaml",
+      "evaluation_policy": "validation-selected best checkpoint unless the config declares otherwise",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Classes are 0=background, 1=nerves, 2=vessels -- structure type, not side. A mirrored nerve is still a nerve.",
+      "flip_label_permutation": null,
+      "runtime_target_spacing_mm": [
+        0.5,
+        0.488,
+        0.488
+      ],
+      "runtime_target_orientation": "RAS",
+      "runtime_geometry_rationale": "All 40/40 cases of the finetuning corpus are 0.5/0.488/0.488 mm RAS at a single shape 360x512x512. The model has therefore only ever seen this physical scale, and inference applies no resampling by default, so an incoming volume at any other spacing reaches the network at a scale it was never fitted on.",
+      "max_tta": "flip3",
+      "max_tta_rationale": "Held-out OOF after the evaluator correctness fix: flip3 mean DSC 0.3793 vs flip7 0.3713, improving in 4 of 5 folds. Capping also keeps the real-volume runtime of the gaussian-blended, geometry-canonicalized path inside the official contract."
+    },
+    "5": {
+      "name": "post-partum MR",
+      "kind": "classification",
+      "dataset": "CLS905_FOMO26_Task5_ppmr",
+      "primary_metric": "auroc",
+      "direction": "higher",
+      "challenge_weight": 0.125,
+      "config": "configs/projects/fomo26/finetune/task5_ppmr*.yaml",
+      "evaluation_policy": "validation-selected best checkpoint unless the config declares otherwise",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Image-level polymicrogyria classification; a scalar class.",
+      "flip_label_permutation": null
+    },
+    "6": {
+      "name": "local proxy",
+      "kind": "proxy",
+      "dataset": null,
+      "primary_metric": null,
+      "direction": null,
+      "challenge_weight": 0.0,
+      "config": null,
+      "evaluation_policy": "not challenge-scored; present as a key so ranking.composite() can index it",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Frozen-embedding extraction; no spatial label space.",
+      "flip_label_permutation": null
+    },
+    "7": {
+      "name": "local proxy",
+      "kind": "proxy",
+      "dataset": null,
+      "primary_metric": null,
+      "direction": null,
+      "challenge_weight": 0.0,
+      "config": null,
+      "evaluation_policy": "not challenge-scored; present as a key so ranking.composite() can index it",
+      "flip_invariant_labels": true,
+      "flip_invariance_rationale": "Frozen-embedding extraction; no spatial label space.",
+      "flip_label_permutation": null
+    }
+  },
+  "flip_tta_contract": "flip_invariant_labels declares whether mirroring preserves the label space. finetuning/fomo26_inference/tta_safety.py refuses flip TTA for any task declaring false without a flip_label_permutation. Re-evaluate this field whenever a label space changes: a task that later splits a class by side (left/right) becomes non-invariant.",
+  "runtime_geometry_contract": {
+    "purpose": "Inference-time canonicalization target. prepare_fomo26_asparagus.py stores every downstream corpus at native acquisition geometry (target_spacing null, target_orientation native), so a task whose corpus holds exactly one geometry produces a model that has never seen another voxel scale. Declaring that geometry here lets inference resample an incoming volume back to it before pad/crop.",
+    "applies_to": "Only tasks that declare runtime_target_spacing_mm. Every other task resolves to null and keeps the historical no-resampling behaviour.",
+    "evidence": "Acquisition-geometry audit of all per-case scan.pkl sidecars: Task 3 = 494/494 cases at 1.0/1.0/1.0 mm RAS, one distinct shape 176x256x256; Task 4 = 40/40 cases at 0.5/0.488/0.488 mm RAS, one distinct shape 360x512x512. Tasks 1, 2 and 5 are geometrically heterogeneous (11, 12 and 6 distinct spacing triplets) and deliberately declare nothing.",
+    "scope_note": "Tasks 6 and 7 declare nothing and must not inherit this behaviour: they have no local labels, so no held-out evidence for the intervention exists, and they run through presets/pretrain.py::CPU_val_transforms rather than the cls/reg preset."
+  },
+  "tta_ladder_contract": "max_tta caps the ladder the time-budget governor may choose from for one task; finetuning/fomo26_inference/tta_safety.py::task_tta_ladder truncates the ordered ladder (none, flip3, flip7) at that level and fomo_ensemble_predict passes the result to plan_inference. A task that declares no max_tta keeps the full ladder, so this field only ever removes options. It is a scientific claim -- that the capped level scored better on held-out data -- not a performance knob, and the governor remains free to downgrade below the cap on slow hardware."
+}
